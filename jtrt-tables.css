@@ -62,42 +62,6 @@ table.footable.breakpoint>tbody>tr>td>span.footable-toggle:before {
 
 }
 
-@media (min-width: 992px) {
-
-  /* line 7, ../sass/snatrresults.scss */
-
-  table.kwrc-table .filler {
-
-    display: none;
-
-  }
-
-}
-
-@media (min-width: 1200px) {
-
-  /* line 12, ../sass/snatrresults.scss */
-
-  table.kwrc-table .filler {
-
-    display: table-cell;
-
-  }
-
-}
-
-@media (max-width: 640px) {
-
-  /* line 17, ../sass/snatrresults.scss */
-
-  table.kwrc-table .filler {
-
-    display: none;
-
-  }
-
-}
-
 /* line 28, ../sass/snatrresults.scss */
 
 table.kwrc-table th {

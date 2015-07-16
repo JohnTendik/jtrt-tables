@@ -40,7 +40,10 @@ function register_jtrt_tables_plugin_settings(){
 
 function jtrt_tables_plugin_options_page(){
 
-	$options = get_option('jtrt_tables_options');
+	$jtrt_options = get_option('jtrt_tables_options');
+
+
+	
 
 	?>
 
@@ -64,15 +67,45 @@ function jtrt_tables_plugin_options_page(){
 		   	<fieldset class="jtrt_fieldset">
 
 				<label for="upload_image"><b>CSV file</b></label></br>
-
-				<input id="upload_image" type="text" size="36" <input type='text' name='jtrt_tables_options[kwrc_table_link]' value='<?php echo $options['kwrc_table_link']; ?>'/> 
+				<input id="upload_image" type="text" size="36" input type='text' name='jtrt_tables_options[kwrc_table_link]' value='<?php echo $jtrt_options['kwrc_table_link']; ?>'/> 
 
 				<input id="upload_image_button" class="button" type="button" value="Upload file" />
-
 				<small>Enter a URL or upload a CSV file</small>
 
 				<br/>
 
+			</fieldset>
+
+			<fieldset class="jtrt_fieldset">
+
+				<table class="form-table">
+					<tbody>
+						<tr>
+							<th scope="row">
+								<label for="foo_breakpoint_mobile"><b>Mobile Breakpoint</b></label></br>
+							</th>
+
+							<td>
+								<input type="text" id="foo_breakpoint_mobile" name='jtrt_tables_options[kwrc_table_foo_breakpoint_mobile]' value='<?php echo (empty($jtrt_options['kwrc_table_foo_breakpoint_mobile']) ? '480' : $jtrt_options['kwrc_table_foo_breakpoint_mobile']); ?>'>
+								<br>
+								<span class="description">The width of the tablet breakpoint.</span>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">
+								<label for="foo_breakpoint_tablet"><b>Tablet Breakpoint</b></label></br>
+							</th>
+
+							<td>
+								<input type="text" id="foo_breakpoint_tablet" name='jtrt_tables_options[kwrc_table_foo_breakpoint_tablet]' value='<?php echo (empty($jtrt_options['kwrc_table_foo_breakpoint_tablet']) ? '920' : $jtrt_options['kwrc_table_foo_breakpoint_tablet']); ?>'>
+								<br>
+								<span class="description">The width of the phone breakpoint.</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+									
+						
 			</fieldset>
 
 			<fieldset class="jtrt_fieldset">
@@ -118,6 +151,14 @@ function jtrt_front_end_styles() {
 
     wp_enqueue_style( 'jtrt_footable_css_import', plugins_url( 'jtrt-tables/includes/footable.core.min.css' ) );
     wp_register_script( 'footable_init_hook', plugins_url( 'jtrt-tables/includes/footable.min.js' ), array( 'jquery' ), 0, true );
+
+    $jtrt_options = get_option('jtrt_tables_options');
+
+    $jtrt_options_array = array(
+		'jtrt_mobile_bp' => $jtrt_options['kwrc_table_foo_breakpoint_mobile'],
+		'jtrt_tablet_bp' => $jtrt_options['kwrc_table_foo_breakpoint_tablet']
+	);
+    wp_localize_script( 'footable_init_hook', 'jtrt_options_arr', $jtrt_options_array );
     wp_enqueue_script( 'footable_init_hook' );
     wp_register_script( 'jtrt-csv-upload2', plugins_url( 'jtrt-tables/js/jtrt-js-handler-frontend.js', dirname(__FILE__) ), array( 'jquery' ), 1, true );
 	wp_enqueue_script( 'jtrt-csv-upload2' );

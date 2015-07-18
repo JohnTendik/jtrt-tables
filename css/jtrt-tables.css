@@ -1,0 +1,140 @@
+div.insert_jtrt_here{
+
+	background:#EFEAEA;
+
+	padding:10px;
+
+	overflow-x:auto;
+
+	border:solid 1px #ccc;
+
+	display:none;
+
+	margin:24px 0;
+
+}
+
+form fieldset.jtrt_fieldset{
+		
+	margin-bottom:24px;
+
+}
+
+textarea#jtrt_html_box{
+
+	display:none;
+
+	max-width:100%;
+
+	width:40%;
+
+	height:150px;
+
+}
+
+div.insert_jtrt_here td.hide, div.table-generation-viewer th.hide{
+
+	background:#A1DCF2;
+
+}
+
+div.insert_jtrt_here thead th{
+
+	text-align:center;
+
+	cursor:pointer;
+
+}
+
+table.kwrc-table {
+
+  text-align: center;
+
+  box-sizing: border-box;
+
+}
+
+/* line 28, ../sass/snatrresults.scss */
+
+table.kwrc-table th {
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  background: #673895;
+
+  color: white;
+
+  border: solid 1px gray;
+
+}
+
+
+
+/* line 36, ../sass/snatrresults.scss */
+
+table.kwrc-table tr.even {
+
+  background: #cdc;
+
+}
+
+table.kwrc-table tr:hover{
+
+  background:#A1DCF2;
+
+}
+
+/* line 40, ../sass/snatrresults.scss */
+
+table.kwrc-table td {
+
+  box-sizing: border-box;
+
+  border: solid 1px gray;
+
+  text-align: center;
+
+}
+
+div#tabs ul{
+	border-bottom:1px solid #ccc;
+	padding-left:10px;
+}
+
+div#tabs ul li{
+	display:inline-block;
+	margin-right: 2px;
+	background: white;
+	margin-bottom: 0;
+	border:solid 1px #ccc;
+	border-bottom:none;
+	border-radius:5px 5px 0 0;
+}
+
+div#tabs ul li a{
+	text-decoration: none;
+	display:block;
+	padding:5px 10px;
+	color:black;
+}
+
+div#tabs ul li.ui-tabs-active{
+	background:#f1f1f1;
+	border-bottom:1px solid #f1f1f1;
+	margin-bottom:-2px;
+}
+
+div#tabs ul li a:focus{
+	box-shadow: none;
+	color:black;
+}
+
+div#tabs div.jtrt-support-box{
+	border-left:5px solid #0074A2;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding: 5px 20px;
+	background:white;
+}

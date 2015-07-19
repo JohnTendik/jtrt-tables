@@ -62,7 +62,7 @@
 		
 			if(upload_image_link.indexOf(".csv") != -1){
 
-			jQuery('div.insert_jtrt_here').CSVToTable(upload_image_link,{tableClass:"footable toggle-circle-filled"});
+			jQuery('div.insert_jtrt_here').CSVToTable(upload_image_link,{tableClass:"footable toggle-circle-filled",jtrt_table_sort:"false",jtrt_table_filter:"false"});
 	
 			jtrt_init_func(jQuery('div.insert_jtrt_here'));
 

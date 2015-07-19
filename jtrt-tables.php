@@ -10,7 +10,7 @@ Description: Custom responsive tables plugin for Wordpress
 
 Author: John Tendik
 
-Version: 1.0
+Version: 1.3
 
 */
 
@@ -58,34 +58,81 @@ function jtrt_tables_plugin_options_page(){
 		        <li><a href="#fragment-3"><span>Table Generator</span></a></li>
 		    </ul>
 		    <div id="fragment-1">
-		    	<div class="jtrt-support-box">
-			        <h3>Documentation & Guides</h3>
-			        <p>Step 1: Upload a CSV File using the file uploader or link one from an external source. You must save the form, (Click save changes button) before the link can be registered in the script</p>
-			        <p>Step 2: Once the link is saved, press the "Generate Table" button</p>
-			        <p>Step 3: Click on the Header columns to select them, the rows will highlight blue. The blue rows will be hidden when the form is tablet sized.</p>
-			        <p>Step 4: Once you select the rows that you want to hide on mobile sizes, press the generate HTML link and copy paste the HTML from the textbox into your post.</p>
-			        <p>NOTE: You should have a maximum of 4 columns visible for the mobile sizes to work properly, all other columns should be hidden. Otherwise the table will be too large and flow off the screen.(ie. If you have 12 columns, at least 8 of those should be hidden.)</p>
-			    </div>
+						<table class="form-table">
+							<tbody>
+									<tr>
+										<th scope="row">
+											<h3>Documentation & Information</h3>	
+										</th>
+
+										<td>
+											<div class="jtrt-blockquote">
+												<p>Thank you for choosing to download this plugin. I really hope it serves you well :) If you have any problems, please contact me through github or wordpress and I will do my best to help out.</p>
+												<h4>Documentation:</h4>
+												<p>This is a very simple and straight forward plugin so a full featured docs isn't necessary. If you have problems working with the plugin, you can watch the video below to learn the process and how this plugin works. However, there is a useful readme/instructions page over at my github directory <a href="https://github.com/mythirdeye/jtrt-tables">here.</a> You can also use the github link to contribute to the project if you want to make it better!</p>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">
+											<h3>Video Tutorial</h3>	
+										</th>
+
+										<td>
+											<div class="jtrt-blockquote">
+												<p>Coming Soon!</p>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">
+											<h3>Credits</h3>	
+										</th>
+
+										<td>
+											<div class="jtrt-blockquote">
+												<p>So far this plugin is built and run by me only, no other contributers to this project. However, I make use of various other free scripts, libraries and tools that I did not create or contribute to in any way shape or form therefore I do not take credit for those works. These plugins are Jquery, Footables, and jquerycsvtotable. Full credits goes to their respective authors and contributers. 
+												<br><br>
+												To learn more about Jquery, <a href="https://jquery.com/">click here</a>
+												<br>
+												To learn more about FooTables, <a href="http://fooplugins.com/plugins/footable-jquery/">click here</a>
+												<br>
+												To learn more about jquerycsvtotable, <a href="https://code.google.com/p/jquerycsvtotable/">click here</a>
+											</p>
+											</div>
+										</td>
+									</tr>
+							</tbody>
+						</table>
+			        
+			        
+
 		    </div>
 
 		    <div id="fragment-2">
-		    	<div class="jtrt-support-box">
 			        <form method="post" action="options.php">
 
 		    			<?php settings_fields( 'jtrt-options-group' ); ?>
 
 		    			<?php do_settings_sections( 'jtrt-options-group' ); ?>
+						<table class="form-table">
+							<tbody>
+									<tr>
+										<th scope="row">
+											<h3>FooTable Breakpoints Help</h3></br>
+											
+										</th>
 
-					   		<label for="upload_image"><b>CSV file</b></label></br>
-							<input id="upload_image" type="text" size="36" input type='text' name='jtrt_tables_options[kwrc_table_link]' value='<?php echo $jtrt_options['kwrc_table_link']; ?>'/> 
+										<td>
+											<div class="jtrt-blockquote">
+												"Breakpoints are the heart and soul of FooTable. Whenever your site is viewed on a mobile device, or if the browser window is resized, FooTable checks the width of the table. If that width is smaller than the width of a breakpoint, certain columns in the table will be hidden.
 
-							<input id="upload_image_button" class="button" type="button" value="Upload file" />
-							<small>Enter a URL or upload a CSV file</small>
-
-							<br/>
-
-							<table class="form-table">
-								<tbody>
+												FooTable has two default breakpoints : tablet and phone. You can change the default size of these breakpoints below, so that they match your site's theme.
+												"</br></br>
+												<a href="http://fooplugins.com/footable-lite/documentation/">Read more at the plugin documentation</a>
+											</div>
+										</td>
+									</tr>
 									<tr>
 										<th scope="row">
 											<label for="foo_breakpoint_mobile"><b>Mobile Breakpoint</b></label></br>
@@ -109,26 +156,79 @@ function jtrt_tables_plugin_options_page(){
 										</td>
 									</tr>
 								</tbody>
-							</table>				
+							</table>	
+							<?php submit_button(); ?>			
 					</div>
-					<?php submit_button(); ?>
-				</form>
-
-		    </div>
-		    <div id="fragment-3">
-			<div class="jtrt-support-box">
-
-					<a id="jtrt-generate-table-button" class="button">Generate Table</a>
-
-					<a id="jtrt-generate-html-button" class="button">Generate HTML</a>
 					
-					<div class="insert_jtrt_here">
+				</form>
+		    <div id="fragment-3">
+		    	<form method="post" action="options.php">
+
+		    			<?php settings_fields( 'jtrt-options-group' ); ?>
+
+		    			<?php do_settings_sections( 'jtrt-options-group' ); ?>
+
+					   <table class="form-table">
+							<tbody>
+								<tr>
+									<th scope="row">
+										<label for="upload_image"><b>CSV file</b></label>
+									</th>
+
+									<td>
+										<input id="upload_image" type="text" size="36" input type='text' name='jtrt_tables_options[kwrc_table_link]' value='<?php echo $jtrt_options['kwrc_table_link']; ?>'/> 
+
+										<input id="upload_image_button" class="button" type="button" value="Upload file" />
+										<small>Enter a URL or upload a CSV file</small>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+											<h3>Table Generator Help</h3></br>
+											
+										</th>
+
+										<td>
+											<div class="jtrt-blockquote">
+												<p>Please note that when using this plugin, you should only have 2 columns visible on the mobile sized screens and only 4 visible columns on the tablet sized screens. This ensures that the table is looking great, without squishing all the content inside.</p>
+												<p><b>Table Color Legend:</b></br>
+												Red cells: Hidden on both Mobile and Tablet sized screens.</br>
+												Blue cells: Hidden only on Mobile sized screens.</br>
+												Yellow cells: Hidden only on Tablet sized screens.</br>
+												</p>
+
+											</div>
+										</td>
+								</tr>
+								<tr>
+									<th scope="row">
+
+										<label for="upload_image"><b>Table Controls</b></label>
+
+									</th>
+
+									<td>
+										
+										
+										<a id="jtrt-generate-table-button" class="button">Generate Table</a>
+										<a id="jtrt-generate-html-button" class="button">Generate HTML</a>
+										<label class="switch">
+											<span class="button active" data-switch="mobile">Mobile</span>
+											<span class="button" data-switch="tablet">Tablet</span>
+										</label>
+
+
+										<div class="insert_jtrt_here">
 						
-					</div>
+										</div>
 
-					<textarea name="jtrt_html_box" id="jtrt_html_box" cols="30" rows="10"></textarea>
-
-			</div>
+										<textarea name="jtrt_html_box" id="jtrt_html_box" cols="30" rows="10"></textarea>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					<?php submit_button(); ?>			
+				</form>
 		    </div>
 		</div>
 

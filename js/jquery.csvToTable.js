@@ -83,6 +83,7 @@
 			tbodyClass: "",
 			trClass: "",
 			tdClass: "",
+			thDataHide: "",
 			loadingImage: "",
 			loadingText: "Loading CSV data...",
 			separator: ",",

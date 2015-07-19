@@ -55,19 +55,25 @@
 
 		});
 
-		if(upload_image_link.indexOf(".csv") != -1){
-			
-		}
-
+		
 		generate_table_button.on("click", function(){
-			
+		
+			if(upload_image_link.indexOf(".csv") != -1){
+
 			$('div.insert_jtrt_here').CSVToTable(upload_image_link,{tableClass:"kwrc-table footable toggle-circle-filled"});
 			
 			jtrt_init_func($('div.insert_jtrt_here'));
 
 			jQuery('a#jtrt-generate-html-button').attr('disabled', false);
+			}else{
 
+				alert("You must first upload a CSV file to convert");
+
+			}
+			
 		});
+
+		
 		
 
 

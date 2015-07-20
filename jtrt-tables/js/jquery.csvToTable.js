@@ -83,10 +83,13 @@
 			tbodyClass: "",
 			trClass: "",
 			tdClass: "",
+			thDataHide: "",
 			loadingImage: "",
 			loadingText: "Loading CSV data...",
 			separator: ",",
-			startLine: 0
+			startLine: 0,
+			jtrt_table_sort: "",
+			jtrt_table_filter: ""
 		};	
 		var options = $.extend(defaults, options);
 		return this.each(function() {
@@ -95,7 +98,7 @@
 			(options.loadingImage) ? loading = '<div style="text-align: center"><img alt="' + options.loadingText + '" src="' + options.loadingImage + '" /><br>' + options.loadingText + '</div>' : loading = options.loadingText;
 			obj.html(loading);
 			$.get(csvFile, function(data) {
-				var tableHTML = '<table class="' + options.tableClass + '">';
+				var tableHTML = '<table class="' + options.tableClass + '" data-filter="' + options.jtrt_table_filter + '" data-sort="' + options.jtrt_table_sort + '">';
 				var lines = data.replace('\r','').split('\n');
 				var printedLines = 0;
 				var headerCount = 0;

@@ -32,11 +32,30 @@ textarea#jtrt_html_box{
 
 }
 
-div.insert_jtrt_here td.hide, div.table-generation-viewer th.hide{
+.insert_jtrt_here .hide-mobile, div.table-generation-viewer th.hide-mobile{
 
 	background:#A1DCF2;
 
 }
+
+div.insert_jtrt_here td.hide-mobile.hide-tablet, div.table-generation-viewer th.hide-mobile.hide-tablet{
+
+	background:#red;
+
+}
+
+.insert_jtrt_here .hide-tablet, div.table-generation-viewer th.hide-tablet{
+
+	background:yellow;
+
+}
+
+.hide-mobile.hide-tablet{
+	background:red;
+	color:white;
+}
+
+
 
 div.insert_jtrt_here thead th{
 
@@ -136,5 +155,22 @@ div#tabs div.jtrt-support-box{
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
 	padding: 5px 20px;
-	background:white;
+	/*background:white;*/
+}
+
+div#tabs div.jtrt-blockquote{
+	padding: 6px 20px 10px 20px;
+	background: white;
+	border-left: solid 5px #FFBA00;
+	box-shadow:0 1px 1px 0 rgba(0,0,0,.1)
+}
+
+/*SWITCH*/
+label.switch{
+	display:block;
+	margin-top:10px;
+}
+label.switch span{
+	padding:10px;
+	display: inline-block;
 }

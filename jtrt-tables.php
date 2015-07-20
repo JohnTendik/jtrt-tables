@@ -216,7 +216,16 @@ function jtrt_tables_plugin_options_page(){
 											<span class="button active" data-switch="mobile">Mobile</span>
 											<span class="button" data-switch="tablet">Tablet</span>
 										</label>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
 
+										<label for="upload_image"><b>Table Viewer</b></label>
+
+									</th>
+
+									<td>
 
 										<div class="insert_jtrt_here">
 						

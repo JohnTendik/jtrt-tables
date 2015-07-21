@@ -12,7 +12,7 @@ Rows become expandable to reveal any hidden data.
 So simple! Any hidden data can always be seen just by clicking the row.
 
 ## Demo Preview
-[Preview](http://cdn.makeagif.com/media/7-21-2015/qHS6BO.gif)
+![](docs/gif2.gif)
 
 ## Setup Instructions
 1. Download the jtrt-tables-master folder onto your computer.
@@ -34,11 +34,11 @@ Once you've saved changes, you can press the "Generate Table" button and a live 
 
 ###Step 4: Table Generator [3]
 Your job now is to select which columns you want hidden on the tablet and phone sizes. You can do this by clicking on the headers in the live preview table that you generated in the step before.
-[Preview](http://cdn.makeagif.com/media/7-21-2015/p5UNG4.gif)
+![](docs/gif1.gif)
 
 ###Step 5: Table Generator [4]
 There are two buttons under the table controls settings labeled "Mobile" and "Tablet". These buttons allows you to select which columns you want hidden on both phone and tablet sizes. The blue highlighted columns will ONLY be hidden on the Phone sizes. The yellow highlighted columns with ONLY be hidden on the Tablet sizes. The red highlighted columns will be hidden on both the Tablet and Mobile sizes. The columns with no highlight will show up no matter what size. 
-[Preview](http://cdn.makeagif.com/media/7-21-2015/100PDB.gif)
+![](docs/gif3.gif)
 
 ###Step 6: Table Generator [5]
 Once you have selected which columns you want to hide on which sizes, you can click the "Generate HTML" button and your custom made, responsive html5 will be ready to copy and paste into your wordpress website. 

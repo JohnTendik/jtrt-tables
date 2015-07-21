@@ -12,7 +12,7 @@ Rows become expandable to reveal any hidden data.
 So simple! Any hidden data can always be seen just by clicking the row.
 
 ## Demo Preview
-![](docs/gift2.gif)
+![](docs/gif2.gif)
 
 ## Setup Instructions
 1. Download the jtrt-tables-master folder onto your computer.

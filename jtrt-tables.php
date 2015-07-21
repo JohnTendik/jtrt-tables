@@ -176,7 +176,7 @@ function jtrt_tables_plugin_options_page(){
 									</th>
 
 									<td>
-										<input id="upload_image" type="text" size="36" input type='text' name='jtrt_tables_options[kwrc_table_link]' value='<?php echo $jtrt_options['kwrc_table_link']; ?>'/> 
+										<input id="upload_image" type="text" size="36" input type='text' name='jtrt_tables_options[kwrc_table_link]' value='<?php echo empty($jtrt_options['kwrc_table_link']) ? 'Insert CSV HERE' : $jtrt_options['kwrc_table_link']; ?>'/> 
 
 										<input id="upload_image_button" class="button" type="button" value="Upload file" />
 										<small>Enter a URL or upload a CSV file</small>
@@ -269,20 +269,20 @@ function jtrt_tables_script_caller( $hook_suffix ) {
     }
 
 	wp_enqueue_media();
-	wp_enqueue_script('jquery-ui', 'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js', array('jquery'));
-	wp_enqueue_script( 'table-generator-from-csv', plugins_url( 'jtrt-tables/js/jquery.csvToTable.js', dirname(__FILE__) ), array( 'jquery' ), 1, true );
-	wp_register_script( 'jtrt-csv-upload', plugins_url( 'jtrt-tables/js/jtrt-js-handler.js', dirname(__FILE__) ), array( 'jquery' ), 1, true );
+	wp_enqueue_script( 'jquery-ui-core' );
+	wp_enqueue_script( 'jquery-ui-tabs' );
+	wp_enqueue_script( 'table-generator-from-csv', plugins_url( '/js/jquery.csvToTable.js', __FILE__ ), array( 'jquery' ), 1, true );
+	wp_register_script( 'jtrt-csv-upload', plugins_url( '/js/jtrt-js-handler.js', __FILE__ ), array( 'jquery' ), 1, true );
 	wp_enqueue_script( 'jtrt-csv-upload' );
-	wp_enqueue_style( 'jtrt-custom-style', plugins_url( 'jtrt-tables/css/jtrt-tables.css' ) );
-	// wp_enqueue_style( 'jtrt-jquery-ui-css', 'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css' );
-	
+	wp_enqueue_style( 'jtrt-custom-style', plugins_url( '/css/jtrt-tables.css', __FILE__ ) );
+		
 
 }
 
 function jtrt_front_end_styles() {
 
-    wp_enqueue_style( 'jtrt_footable_css_import', plugins_url( 'jtrt-tables/includes/footable.core.min.css' ) );
-    wp_register_script( 'footable_init_hook', plugins_url( 'jtrt-tables/includes/footable.min.js' ), array( 'jquery' ), 0, true );
+    wp_enqueue_style( 'jtrt_footable_css_import', plugins_url( '/includes/footable.core.min.css', __FILE__ ) );
+    wp_register_script( 'footable_init_hook', plugins_url( '/includes/footable.min.js', __FILE__), array( 'jquery' ), 0, true );
 
     $jtrt_options = get_option('jtrt_tables_options');
 
@@ -292,9 +292,9 @@ function jtrt_front_end_styles() {
 	);
     wp_localize_script( 'footable_init_hook', 'jtrt_options_arr', $jtrt_options_array );
     wp_enqueue_script( 'footable_init_hook' );
-    wp_register_script( 'jtrt-csv-upload2', plugins_url( 'jtrt-tables/js/jtrt-js-handler-frontend.js', dirname(__FILE__) ), array( 'jquery' ), 1, true );
+    wp_register_script( 'jtrt-csv-upload2', plugins_url( '/js/jtrt-js-handler-frontend.js', __FILE__ ), array( 'jquery' ), 1, true );
 	wp_enqueue_script( 'jtrt-csv-upload2' );
-    wp_enqueue_style( 'custom-style', plugins_url( 'jtrt-tables/jtrt-tables.css' ) );
+    wp_enqueue_style( 'custom-style', plugins_url( '/jtrt-tables.css', __FILE__ ) );
     
 }
 

@@ -1,11 +1,15 @@
 (function($){
 
 		var custom_uploader,
-			form = jQuery("form"),
-			generate_table_button = jQuery('a#jtrt-generate-table-button'),
+			jtrt_form = jQuery("form"),
+			generate_table_button = jQuery('input#jtrt-generate-table-button'),
 			upload_image_link = jQuery('#upload_image').val(),
 			jtrt_table_viewer = jQuery('div.insert_jtrt_here'),
-			jtrt_table_switch = jQuery('label.switch span.active').attr('data-switch');
+			jtrt_table_switch = jQuery('label.switch span.active').attr('data-switch'),
+			jtrt_table_column_text = jtrt_form.find('p#jtrt_column_counter'),
+			jtrt_filter_enabled = jQuery('input[name="jtrt_filters_check"]'),
+			jtrt_sort_enabled = jQuery('input[name="jtrt_sorting_check"]'),
+			has_filter_enabled = false;
 
 
 		jQuery('a#jtrt-generate-html-button').attr('disabled', true);
@@ -28,11 +32,11 @@
 
 			custom_uploader = wp.media.frames.file_frame = wp.media({
 
-				title: 'Choose Image',
+				title: 'Choose CSV File',
 
 				button: {
 
-					text: 'Choose Image'
+					text: 'Choose CSV File'
 
 				},
 
@@ -57,25 +61,22 @@
 
 		});
 
-		
 		generate_table_button.on("click", function(){
 		
 			if(upload_image_link.indexOf(".csv") != -1){
 
-			jQuery('div.insert_jtrt_here').CSVToTable(upload_image_link,{tableClass:"footable toggle-circle-filled",jtrt_table_sort:"false",jtrt_table_filter:"false"});
+			jQuery('div.insert_jtrt_here').CSVToTable(upload_image_link,{tableClass:"footable toggle-circle-filled",jtrt_table_sort:"",jtrt_table_filter:""});
 	
 			jtrt_init_func(jQuery('div.insert_jtrt_here'));
 
 			jQuery('a#jtrt-generate-html-button').attr('disabled', false);
 			}else{
-
 				alert("You must first upload a CSV file to convert");
-
 			}
+
+
 			
 		});
-
-
 
 		jQuery('label.switch span').on('click', function(e){
 			var current_switch = jQuery('label.switch span.active');
@@ -89,8 +90,6 @@
 				jtrt_table_switch = current_switch.attr('data-switch');
 			}	
 		});
-		
-
 
 		function toggleAttr(el, attribute, vals){
 
@@ -122,6 +121,8 @@
 
 		function findHiddenLinks(jtrt_divi){
 
+			console.log(jtrt_divi);
+
 			jtrt_divi.find('.hide').each(function(){
 
 				jQuery(this).addClass('filler');
@@ -129,10 +130,39 @@
 				jQuery(this).removeClass('hide');
 
 			});
+			
+			if (jtrt_filter_enabled.is(":checked")) {
+				if(has_filter_enabled == false){
+				jtrt_divi.prepend('<input id="filter_table_jtrt" type="text" />');
+				has_filter_enabled = true;
+				}
+				jtrt_divi.find('table').attr('data-filter', '#filter_table_jtrt');
+			}else{
+				jtrt_divi.find('input#filter_table_jtrt').remove();
+				has_filter_enabled = false;
+				jtrt_divi.find('table').attr('data-filter', 'false');
+			};
+
+			if(jtrt_sort_enabled.is(":checked")){
+				jtrt_divi.find('table').attr('data-sort', 'true');
+				var lala = jtrt_divi.find('th');
+				lala.each(function(d,i){
+
+					var varthis = jQuery(this);
+					
+					var val = jtrt_divi.find('tr td').eq(d).html();
+					if($.isNumeric(val)){
+						varthis.attr('data-type',"numeric");
+					}else{
+						varthis.attr('data-type', '');
+					}
+				});
+			}else{
+				jtrt_divi.find('table').attr('data-sort', 'false');
+			}
 
 			var divHTML = jtrt_divi.html();
-
-			jtrt_divi.siblings('textarea#jtrt_html_box').html(divHTML).show();
+			jQuery('table.form-table textarea#jtrt_html_box').html(divHTML).show();
 
 		}
 
@@ -203,13 +233,27 @@
 					}
 				}
 
-				
+				jtrt_column_counter(jtrt_divi);
 
 				ev.preventDefault();
 
 			});
 		}
 
+		function jtrt_column_counter(jtrt_divi){
+			var jtrt_tablet_column_count = jtrt_divi.find('th.hide-tablet').size(),
+				jtrt_mobile_column_count = jtrt_divi.find('th.hide-mobile').size(),
+				jtrt_table_header_count = jtrt_divi.find('th').size();
+
+			jtrt_table_column_text.text('You need to hide ' + (jtrt_table_header_count - jtrt_tablet_column_count - 4) + ' columns for the tablet sizes and at least ' + (jtrt_table_header_count - jtrt_mobile_column_count - 2) + ' columns for the mobile sizes.');
+
+		}		
+
 		jQuery('#tabs').tabs();
+
+		// ** Shortcode Codes ** // 
+
+		
+
 
 	})(jQuery);

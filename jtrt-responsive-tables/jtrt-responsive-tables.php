@@ -1,16 +1,18 @@
 <?php
 /*
 Plugin Name: JTRT Responsive Tables
-Plugin URI: https://github.com/mythirdeye/jtrt-tables
+Plugin URI: https://github.com/mythirdeye/jtrt-tables/
 Description: Custom responsive tables plugin for Wordpress
+Version: 1.3.2
 Author: John Tendik
-Version: 1.3
-License: GPLv2
+Author URI: https://github.com/mythirdeye/jtrt-tables/
+License: GPL2
 */
-
-//
+?>
+<?php
+/*
 // ACTIONS *****************************************
-//
+*/
 add_action( 'admin_menu', 'jtrt_tables_admin_menu' );
 add_action( 'admin_enqueue_scripts', 'jtrt_tables_script_caller' );
 add_action( 'wp_enqueue_scripts', 'jtrt_front_end_styles' );
@@ -41,81 +43,91 @@ function jtrt_tables_plugin_options_page(){
 
 	<div class="wrap">
 
-		<h2>JT Responsive Tables</h2>
+		<h1>JT Responsive Tables</h1>
+
 		<form method="post" action="options.php">
+		
 		<div id="tabs">
 		    <ul>
 		        <li><a href="#fragment-1"><span>Docs</span></a></li>
 		        <li><a href="#fragment-2"><span>Table Settings</span></a></li>
 		        <li><a href="#fragment-3"><span>Table Generator</span></a></li>
+		        
 		    </ul>
 		    <div id="fragment-1" data-tab-index="0">
-						<table class="form-table">
-							<tbody>
-									<tr>
-										<th scope="row">
-											<h3>Documentation & Information</h3>	
-										</th>
+		    	<div class="container-for-grid clearfix">
+		    	<div class="right-side-admin-pane">
+					<h2>Documentation & Information</h2>	
+					<p>Thank you for choosing to download this plugin. I really hope it serves you well :) If you have any problems, please contact me through github or wordpress and I will do my best to help out.</p>
+				
+						<h3>Documentation</h3>
+								
+									<div class="jtrt-blockquote">
+										<p>This is a very simple and straight forward plugin so a full featured docs isn't necessary. If you have problems working with the plugin, you can watch the video below to learn the process and how this plugin works. However, there is a useful readme/instructions page over at my github directory <a href="https://github.com/mythirdeye/jtrt-tables">here.</a> You can also use the github link to contribute to the project if you want to make it better! If you are having trouble using this plugin, please watch this video for instructions :) <a href="https://www.youtube.com/watch?v=OTxaksRothY">Watch Video Tutorial!</a></p>
+									</div>
+								
+									<h3>Update Notes / Changes</h3>
+								
+									<div class="jtrt-blockquote">
+										<p>Plugin Version 1.3.2</p>
 
-										<td>
-											<div class="jtrt-blockquote">
-												<p>Thank you for choosing to download this plugin. I really hope it serves you well :) If you have any problems, please contact me through github or wordpress and I will do my best to help out.</p>
-												<h4>Documentation:</h4>
-												<p>This is a very simple and straight forward plugin so a full featured docs isn't necessary. If you have problems working with the plugin, you can watch the video below to learn the process and how this plugin works. However, there is a useful readme/instructions page over at my github directory <a href="https://github.com/mythirdeye/jtrt-tables">here.</a> You can also use the github link to contribute to the project if you want to make it better!</p>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">
-											<h3>Video Tutorial</h3>	
-										</th>
+										<p>Updates:</p>
+										<ol class="jtrt-updates-ul">
+											<li>Changed / Updated the option page styling.</li>
+											<li>Added new "General Tips" area to the <em>Docs</em> section</li>
+											<li>Added a new "Support The Plugin" area to the <em>Docs</em> section</li>
+											<li>Added a table name option for easy identification</li>
+											<li>fixed issues with plugin updating all tables instead of the one that was selected</li>
+											<li>Fixed issues with tables showing up above other content, should now be in its proper spot</li>
+										</ol>
+										<p>If you run into any problems or find bugs please contact me through github or wordpress :)</p>
+									</div>	
+								
+									<h3>Credits</h3>
+							
+									<div class="jtrt-blockquote">
+										<p>So far this plugin is built and run by me only, no other contributers to this project. However, I make use of various other free scripts, libraries and tools that I did not create or contribute to in any way shape or form therefore I do not take credit for those works. These plugins are Jquery, Footables, and jquerycsvtotable. Full credits goes to their respective authors and contributers. 
+										<br><br>
+										To learn more about Jquery, <a href="https://jquery.com/">click here</a>
+										<br>
+										To learn more about FooTables, <a href="http://fooplugins.com/plugins/footable-jquery/">click here</a>
+										<br>
+										To learn more about jquerycsvtotable, <a href="https://code.google.com/p/jquerycsvtotable/">click here</a>
+										</p>
+									</div>
+								</div> <!-- end left side -->
 
-										<td>
-											<div class="jtrt-blockquote">
-												<iframe width="420" height="315" src="https://www.youtube.com/embed/OTxaksRothY" frameborder="0" allowfullscreen></iframe>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">
-											<h3>Credits</h3>	
-										</th>
 
-										<td>
-											<div class="jtrt-blockquote">
-												<p>So far this plugin is built and run by me only, no other contributers to this project. However, I make use of various other free scripts, libraries and tools that I did not create or contribute to in any way shape or form therefore I do not take credit for those works. These plugins are Jquery, Footables, and jquerycsvtotable. Full credits goes to their respective authors and contributers. 
-												<br><br>
-												To learn more about Jquery, <a href="https://jquery.com/">click here</a>
-												<br>
-												To learn more about FooTables, <a href="http://fooplugins.com/plugins/footable-jquery/">click here</a>
-												<br>
-												To learn more about jquerycsvtotable, <a href="https://code.google.com/p/jquerycsvtotable/">click here</a>
-											</p>
-											</div>
-										</td>
-									</tr>
-							</tbody>
-						</table>
-			        
-			        
+							<div class="left-side-admin-pane">
+								<h3>Support This Plugin!</h3>
+								<div class="jtrt-blockquote">
+									<p>You can support this plugin by leaving a review on wordpress :) <a href="https://wordpress.org/support/view/plugin-reviews/jtrt-responsive-tables">Review Plugin</a> You can also contribute to this plugin through github.</p>
+								</div>
 
-		    </div>
+								<h3>General Tips</h3>
+								
+									<ol>
+										
+										<li><div class="jtrt-blockquote">When using this plugin, you need to work with Windows CSV Files. If you're on the mac, and you're using excel to save your file, save it as a windows CSV file, not the default Mac CSV</div></li>
+										<li><div class="jtrt-blockquote">Make sure to have a maximum of 4 columns visible on the Tablet sizes, and only 2 columns visible on the mobile sizes</div></li>
+										<li><div class="jtrt-blockquote">When you upload a csv file, make sure to press the blue Save Changes button to register the CSV to the plugin otherwise you will get an error</div></li>
+										
+
+									</ol>
+								
+							</div>
+							</div>
+		    </div> <!-- end fragment -->
 
 		    <div id="fragment-2" data-tab-index="1">
-			        
+			        	
 
 		    			<?php settings_fields( 'jtrt-options-group' ); ?>
 
 		    			<?php do_settings_sections( 'jtrt-options-group' ); ?>
-						<table class="form-table">
-							<tbody>
-									<tr>
-										<th scope="row">
-											<h3>FooTable Breakpoints Help</h3></br>
-											
-										</th>
 
-										<td>
+						<h2>FooTable Breakpoints Help</h2>
+								
 											<div class="jtrt-blockquote">
 												"Breakpoints are the heart and soul of FooTable. Whenever your site is viewed on a mobile device, or if the browser window is resized, FooTable checks the width of the table. If that width is smaller than the width of a breakpoint, certain columns in the table will be hidden.
 
@@ -123,8 +135,9 @@ function jtrt_tables_plugin_options_page(){
 												"</br></br>
 												<a href="http://fooplugins.com/footable-lite/documentation/">Read more at the plugin documentation</a>
 											</div>
-										</td>
-									</tr>
+							
+									<table class="form-table">
+							<tbody>
 									<tr>
 										<th scope="row">
 											<label for="foo_breakpoint_mobile"><b>Mobile Breakpoint</b></label></br>
@@ -159,27 +172,19 @@ function jtrt_tables_plugin_options_page(){
 
 		    			<?php do_settings_sections( 'jtrt-options-group' ); ?>
 
-					   <table class="form-table">
-					   		
-							<tbody>
-								<tr>
-									<th scope="row">
-											<h3>Table Generator Help</h3></br>
-											
-										</th>
-
-										<td>
+					  
+					
+											<h2>Table Generator Help</h2>
+									
 											<div class="jtrt-blockquote">
 												<p>Please note that when using this plugin, you should only have 2 columns visible on the mobile sized screens and only 4 visible columns on the tablet sized screens. This ensures that the table is looking great, without squishing all the content inside.</p>
-												<p><b>Table Color Legend:</b></br>
-												Red cells: Hidden on both Mobile and Tablet sized screens.</br>
-												Blue cells: Hidden only on Mobile sized screens.</br>
-												Yellow cells: Hidden only on Tablet sized screens.</br>
-												</p>
+												
 
 											</div>
-										</td>
-								</tr>
+								
+								 <table class="form-table">
+					   		
+							<tbody>
 								<tr>
 									<th scope="row">
 										<label for="upload_image"><b>CSV file</b></label>
@@ -198,14 +203,7 @@ function jtrt_tables_plugin_options_page(){
 																
 							</tbody>
 
-						</table>
-
-						
-										
-					
-								
-
-					
+						</table>	
 						
 						<div id="jtrt_thickbox_tableviewer" style="display:none">
 						<h2>Generated Table Viewer/Editor</h2>
@@ -213,11 +211,31 @@ function jtrt_tables_plugin_options_page(){
 							<tbody>
 								<tr>
 									<th scope="row">
+										<label for="upload_image"><b>Column Color Legend</b></label>
+									</th>
+
+									<td>
+										<div class="col-red">Red columns hidden on both Mobile & Tablet sizes</div>
+										<div class="col-blue">Blue columns hidden on ONLY Mobile sizes</div>
+										<div class="col-yellow">Yellow columns hidden on ONLY Tablet sizes</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
+										<label for="upload_image"><b>Table Name</b></label>
+									</th>
+
+									<td>
+										<input type="text" name="jtrt_table_id"> <small>This will be used for the table id when you are saving the table as a shortcode</small>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">
 										<label for="upload_image"><b>Enable Table Filters</b></label>
 									</th>
 
 									<td>
-										<input type="checkbox" name="jtrt_filters_check" value="true"> Enable Tabler Filters <small>This will allow you to search through the form using a search box and filter the content</small>
+										<input type="checkbox" name="jtrt_filters_check" value="true"> Enable Table Filters <small>This will allow you to search through the form using a search box and filter the content</small>
 									</td>
 								</tr>
 								<tr>
@@ -226,7 +244,7 @@ function jtrt_tables_plugin_options_page(){
 									</th>
 
 									<td>
-										<input type="checkbox" name="jtrt_sorting_check" value="true"> Enable Tabler Sorting <small>This will allow you to sort the table</small>
+										<input type="checkbox" name="jtrt_sorting_check" value="true"> Enable Table Sorting <small>This will allow you to sort the table</small>
 									</td>
 								</tr>
 								<tr>
@@ -241,6 +259,7 @@ function jtrt_tables_plugin_options_page(){
 										</label>
 									</td>
 								</tr>
+								
 								<tr>
 									<th scope="row">
 										<label for="upload_image"><b>Column Count Helper</b></label>
@@ -310,6 +329,7 @@ function jtrt_tables_plugin_options_page(){
 						<th>Table # </th>
 						<th>Table ID</th>		
 						<th>Table Shortcode</th>
+						<th>Table Name</th>
 						<th>Table Options</th>
 					</tr>
 				</thead>
@@ -318,6 +338,7 @@ function jtrt_tables_plugin_options_page(){
 						<th>Table # </th>
 						<th>Table ID</th>		
 						<th>Table Shortcode</th>
+						<th>Table Name</th>
 						<th>Table Options</th>
 				    </tr>
 				</tfoot>
@@ -332,7 +353,7 @@ function jtrt_tables_plugin_options_page(){
 				</table>
 				
 		    </div> <!-- END FRAGMENT 3 -->
-
+			
 		</div>
 		<?php submit_button(); ?>
 				</form>	
@@ -413,6 +434,7 @@ function jtrt_creates_db_tables() {
 	$sql_create_table = "CREATE TABLE " . $jtrt_tables_name . " ( 
           jttable_id bigint(20) unsigned NOT NULL auto_increment,
           object_type TEXT,
+          jttable_name TEXT,
           PRIMARY KEY  (jttable_id) 
      ) $charset_collate; ";
  
@@ -428,16 +450,23 @@ add_action('wp_ajax_jtrttableedit1', 'jtrt_edit_table_db');
 add_action('wp_ajax_jtrttableedit2', 'jtrt_update_table_db');
 
 function jtrt_add_db_data(){
-	
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 	global $wpdb;
-
 	$jtrt_tables_name = $wpdb->prefix . "jtrt_tables";
+	$idresult = $wpdb->get_var("SELECT jttable_id FROM $jtrt_tables_name ORDER BY jttable_id DESC") + 1;
 	$dataHTML = $_POST['data'];
+	if($_POST['jttitle'] != ""){
+		$dataTitle = $_POST['jttitle'];
+	}else{
+		$dataTitle = "jtrt_table" . $idresult;
+	}
+	
 
 		$wpdb->insert(
 		     $jtrt_tables_name,
 		     array(
 		     	'object_type'=>$dataHTML,
+		     	'jttable_name'=>$dataTitle
 		      ),
 		     array (
 		        '%s'
@@ -464,8 +493,9 @@ function jtrt_shortcode_table( $atts ){
     ), $atts );
 	$jtrt_tables_name = $wpdb->prefix . "jtrt_tables";
 	$retrieve_data = $wpdb->get_results( "SELECT * FROM $jtrt_tables_name WHERE jttable_id = " . $jtrt_settings['id'] );
-	echo html_entity_decode(stripslashes($retrieve_data[0]->object_type));
-	
+	ob_start();
+	return html_entity_decode(stripslashes($retrieve_data[0]->object_type));
+	return ob_get_clean();
 }
 add_shortcode( 'jtrt_tables', 'jtrt_shortcode_table' );
 
@@ -484,6 +514,9 @@ function check_remaining_tables_jtrt(){
 				<td>									
 					<p>[jtrt_tables id='". $val->jttable_id ."']</p>
 				</td>
+				<td>									
+					<p>". $val->jttable_name ."</p>
+				</td>
 				<td>
 					<a class='button thickbox' href='#TB_inline?height=700&amp;width=900&amp;inlineId=jtrt_thickbox_tableviewer' data-jtrt-id-table='".$val->jttable_id."' id='jtrt_edit_table'>Edit Table</a>			
 					<a class='button' href='#' data-jtrt-id-table='".$val->jttable_id."' id='jtrt_delete_table'>Delete Table</a>									
@@ -494,30 +527,43 @@ function check_remaining_tables_jtrt(){
 
 function jtrt_edit_table_db(){
 	global $wpdb;
+	$edit_post_id = null;
 	$jtrt_tables_name = $wpdb->prefix . "jtrt_tables";
 	$edit_post_id = $_POST['id'];
 	$retrieve_data = $wpdb->get_results( "SELECT * FROM $jtrt_tables_name WHERE jttable_id = " . $edit_post_id );
-	echo html_entity_decode(stripslashes($retrieve_data[0]->object_type));
+
+	$jtrt_html_content = html_entity_decode(stripslashes($retrieve_data[0]->object_type));
+	$jtrt_table_name = $retrieve_data[0]->jttable_name;
+	$jtrt_return_id = $edit_post_id;
+	$return_data = array("content"=>$jtrt_html_content,"name"=>$jtrt_table_name,"id"=>$jtrt_return_id);
+	echo json_encode($return_data);
+	die();
 }
 
 function jtrt_update_table_db(){
 	global $wpdb;
 	$jtrt_tables_name = $wpdb->prefix . "jtrt_tables";
-	$edit_post_id = $_POST['id'];
+	$edit_post_id1 = $_POST['id'];
 	$edit_content = $_POST['html'];
+	$edit_title = $_POST['title'];
 	$wpdb->update( 
 		$jtrt_tables_name, 
 		array( 
-			'object_type' => $edit_content
-			
+			'object_type' => $edit_content,
+			'jttable_name' => $edit_title
 		), 
-		array( 'jttable_id' => $edit_post_id ), 
+		array( 'jttable_id' => $edit_post_id1 ), 
 		array( 
-			'%s'	
+			'%s',
+			'%s'
 		), 
 		array( '%d' ) 
 	);
 	echo 'success, updated the database';
+	$edit_post_id = "";
+	$edit_content = "";
+	$edit_title = "";
+	die();
 }
 
 ?>

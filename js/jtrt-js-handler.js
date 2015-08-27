@@ -106,6 +106,15 @@
 
 		}
 
+		function sanitize(input) {
+		var output = input.replace(/<script[^>]*?>.*?<\/script>/gi, '').
+           replace(/\s+/g, '-').toLowerCase().
+					 replace(/<[\/\!]*?[^<>]*?>/gi, '').
+					 replace(/<style[^>]*?>.*?<\/style>/gi, '').
+					 replace(/<![\s\S]*?--[ \t\n\r]*>/gi, '');
+	    return output;
+		};
+
 		function jtrt_init_func(jtrt_divi){
 
 			jtrt_divi.find('th').addClass("hide-mobile");
@@ -121,10 +130,11 @@
 			jQuery('a#jtrt-generate-shortcode-button').on('click',function(){
 				findHiddenLinks(jtrt_divi);
 				var newCustomerForm = jQuery('textarea#jtrt_html_box').html();
-				
+				var jtrt_table_id_name = sanitize(jQuery("input[name='jtrt_table_id']").val());
 				var jtrt_ajax_data = {
 					'action': 'jtrttablesave1',
-					'data': newCustomerForm
+					'data': newCustomerForm,
+					'jttitle': jtrt_table_id_name
 				}
 
 				jQuery.ajax({  
@@ -308,23 +318,51 @@
 				
 		});
 
+		var loaded = false;
+		editRequest = null;
+
 		jQuery('a#jtrt_edit_table').on('click', function(){
+			if(loaded){
+				location.reload();
+			}
 
-			var jtrt_delete_id = jQuery(this).attr('data-jtrt-id-table');
+			var selfThis = jQuery(this);
+			var jtrt_delete_id = selfThis.attr('data-jtrt-id-table');
 
-				var jtrt_ajax_data = {
-					'action': 'jtrttableedit1',
-					'id': jtrt_delete_id
-				}
+			var jtrt_ajax_data = {
+				'action': 'jtrttableedit1',
+				'id': jtrt_delete_id
+			};
 
-				jQuery.ajax({  
+			ajaxCallForEdit(jtrt_ajax_data);
+		
+		});
+
+		function ajaxCallForEdit(jtrt_ajax_data){
+
+				var editRequest = jQuery.ajax({  
 					type:"POST",  
 					url: jtrt_options_arr.ajax_url,  
-					data: jtrt_ajax_data, dataType: 'html', 
+					data: jtrt_ajax_data,
+					cache: false,
+
+					beforeSend : function(){           
+					        if(editRequest != null) {
+					            editRequest.abort();
+					        }
+					    },
 					success:function(data) {
+						loaded = true;
+						if(loaded){
+							editRequest.abort();
+							jtrt_delete_id = "";
+							loaded = false;
+						}
 			            // This outputs the result of the ajax request
-			            var htmlBlockjtrt = jQuery('div.insert_jtrt_here').html(data.slice(0,-1));
+			            htmlBlockjtrt1 = JSON.parse(data);
+			            htmlBlockjtrt = jQuery('div.insert_jtrt_here').html(htmlBlockjtrt1['content']);
 			 			htmlBlockjtrt.show();
+			 			jQuery("input[name='jtrt_table_id']").attr('value', htmlBlockjtrt1['name']);
 			 			if(htmlBlockjtrt.html().indexOf("input") >= 0){
 			 				jQuery('input[name="jtrt_filters_check"]').prop('checked', true);
 			 			}else{
@@ -341,20 +379,25 @@
 			 				findHiddenLinks(htmlBlockjtrt);
 			 			});
 			 			
+			 			jtrt_delete_id = htmlBlockjtrt1['id'];
+
 			 			jQuery('a#jtrt-generate-shortcode-button').html('Update Table').on('click', function(){
+			 				console.log(jtrt_delete_id);
 			 				findHiddenLinks(htmlBlockjtrt);
 							var newCustomerForm = jQuery('textarea#jtrt_html_box').html();
-							console.log(newCustomerForm);
+							var newtabletitle = sanitize(jQuery("input[name='jtrt_table_id']").val());
 			 				jQuery.ajax({  
 								type:"POST",  
 								url: jtrt_options_arr.ajax_url,  
 								data: {
 									'action': 'jtrttableedit2',
 									'id': jtrt_delete_id,
-									'html': newCustomerForm
+									'html': newCustomerForm,
+									'title': newtabletitle
 								}, 
 								success:function(data) {
 									location.reload();
+									console.log(data);
 								},
 								error: function(error){
 									alert(error);
@@ -369,10 +412,8 @@
 			            console.log(errorThrown);
 			        }
 				});
-
-		});
-
-
-		
+			
+			
+		}
 
 	})(jQuery);

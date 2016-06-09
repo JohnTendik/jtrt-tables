@@ -1,3 +1,5 @@
+-- Reserved For The New Plugin --
+
 # JTRT Responsive Tables Plugin
 This is a Wordpress Plugin designed to help users easily create responsive tables in the backend of their website, without having to read or write code. The plugin makes use of CSV table formats to convert it into responsive HTML. It then uses FooTable's engenius responsive scripts to make the html5 behave responsively. 
 

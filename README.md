@@ -1,3 +1,6 @@
+# Welcome to the legacy Cody,
+If you're still using this version, I highly recommend upgrading. I'm leaving this here for anyone who may still need it and maybe for reflecting back on the horribless of this code :D You can watch a really old youtube video tutorial [located here](https://www.youtube.com/watch?v=OTxaksRothY&feature=youtu.be) if you need it. 
+
 # JTRT Responsive Tables Plugin
 This is a Wordpress Plugin designed to help users easily create responsive tables in the backend of their website, without having to read or write code. The plugin makes use of CSV table formats to convert it into responsive HTML. It then uses FooTable's engenius responsive scripts to make the html5 behave responsively. 
 

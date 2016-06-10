@@ -1,0 +1,54 @@
+(function( $ ) {
+	'use strict';
+
+	/**
+	 * All of the code for your public-facing JavaScript source
+	 * should reside in this file.
+	 *
+	 * Note: It has been assumed you will write jQuery code here, so the
+	 * $ function reference has been prepared for usage within the scope
+	 * of this function.
+	 *
+	 * This enables you to define handlers, for when the DOM is ready:
+	 *
+	 * $(function() {
+	 *
+	 * });
+	 *
+	 * When the window is loaded:
+	 *
+	 * $( window ).load(function() {
+	 *
+	 * });
+	 *
+	 * ...and/or other possibilities.
+	 *
+	 * Ideally, it is not considered best practise to attach more than a
+	 * single DOM-ready or window-load handler for a particular page.
+	 * Although scripts in the WordPress core, Plugins and Themes may be
+	 * practising this, we should strive to set a better example in our own work.
+	 */
+	
+	var jtrt_table_content = jQuery('.jtrt_table_creator');
+	jtrt_table_content.find('thead tr:first-child').remove();
+	jtrt_table_content.find('tr td:first-child').remove();
+	jtrt_table_content.find('tbody tr:last-child').remove();
+	var fixJson = function(str) {
+		return String(str)
+			.replace(/\\/g, "");
+	};
+	jtrt_table_content.each(function(i,elem){
+		var tableBPs = JSON.parse(jQuery(this).prev().val());
+		jQuery(this).footable({
+			"useParentWidth": true,
+			"breakpoints": {
+				"xs": tableBPs['x-small'],
+				"sm": tableBPs['small'],
+				"md": tableBPs['medium'],
+				"lg": tableBPs['large'],
+				"xl": tableBPs['x-large']
+			}			
+		})
+	});
+	
+})( jQuery );

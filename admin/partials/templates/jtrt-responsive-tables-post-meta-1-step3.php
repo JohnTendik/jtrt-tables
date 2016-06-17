@@ -92,7 +92,7 @@
     
     <div class="jt_nav_container clearfix">
         <a href="#" data-jt-steps-dir="next" class="jt_steps_nav_btn">NEXT</a>
-        <a href="#" data-jt-steps-dir="prev"" class="jt_steps_nav_btn">PREV</a>
+        <a href="#" data-jt-steps-dir="prev" class="jt_steps_nav_btn">PREV</a>
     </div>
 </div>
 <!--STEP 3-->

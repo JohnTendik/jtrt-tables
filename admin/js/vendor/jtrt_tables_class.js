@@ -87,7 +87,7 @@ function JtrtTables(tableContainer){
 		var insertedRow;
 		
 		if(this.rowCount === 1){
-			this.container.find('thead').append("<tr></tr>");
+			this.container.find('thead').append("<tr class='sorted_head'></tr>");
 			insertedRow = this.container.find('thead tr:last-child');
 		}else{
 			insertedRow = this.container[0].insertRow(this.rowCount);

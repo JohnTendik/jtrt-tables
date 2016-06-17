@@ -5383,18 +5383,18 @@ div.jt_table_steps {
 
 .jtrt__table_creator_container {
   margin-top: 20px;
-  overflow-x: scroll;
-  padding: 14px;
-  background: #f8f8f8; }
+  overflow-x: scroll; }
   .jtrt__table_creator_container table {
     text-align: center;
     border-spacing: 0px;
     margin-bottom: 14px; }
     .jtrt__table_creator_container table td {
-      background: #f8f8f8;
+      background: #fff;
       padding: 6px 10px;
-      border: 1px dashed #efefef;
+      border: solid 1px #efefef;
       transition: all 0.3s; }
+    .jtrt__table_creator_container table tr.sorted_head {
+      cursor: move; }
     .jtrt__table_creator_container table thead tr:last-child td:not(:first-child) {
       font-weight: bold; }
       .jtrt__table_creator_container table thead tr:last-child td:not(:first-child).hasHiddenCols {
@@ -5408,6 +5408,8 @@ div.jt_table_steps {
         background: #84E2A6; }
   .jtrt__table_creator_container .jtrt_custom_header {
     color: #ddd; }
+    .jtrt__table_creator_container .jtrt_custom_header td {
+      border: dotted 1px #ccc; }
   .jtrt__table_creator_container .jtrt_custom_header td:hover:not(:first-child) {
     background: #6dcff6;
     cursor: pointer;
@@ -5435,11 +5437,12 @@ div.jt_table_steps {
       background: #84E2A6;
       color: white; }
   .jtrt__table_creator_container .jtrt_custom_header td:first-child {
-    background: #f8f8f8;
+    background: #fff;
     border: none; }
   .jtrt__table_creator_container .jtrt_custom_td {
     color: #ddd;
-    position: relative; }
+    position: relative;
+    border: dotted 1px #ccc; }
     .jtrt__table_creator_container .jtrt_custom_td:hover:not(:last-child) {
       background: #6dcff6;
       cursor: pointer;

@@ -1,19 +1,23 @@
 .jtrt__table_creator_container{
     margin-top:20px;
     overflow-x:scroll;
-    padding:14px;
-    background:rgb(248,248,248);
+       
     table{
         text-align:center;
         border-spacing: 0px;
         margin-bottom: 14px;
         td{
-            background:#f8f8f8;
+            background:#fff;
             padding:6px 10px;
-            border:1px dashed #efefef;    
-            transition:all 0.3s;       
+            border:solid 1px #efefef;
+            transition:all 0.3s;   
+                
         }
         
+        tr.sorted_head{
+            cursor:move;
+        }
+
         thead tr:last-child td:not(:first-child){
             font-weight: bold;
             &.hasHiddenCols{
@@ -35,6 +39,9 @@
     
     .jtrt_custom_header {
         color:#ddd;
+        td{
+            border:dotted 1px #ccc;
+        }
     }
     
     
@@ -62,6 +69,7 @@
             background-position: 50%;
             background-repeat: no-repeat;
             opacity:0;
+            
         }
     }
     
@@ -76,13 +84,14 @@
     }
     
     .jtrt_custom_header td:first-child{
-        background:rgb(248,248,248);
+        background:#fff;
         border:none;
     }
     
     .jtrt_custom_td{
         color:#ddd;
         position: relative;
+        border:dotted 1px #ccc;
         &:hover:not(:last-child){
             background:#6dcff6;
             cursor:pointer;

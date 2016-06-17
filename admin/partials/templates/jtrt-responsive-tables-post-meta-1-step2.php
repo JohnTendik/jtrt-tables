@@ -44,7 +44,7 @@
         <fieldset id="data-filtering">
             <h2>Allow Filtering: <small>If enabled this, your table will be filterable with a searchbox.</small></h2>    
             <ul>
-                <li><label>Enable: <input type="checkbox" name="jtrt_general_settings[allowFiltering]" value="<?php echo (isset($value['allowFiltering']) ? $value['allowFiltering'] : "false");?>"" id="jtrt_table_allow_filter" value="false"></label></li>
+                <li><label>Enable: <input type="checkbox" name="jtrt_general_settings[allowFiltering]" value="<?php echo (isset($value['allowFiltering']) ? $value['allowFiltering'] : "false");?>" id="jtrt_table_allow_filter" value="false"></label></li>
             </ul>
         </fieldset>
         <fieldset id="data-sorting">
@@ -82,7 +82,7 @@
                     <td>C</td>
                     <td class="jt_addrowcol">+</td>
                 </tr>
-                <tr>
+                <tr class="sorted_head">
                     <td class="jtrt_custom_td">1</td>
                     <td data-breakpoints="" data-type="text">Header 1</td>
                     <td data-breakpoints="" data-type="text">Header 2</td>
@@ -201,7 +201,7 @@
     
     <div class="jt_nav_container clearfix">
         <a href="#" data-jt-steps-dir="next" class="jt_steps_nav_btn">NEXT</a>
-        <a href="#" data-jt-steps-dir="prev"" class="jt_steps_nav_btn">PREV</a>
+        <a href="#" data-jt-steps-dir="prev" class="jt_steps_nav_btn">PREV</a>
     </div>
 </div>
 <!--STEP 2-->

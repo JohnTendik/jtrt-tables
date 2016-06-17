@@ -250,6 +250,58 @@
 		}
 	});
 	
-	
+	// ****
+	// **** Table Sorting Functionality
+	// **** Credits to johnny https://johnny.github.io/jquery-sortable/
+	// ****
+
+	$('.jtrt_table_creator').sortable({
+		containerSelector: 'table',
+		itemPath: '> tbody',
+		itemSelector: 'tr:not(:last-child)',
+		placeholder: '<tr class="placeholder"/>',
+		onDrop: function  ($item, container, _super) {
+			jtTables.recountRows();
+			$item.removeClass('moving');
+		},
+		onDragStart: function ($item, container, _super) {
+			$item.addClass('moving');
+		}
+	});
+
+	var oldIndex;
+	$('tr.sorted_head').sortable({
+	containerSelector: 'tr',
+	itemSelector: 'td:not(:first-child)',
+	placeholder: '<td class="placeholder"/>',
+	vertical: false,
+	exclude: '.jtrt_custom_td',
+	onDragStart: function ($item, container, _super) {
+		oldIndex = $item.index();
+		$item.appendTo($item.parent());
+		_super($item, container);
+	},
+	onDrop: function  ($item, container, _super) {
+		var field,
+			newIndex = $item.index();
+		if(newIndex == 0){
+			return;
+		}
+		if(newIndex != oldIndex) {
+		$item.closest('table').find('tbody tr').each(function (i, row) {
+			row = $(row);
+			if(newIndex < oldIndex) {
+			row.children().eq(newIndex).before(row.children()[oldIndex]);
+			} else if (newIndex > oldIndex) {
+			row.children().eq(newIndex).after(row.children()[oldIndex]);
+			}
+		});
+		}
+
+		_super($item, container);
+	}
+	});
+
+
 
 })( jQuery );

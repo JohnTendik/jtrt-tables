@@ -20,12 +20,12 @@
             </ul>
         </fieldset>
         
-        <div id="jtrt_inherit_styles">
+        <div id="jtrt_inherit_styles" class="jtrt_stylediv">
             <h3>Inherit</h3>
             <p>Inheriting styles is the easiest option. If your wordpress theme already includes styles for tables, your tables created with this plugin will simply default to your theme's styling.</p>
         </div>
 
-        <div id="jtrt_bootstrap_styles">
+        <div id="jtrt_bootstrap_styles" class="jtrt_stylediv">
             <h3>Bootstrap</h3>
             <p>If you simply want minimal bootstrap styling, this is the best option. You can select some options which are included with bootstrap down below.</p>
             <div id="bootstrap_opts_jtrt">
@@ -60,7 +60,7 @@
             <hr>
     
             <div class="jtrt_table_container_styles">
-                <table class="jtrt_style_pig">
+                <table class="jtrt_style_pig_bt table">
                     <thead>
                         <th>Header 1</th>
                         <th>Header 2</th>
@@ -97,12 +97,12 @@
             </div>
         </div>
         
-        <div id="jtrt_example1_styles">
+        <div id="jtrt_example1_styles" class="jtrt_stylediv">
             <h3>Example Styles</h3>
             <p>The following are example styles created with the custom styling options. <strong>These will still style your tables in the front-end</strong>. These are some of the posibilities when using the custom styles section.</p>
         </div>
 
-        <div id="jtrt_custom_styles">
+        <div id="jtrt_custom_styles" class="jtrt_stylediv">
             <h3>Custom Styles</h3>
             <p>Coming soon! Unfortunately this is taking longer than expected. I didn't want to push an uncomplete feature which could potentially cause issues.</p>
         </div>

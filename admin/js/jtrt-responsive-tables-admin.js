@@ -74,8 +74,12 @@
 	var jtrt_Steps = new Jtrt_Steps_Handler(jQuery('.jtrt_editor_container'));
 	var jtTables = new JtrtTables(jQuery('table.jtrt_table_creator'));
 	var jtTablesStyles = "";
-	var tablePig = jQuery('.jtrt_style_pig');
-	
+	var tablePig = jQuery('.jtrt_style_pig_bt');
+	var jtrtStyles = new Jtrt_styles_editor(jQuery('#jt_step_3 .jtrt_options_styles'));
+
+	jtrtStyles.handleOnLoad();
+	jtrtStyles.handleOnChange();
+
 	function getParameterByName(name, url) {
 		if (!url) url = window.location.href;
 		name = name.replace(/[\[\]]/g, "\\$&");

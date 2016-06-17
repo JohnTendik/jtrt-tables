@@ -5559,11 +5559,9 @@ div.jt_table_steps {
     margin-left: 14px;
     margin-top: 0; }
 
-.jtrt_style_pig {
+.jtrt_style_pig_bt {
   border-collapse: collapse;
-  border-spacing: 0;
-  display: none; }
+  border-spacing: 0; }
 
-#bootstrap_opts_jtrt {
-  background: #fefefe;
+.jtrt_stylediv {
   display: none; }

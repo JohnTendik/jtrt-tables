@@ -192,24 +192,6 @@
 	});
 	
 	
-	
-	
-	jQuery('#jtrt_table_styles_type select').find('option[value="'+jQuery('#jtrt_table_styles_type select').attr('data-table-style-type')+'"]').prop('selected', true);
-	if(jQuery('#jtrt_table_styles_type select').attr('data-table-style-type') == "bootstrap"){
-		tablePig.addClass('table');
-		jQuery('#bootstrap_opts_jtrt').show();
-		tablePig.show();
-		jQuery('#bootstrap_opts_jtrt fieldset ul li input').each(function(i,elem){
-			if(jQuery(this).val() == "true"){
-				jQuery(this).prop('checked', true);
-				tablePig.addClass(jQuery(this).attr('data-bt-classes-jt'));
-			}	
-		});
-	}else if(jQuery('#jtrt_table_styles_type select').attr('data-table-style-type') !== "inherit"){
-		tablePig.show();
-	}
-	
-	
 	// Change the title position options to reflect the saved values. 
 	var showTitleOpt = jQuery('#jtrt_showTitle_pos').attr('data-jt-titlepos');
 	jQuery('#jtrt_showTitle_pos').find('option[value="'+showTitleOpt+'"]').prop('selected', true);
@@ -230,25 +212,10 @@
 		}
 	});
 	
-	jQuery('#jtrt_table_styles_type select').on('change', function(){
-		jQuery(this).attr('data-table-style-type',jQuery(this).val());
-	});
 	
 	
-	jQuery('#jtrt_table_style_type').on('change',function(){
-		if(jQuery(this).val() === "inherit"){
-			tablePig.hide();
-		}else if(jQuery(this).val() === "bootstrap"){
-			tablePig.show().addClass('table');
-			jQuery('#bootstrap_opts_jtrt').show();
-		}else if(jQuery(this).val() === "example1"){
-			tablePig.show().addClass('example1');
-			jQuery('#bootstrap_opts_jtrt').hide();
-		}else{
-			tablePig.show().addClass('jt_custom_style_'+jQuery('#post_ID').val());
-			jQuery('#bootstrap_opts_jtrt').hide();
-		}
-	});
+	
+	
 	
 	// ****
 	// **** Table Sorting Functionality

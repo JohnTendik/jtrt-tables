@@ -76,6 +76,7 @@
 	var jtTablesStyles = "";
 	var tablePig = jQuery('.jtrt_style_pig_bt');
 	var jtrtStyles = new Jtrt_styles_editor(jQuery('#jt_step_3 .jtrt_options_styles'));
+	var jtrt_table_style_type = "inherit";
 
 	jtrtStyles.handleOnLoad();
 	jtrtStyles.handleOnChange();
@@ -110,7 +111,7 @@
 	jQuery('div.jt_nav_container a').on('click',function(){
 		jtrt_Steps.nextStep(jQuery(this).attr('data-jt-steps-dir'));
 	});
-	
+
 	function updateTableStyles(){
 		if(jQuery('#jtrt_table_styles_type select').attr('data-table-style-type') === "bootstrap"){
 			jQuery('#bootstrap_opts_jtrt fieldset ul li input').each(function(){
@@ -122,6 +123,12 @@
 				}
 				
 			});
+			jtrt_table_style_type = "bootstrap";
+		}
+		else if(jQuery('#jtrt_table_styles_type select').attr('data-table-style-type') === "example1"){
+			var classList = $('.jtrt_example_pig').attr('class').split(" ");
+			var exampleStyle = classList[1];
+			jtrt_table_style_type = "example,"+ exampleStyle;
 		}
 	}
 	
@@ -135,7 +142,8 @@
 		'action': 'gen_table_1',
 		'idd': jQuery('input#post_ID').val(),
 		'data': jQuery('div#jtrt_table_container').html(),
-		'table_name': jQuery('input#title').val()			
+		'table_name': jQuery('input#title').val(),
+		'table_styles': jtrt_table_style_type			
 		};
 		
 		jQuery.post(ajaxurl, data, function(response) {
@@ -205,16 +213,7 @@
 		jQuery(this).val(jQuery(this).prop('checked'));
 	});
 	
-	jQuery('#bootstrap_opts_jtrt fieldset ul li input').on('click', function(){
-		jQuery(this).val(jQuery(this).prop('checked'));
-		if(jQuery(this).val() === "true"){
-			
-			tablePig.addClass(jQuery(this).attr('data-bt-classes-jt'));
-		}else{
-			
-			tablePig.removeClass(jQuery(this).attr('data-bt-classes-jt'));
-		}
-	});
+
 	
 	
 	

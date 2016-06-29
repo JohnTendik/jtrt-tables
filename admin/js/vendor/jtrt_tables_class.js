@@ -22,8 +22,13 @@ function JtrtTables(tableContainer){
 	}
 	
 	this.container.siblings('h2').remove();
-	this.container.siblings('#jtrt_hidden_tableBP1').remove();
+	this.container.siblings('#jtrt_hidden_tableBP'+this.postID).remove();
 	this.container.removeClass('table table-striped table-hover table-condensed table-bordered');
+
+	var exampleClass = this.container.attr('class').match(/jtrt_\d+_exStyle_example\d+/g);
+	if(exampleClass != null){
+	this.container.removeClass(exampleClass[0]);
+	}
 
 	this.container.on('click','td.jtrt_custom_td:not(:last-child)', function(elem){
 		Iam.editRow(jQuery(this));

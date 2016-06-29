@@ -177,7 +177,8 @@ class Jtrt_Responsive_Tables_Admin {
 		$dataHTML = $_POST['data'];                           // The data recieved from ajax
 		$dataIDD = $_POST['idd'];                             // The data recieved from ajax, the ID of the post
 		$dataTableName = $_POST['table_name'];                // data from ajax, table namespace
-        
+        $dataTableStyles = $_POST['table_styles'];
+
         // Store variables for easier reference later. 
         
         // if the ajax information is empty, or incomplete, die. 
@@ -200,12 +201,14 @@ class Jtrt_Responsive_Tables_Admin {
                 array( 
                     'jttable_IDD' => $dataIDD, 
                     'object_type' => $dataHTML,
-                    'jttable_name' => $dataTableName                                   
+                    'jttable_name' => $dataTableName,
+					'jttable_styles' => $dataTableStyles                                 
                 ), 
                 array( 
                     '%d', 
                     '%s',
-                    '%s'
+                    '%s',
+					'%s'
                 ) 
             );
                 
@@ -220,7 +223,8 @@ class Jtrt_Responsive_Tables_Admin {
                 array( 
                     'jttable_IDD' => $dataIDD, 
                     'object_type' => trim($dataHTML),
-                    'jttable_name' => $dataTableName
+                    'jttable_name' => $dataTableName,
+					'jttable_styles' => $dataTableStyles
                 ), 
                 array( 'jttable_IDD' => $dataIDD )
                 

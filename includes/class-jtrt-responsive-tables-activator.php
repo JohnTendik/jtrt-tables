@@ -39,6 +39,7 @@ class Jtrt_Responsive_Tables_Activator {
 	          jttable_IDD bigint(20),
 	          object_type MEDIUMTEXT,
 	          jttable_name TEXT,
+			  jttable_styles TEXT,
 	          PRIMARY KEY  (jttable_id) 
 	     ) $charset_collate; ";
 	 

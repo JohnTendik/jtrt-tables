@@ -100,6 +100,64 @@
         <div id="jtrt_example1_styles" class="jtrt_stylediv">
             <h3>Example Styles</h3>
             <p>The following are example styles created with the custom styling options. <strong>These will still style your tables in the front-end</strong>. These are some of the posibilities when using the custom styles section.</p>
+            <div id="example_opts_jtrt">
+                <fieldset id="">
+                    <h2>Example Styles: <small>Choose what kind of style you want your table to have.</small></h2>    
+                    <ul>
+                        <li>
+                            <select name="jtrt_styles_settings[exampleStyle]" id="jtrt_table_exstyle_type" data-table-style-type="<?php echo (isset($value2['exampleStyle']) ? $value2['exampleStyle'] : "example1");?>">
+                                <option value="example1">Example 1</option>
+                                <option value="example2">Example 2</option>
+                                <option value="example3">Example 3</option>
+                                <option value="example4">Example 4</option>
+                                <option value="example5">Example 5</option>
+                                <option value="example6">Example 6</option>
+                                <option value="example7">Example 7</option>
+                                <option value="example8">Example 8</option>
+                                <option value="example9">Example 9</option>
+                                <option value="example10">Example 10</option>
+                            </select>
+                        </li>
+                    </ul>
+                </fieldset>
+            </div>
+            <hr>
+            <div id="jtrt_table_container_styles_example">
+                <table class="jtrt_example_pig">
+                    <thead>
+                        <th>Header 1</th>
+                        <th>Header 2</th>
+                        <th>Header 3</th>
+                        <th>Header 4</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Row 1</td>
+                            <td>Row 1</td>
+                            <td>Row 1</td>
+                            <td>Row 1</td>
+                        </tr>
+                        <tr>
+                            <td>Row 2</td>
+                            <td>Row 2</td>
+                            <td>Row 2</td>
+                            <td>Row 2</td>
+                        </tr>
+                        <tr>
+                            <td>Row 3</td>
+                            <td>Row 3</td>
+                            <td>Row 3</td>
+                            <td>Row 3</td>
+                        </tr>
+                        <tr>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                            <td>Row 4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>    
         </div>
 
         <div id="jtrt_custom_styles" class="jtrt_stylediv">

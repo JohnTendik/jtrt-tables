@@ -5565,3 +5565,209 @@ div.jt_table_steps {
 
 .jtrt_stylediv {
   display: none; }
+
+.example1 {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0px 0px 5px #ccc;
+  padding: 10px;
+  box-sizing: border-box; }
+  .example1 thead th {
+    text-align: center;
+    padding: 10px 0px;
+    background: #f06d06;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase; }
+  .example1 tbody td {
+    padding: 4px 4px; }
+  .example1 tbody tr:nth-child(even) {
+    background: #fbfbfb; }
+
+.example2 {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0px 0px 5px #ccc;
+  padding: 10px;
+  box-sizing: border-box; }
+  .example2 thead th {
+    text-align: center;
+    padding: 10px 0px;
+    background: #2ecc71;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase; }
+  .example2 tbody td {
+    padding: 4px 4px; }
+  .example2 tbody tr {
+    background: #28b463;
+    color: #fbfbfb; }
+
+.example3 {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0px 10px 15px #ccc;
+  padding: 10px;
+  box-sizing: border-box; }
+  .example3 thead th {
+    text-align: center;
+    padding: 10px 0px;
+    background: #3498db;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: solid 1px #ccc; }
+  .example3 tbody td {
+    padding: 4px 4px; }
+  .example3 tbody tr {
+    color: #444;
+    border: solid 1px #ccc; }
+  .example3 tbody tr:nth-child(even) {
+    background: #dedede;
+    border: solid 1px #ccc; }
+
+.example4 {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box; }
+  .example4 thead th {
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: solid 1px #ccc; }
+  .example4 tbody td {
+    padding: 4px 4px; }
+  .example4 tbody tr {
+    color: #444; }
+  .example4 tbody tr:nth-child(even) {
+    background: #efefef; }
+
+.example5 {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0px 0px 15px #ccc;
+  padding: 10px;
+  box-sizing: border-box; }
+  .example5 thead th {
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: solid 1px #ccc; }
+  .example5 tbody td {
+    padding: 4px 4px;
+    border: 1px solid #ccc;
+    background: #efefef; }
+  .example5 tbody tr {
+    color: #444; }
+  .example5 tbody tr:nth-child(even) {
+    background: #efefef; }
+
+.example6 {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box; }
+  .example6 thead th {
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: solid 5px #3498db;
+    border-left: 3em solid #fff;
+    border-right: 3em solid #fff; }
+  .example6 tbody td {
+    padding: 4px 4px;
+    background: #efefef;
+    border-left: 3em white solid;
+    border-right: 3em white solid; }
+  .example6 tbody tr {
+    color: #444; }
+  .example6 tbody tr:nth-child(odd) td {
+    background: #fff; }
+
+.example7 {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box; }
+  .example7 thead th {
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: solid 5px #3498db; }
+  .example7 tbody td {
+    padding: 4px 4px;
+    background: #efefef; }
+  .example7 tbody tr {
+    color: #444; }
+  .example7 tbody tr:nth-child(odd) td {
+    background: #fff; }
+
+.example8 {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box; }
+  .example8 thead th {
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: solid 5px #1abc9c;
+    border-top: solid 5px #1abc9c; }
+  .example8 tbody td {
+    padding: 4px 4px;
+    background: #16a085; }
+  .example8 tbody tr {
+    color: white; }
+
+.example9 {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box; }
+  .example9 thead th {
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: bold;
+    text-transform: uppercase; }
+  .example9 tbody td {
+    padding: 4px 4px;
+    border-left: solid 1px #ccc;
+    border-right: solid 1px #ccc; }
+  .example9 tbody tr {
+    color: #444; }
+
+.example10 {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 15px #ccc;
+  border: solid 1px #16a085; }
+  .example10 thead th {
+    text-align: center;
+    padding: 10px 0px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-top: solid 1px #ccc; }
+  .example10 tbody td {
+    padding: 4px 4px;
+    border-left: solid 1px #ccc;
+    border-right: solid 1px #ccc; }
+  .example10 tbody tr {
+    color: #444; }

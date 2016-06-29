@@ -14,9 +14,13 @@ function jtrt_shortcode_table( $atts ){
           $htmlContent .="<h2 style='text-align:". get_post_meta($jtrt_settings['id'], 'jtrt_general_settings')[0]['titlePos'] .";'>".$retrieve_data[0]->jttable_name."</h2>";
        }
        ob_start();
-       echo "<input name='' id='jtrt_hidden_tableBP1' type='hidden' value='".(isset(get_post_meta($jtrt_settings['id'], 'jtrt_general_settings')[0]['hiddenCols']) ? get_post_meta($jtrt_settings['id'], 'jtrt_general_settings')[0]['hiddenCols'] : '')."'>";
+       echo "<input name='' id='jtrt_hidden_tableBP".$jtrt_settings['id']."' type='hidden' value='".(isset(get_post_meta($jtrt_settings['id'], 'jtrt_general_settings')[0]['hiddenCols']) ? get_post_meta($jtrt_settings['id'], 'jtrt_general_settings')[0]['hiddenCols'] : '')."'>";
 	   echo html_entity_decode(stripslashes($retrieve_data[0]->object_type));
        $htmlContent .= ob_get_clean();
+       if(strpos($retrieve_data[0]->jttable_styles, 'example') !== false){
+           $jtrt_example_style = explode(",",$retrieve_data[0]->jttable_styles);
+           $htmlContent = str_replace("jtrt_table_creator","jtrt_table_creator jtrt_".$jtrt_settings['id']."_exStyle_".$jtrt_example_style[1],$htmlContent);
+       }
        return $htmlContent;
     }else{
         echo "<div class='jtrt_error_message'><strong>Oops, Looks like something went wrong,</strong><br/>Unfortunately the table you were looking for has not been found on the server, Please double check that you have the correct table ID set for the shortcode.</div>";

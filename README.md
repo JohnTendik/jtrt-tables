@@ -33,7 +33,7 @@ So simple! Any hidden data can always be seen just by clicking the row.
 4. Enjoy.
 
 ## How To Use
-*I will update this area once the video tutorial releases!*
+[Watch a video tutorial](https://youtu.be/3UnTu_x_Aa0)
 
 ###Step 1: Install/Activate
 The first step is to download and activate the plugin, once you do that you will see a new custom post type in the sidemenu

@@ -125,7 +125,7 @@ If you want a simple, clean and neat table layout then bootstrap styles is your 
 These are some example styles to demonstrate the possibilities. These will still style your table in the front-end. There are 10 different varying styles, not all of them will work nicely with all table types so try them out and see which works best with your table. My plan is to add a custom styles section to the plugin so users can style their tables freely. Coming soon :D
 
 ### Step 7: Codeeeeeee
-![](docs/7.jpg)
+![](docs/7.1.jpg)
 
 We're nearing the end of the guide. When you're happy with your column types/breakpoints/styles you can view your shortcode in the next tab. You can also view your HTML code for your table if that interests you. Please note, if you're using the HTML code then you need to generate your table code each time you make a change. If you're using the shortcode, the changes are automatically updated. 
 

@@ -5,7 +5,7 @@ If you're here for the older version docs, they are now located on their own bra
 2. [Version 2.0.4](https://github.com/JohnTendik/jtrt-tables/tree/Version-2.0.4-Legacy%5D)
 
 
-# JTRT Responsive Tables Plugin V 2.0.4!
+# JTRT Responsive Tables Plugin V3!
 This is a Wordpress Plugin designed to help users easily create responsive tables in the backend of their website, without having to read or write code. You can start building your table from scratch or import a CSV file to get started.
 
 This update added a few features such as:

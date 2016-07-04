@@ -3289,26 +3289,3 @@ ul.pagination {
   height: auto; }
   .footable-filtering .input-group-btn .dropdown-toggle:after {
     display: none; }
-
-.jtrt_476_exStyle_example2 {
-  max-width: 100%;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0px 0px 5px #ccc;
-  padding: 10px;
-  box-sizing: border-box; }
-  .jtrt_476_exStyle_example2 thead td {
-    text-align: center;
-    padding: 10px 0px;
-    background: #2ecc71;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    border: none; }
-  .jtrt_476_exStyle_example2 tbody td {
-    padding: 4px 4px;
-    text-align: center;
-    border: none; }
-  .jtrt_476_exStyle_example2 tbody tr {
-    background: #28b463;
-    color: #fbfbfb; }

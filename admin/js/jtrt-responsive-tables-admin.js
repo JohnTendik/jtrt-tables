@@ -55,6 +55,16 @@
 			jt_steps_ui.find('li').eq(this.activePageNum - 1).addClass('jt_step_active');										
 		}
 
+		this.setStepPage = function(num){
+			this.activePageNum = num;
+			this.activePage.fadeOut(300,function(){
+				jQuery(this).removeClass('active');
+				_this.activePage = _this.container.children('#jt_step_' + _this.activePageNum).fadeIn(300).addClass('active');
+			});
+
+			jt_steps_ui.find('.jt_step_active').removeClass('jt_step_active');
+			jt_steps_ui.find('li').eq(this.activePageNum-1).addClass('jt_step_active');
+		}	
 		
 		this.updatePageNum = function(dir){
 			if(dir == "up"){
@@ -95,17 +105,24 @@
 		jtrt_Steps.nextStep();
 	}
 	
+	jQuery('.jt_table_steps ul li').on('click',function(){
+		var num = jQuery(this).attr('data-page-id');
+		jtrt_Steps.setStepPage(num);
+	});
+
 	jQuery('.jt_step_1_btn').on('click',function(){
 		if(!jQuery(this).hasClass('scratch')){
 			return;
 		}
 		
 		jtrt_Steps.nextStep();
+
 	});
 	
 	jQuery('#jt_upload_Csv').on('change',function(elem){
 		jtTables.handleCSVImport(jQuery(this));
 		jtrt_Steps.nextStep();
+		
 	});
 	
 	jQuery('div.jt_nav_container a').on('click',function(){
@@ -152,6 +169,7 @@
 			
 	});
 	
+	jQuery('#jtrt_short_code').html('[jtrt_tables id="'+jQuery('#post_ID').val()+'"]')
 	
 	function updateTableOptions(){
 		
@@ -214,63 +232,23 @@
 	});
 	
 
-	
-	
-	
-	
-	
-	
-	// ****
-	// **** Table Sorting Functionality
-	// **** Credits to johnny https://johnny.github.io/jquery-sortable/
-	// ****
+	jQuery('#jtrt_generate_table_btn').on('click', function(){
 
-	$('.jtrt_table_creator').sortable({
-		containerSelector: 'table',
-		itemPath: '> tbody',
-		itemSelector: 'tr:not(:last-child)',
-		placeholder: '<tr class="placeholder"/>',
-		onDrop: function  ($item, container, _super) {
-			jtTables.recountRows();
-			$item.removeClass('moving');
-		},
-		onDragStart: function ($item, container, _super) {
-			$item.addClass('moving');
-		}
+		var currentHtml = jQuery("#jtrt_table_container").clone();
+		var thead = currentHtml.find('tr.sorted_head').clone();	
+		currentHtml.find('thead').html(thead[0].outerHTML);
+		currentHtml.find('table').addClass('jtrt_custom_html');
+		currentHtml.find('td.jtrt_custom_td').remove();
+		jQuery('#jtrt_html_code textarea').text(currentHtml[0].innerHTML);
+		jQuery('#jtrt_html_code').fadeIn();
+
 	});
-
-	var oldIndex;
-	$('tr.sorted_head').sortable({
-	containerSelector: 'tr',
-	itemSelector: 'td:not(:first-child)',
-	placeholder: '<td class="placeholder"/>',
-	vertical: false,
-	exclude: '.jtrt_custom_td',
-	onDragStart: function ($item, container, _super) {
-		oldIndex = $item.index();
-		$item.appendTo($item.parent());
-		_super($item, container);
-	},
-	onDrop: function  ($item, container, _super) {
-		var field,
-			newIndex = $item.index();
-		if(newIndex == 0){
-			return;
-		}
-		if(newIndex != oldIndex) {
-		$item.closest('table').find('tbody tr').each(function (i, row) {
-			row = $(row);
-			if(newIndex < oldIndex) {
-			row.children().eq(newIndex).before(row.children()[oldIndex]);
-			} else if (newIndex > oldIndex) {
-			row.children().eq(newIndex).after(row.children()[oldIndex]);
-			}
-		});
-		}
-
-		_super($item, container);
-	}
-	});
+	
+	
+	
+	
+	
+	
 
 
 

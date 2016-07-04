@@ -17,6 +17,13 @@ function JtrtTables(tableContainer){
 		Iam.addCols();
 	});
 	
+	jQuery(window).keydown(function(event){
+		if(event.keyCode == 13) {
+			event.preventDefault();
+			return false;
+		}
+	});
+
 	if(this.postID !== undefined){
 		this.container.addClass("jtrt_table_" + this.postID);
 	}
@@ -166,6 +173,7 @@ function JtrtTables(tableContainer){
 	}
 
 	this.launchEditColModal = function(data,colID){
+
 		this.jtColModal.find('.modal-body p').text("You are now editting column " + colID);
 		var modalForm = this.jtColModal.find('.modal-body div.jt_col_form_cont table');
 		var hiddenCols = this.container.find('thead tr:last-child td').eq(colID).attr('data-breakpoints');
@@ -292,7 +300,7 @@ function JtrtTables(tableContainer){
 				for(var i = 0; i < results.data.length - 1; i++){
 					Iam.addRows(results.data,i);
 				}
-				
+				Iam.enable_jtcolSorting();
 			}
 		});
 	}
@@ -308,5 +316,62 @@ function JtrtTables(tableContainer){
 	
 	this.handleModalRowSave();
 
+
+	// ****
+	// **** Table Sorting Functionality
+	// **** Credits to johnny https://johnny.github.io/jquery-sortable/
+	// ****
+
+	// $('.jtrt_table_creator').sortable({
+	// 	containerSelector: 'table',
+	// 	itemPath: '> tbody',
+	// 	itemSelector: 'tr:not(:last-child)',
+	// 	exclude: '.jtrt_custom_td',
+	// 	placeholder: '<tr class="placeholder"/>',
+	// 	onDrop: function  ($item, container, _super) {
+	// 		jtTables.recountRows();
+	// 		$item.removeClass('moving');
+	// 	},
+	// 	onDragStart: function ($item, container, _super) {
+	// 		$item.addClass('moving');
+	// 	}
+	// });
+
+	this.enable_jtcolSorting = function(){
+		var oldIndex;
+		jQuery('tr.sorted_head').sortable({
+		containerSelector: 'tr',
+		itemSelector: 'td:not(:first-child)',
+		placeholder: '<td class="placeholder"/>',
+		vertical: false,
+		exclude: '.jtrt_custom_td',
+		onDragStart: function ($item, container, _super) {
+			oldIndex = $item.index();
+			$item.appendTo($item.parent());
+			_super($item, container);
+		},
+		onDrop: function  ($item, container, _super) {
+			var field,
+				newIndex = $item.index();
+			if(newIndex == 0){
+				return;
+			}
+			if(newIndex != oldIndex) {
+			$item.closest('table').find('tbody tr').each(function (i, row) {
+				row = jQuery(row);
+				if(newIndex < oldIndex) {
+				row.children().eq(newIndex).before(row.children()[oldIndex]);
+				} else if (newIndex > oldIndex) {
+				row.children().eq(newIndex).after(row.children()[oldIndex]);
+				}
+			});
+			}
+
+			_super($item, container);
+		}
+		});
+	}
+
+	this.enable_jtcolSorting();
 
 } // end of tables class

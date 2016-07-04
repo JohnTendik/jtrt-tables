@@ -30,8 +30,8 @@
 	 */
 	
 	var jtrt_table_content = jQuery('.jtrt_table_creator');
-	jtrt_table_content.find('thead tr:first-child').remove();
-	jtrt_table_content.find('tr td:first-child').remove();
+	jtrt_table_content.find('thead tr:not(.sorted_head)').remove();
+	jtrt_table_content.find('tr td.jtrt_custom_td').remove();
 	jtrt_table_content.find('tbody tr:last-child').remove();
 	var fixJson = function(str) {
 		return String(str)

@@ -1,0 +1,27 @@
+.replace-me-for-specific-class.example4{
+    max-width: 100%;
+    width:100%;
+    text-align: center;
+    padding:10px;
+    box-sizing: border-box;
+    thead td, th{
+        text-align: center;
+        padding:10px 0px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border:solid 1px #ccc;
+    }
+    tbody td{
+        padding:4px 4px;
+        text-align:center;
+        vertical-align: middle;
+    }
+    tbody tr{
+        color:#444;
+        
+    }
+    tbody tr:nth-child(even){
+        background:#efefef;
+    }
+
+}

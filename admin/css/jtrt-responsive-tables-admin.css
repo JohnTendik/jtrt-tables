@@ -5381,6 +5381,9 @@ div.jt_table_steps {
       height: 50px;
       margin-bottom: 14px; }
 
+.jt_table_steps ul li {
+  cursor: pointer; }
+
 .jtrt__table_creator_container {
   margin-top: 20px;
   overflow-x: scroll; }
@@ -5529,7 +5532,7 @@ div.jt_table_steps {
 .jtrt_error_message {
   display: none; }
 
-#jt_step_2 h1, #jt_step_3 h1 {
+#jt_step_2 h1, #jt_step_3 h1, #jt_step_4 h1 {
   font-size: 48px;
   font-weight: bold;
   margin: 14px 0;
@@ -5771,3 +5774,12 @@ div.jt_table_steps {
     border-right: solid 1px #ccc; }
   .example10 tbody tr {
     color: #444; }
+
+#jtrt_html_code {
+  margin-top: 14px;
+  padding: 5px;
+  display: none; }
+  #jtrt_html_code textarea {
+    width: 100%;
+    margin: 0;
+    display: block; }

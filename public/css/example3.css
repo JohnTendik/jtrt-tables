@@ -1,0 +1,26 @@
+.replace-me-for-specific-class.example3 {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0px 10px 15px #ccc;
+  padding: 10px;
+  box-sizing: border-box; }
+  .replace-me-for-specific-class.example3 thead td, .replace-me-for-specific-class.example3 th {
+    text-align: center;
+    padding: 10px 0px;
+    background: #3498db;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    border: solid 1px #ccc; }
+  .replace-me-for-specific-class.example3 tbody td {
+    padding: 4px 4px;
+    text-align: center;
+    vertical-align: middle; }
+  .replace-me-for-specific-class.example3 tbody tr {
+    color: #444;
+    border: solid 1px #ccc; }
+  .replace-me-for-specific-class.example3 tbody tr:nth-child(even) {
+    background: #dedede;
+    border: solid 1px #ccc; }

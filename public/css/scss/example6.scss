@@ -1,0 +1,37 @@
+.replace-me-for-specific-class.example6{
+    max-width: 100%;
+    width:100%;
+    text-align: center;
+    padding:10px;
+    box-sizing: border-box;
+    thead td{
+        text-align: center;
+        padding:10px 0px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-bottom:solid 5px #3498db;
+        border-left: 1em solid #fff;
+        border-right: 1em solid #fff;
+        font-size:12px;
+    }
+    th{
+        text-align:center;
+    }
+    tbody td{
+        padding:4px 4px;
+        background:#efefef;
+        border-left:1em white solid;
+        border-right:1em white solid;
+        text-align:center;
+        vertical-align: middle;
+    }
+    tbody tr{
+        color:#444;
+        
+    }
+    tbody tr:nth-child(odd) td{
+        background:#fff;
+    }
+
+}
+

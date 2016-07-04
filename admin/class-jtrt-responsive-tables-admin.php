@@ -72,9 +72,9 @@ class Jtrt_Responsive_Tables_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . '../dist/admin/css/jtrt-responsive-tables-admin.min.css', array(), $this->version, 'all' );
-
+		if(CheckIfJTRTExists()){
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . '../dist/admin/css/jtrt-responsive-tables-admin.min.css', array(), $this->version, 'all' );
+		}
 	}
 
 	/**
@@ -95,12 +95,15 @@ class Jtrt_Responsive_Tables_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
-		wp_enqueue_script( $this->plugin_name . '-vendor', plugin_dir_url( __FILE__ ) . '../dist/admin/js/jtrt-responsive-tables-vendor-admin.min.js', array( 'jquery' ), $this->version, true );
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . '../dist/admin/js/jtrt-responsive-tables-admin.min.js', array( 'jquery' ), $this->version, true );
+	    if(CheckIfJTRTExists()){
+			wp_enqueue_script( $this->plugin_name . '-vendor', plugin_dir_url( __FILE__ ) . '../dist/admin/js/jtrt-responsive-tables-vendor-admin.min.js', array( 'jquery' ), $this->version, true );
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . '../dist/admin/js/jtrt-responsive-tables-admin.min.js', array( 'jquery' ), $this->version, true );
+		}
+		
 		
 	}
 	
+
 	public function jtrt_tables_post() {
 		
 		/**
@@ -243,5 +246,8 @@ class Jtrt_Responsive_Tables_Admin {
 	}
 	
 } // End Of admin class
-
+function CheckIfJTRTExists(){
+	$currentPage = get_current_screen();
+	return ($currentPage->id === "jtrt_tables_post") ? true : false;
+}
 require_once plugin_dir_path( __FILE__ ) . 'partials/admin-extras.php';

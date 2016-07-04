@@ -1,0 +1,29 @@
+.replace-me-for-specific-class.example2{
+    max-width: 100%;
+    width:100%;
+    text-align: center;
+    box-shadow:0px 0px 5px #ccc;
+    padding:10px;
+    box-sizing: border-box;
+    thead td,th{
+        text-align: center;
+        padding:10px 0px;
+        background:#2ecc71;
+        color:white;
+        font-weight: bold;
+        font-size:12px;
+        text-transform: uppercase;
+        border:none;
+    }
+    tbody td{
+        padding:4px 4px;
+        text-align:center;
+        border:none;
+        vertical-align: middle;
+    }
+    tbody tr{
+        background:#28b463;
+        color:#fbfbfb;
+    }
+
+}

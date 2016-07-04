@@ -59,7 +59,7 @@ Assuming you've already activated the JTRT responsive tables plugin, click the "
 ![](docs/2.jpg)
 
 ### Step 2: Import Or Start From Scratch
-![](docs/step1.jpg)
+![](docs/1.jpg)
 
 Give your table a name if you want (you can choose to display this title in the front-end). Next, you can start your table from scratch and begin editting rows/columns, OR you can import a CSV file from your computer. If you choose to import a CSV file, make sure that it's extension is .csv (comma separated values)
 

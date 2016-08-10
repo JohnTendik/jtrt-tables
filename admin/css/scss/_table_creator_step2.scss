@@ -123,7 +123,15 @@
                
         
     }
+
+    .jtrt_btstles fieldset{
+        background:#f8f8f8;
+        padding:14px;
+        margin:14px 0;
+    }
     
+    
+
     .jt_col_form_cont table td:not(:first-child){
         background: #82ca9c;
         color: #fff;
@@ -179,6 +187,23 @@
     }
     
     #jt-table-delete-btn,#jt-table-delete-btn-col{
+        float:left;
+    }
+
+    .jtrt_btstles.modal-footer #jt-table-move-btn{ 
+        float:left;
+    }
+
+    #jt_moveRowToLabel{
+        margin-top:8px;
+        margin-left:14px;
+        margin-right:8px;
+    }
+    #jt_moveRowTo{
+        margin-top:4px;
+        margin-right:14px;
+    }
+    #jt_moveRowToLabel, #jt_moveRowTo{
         float:left;
     }
     

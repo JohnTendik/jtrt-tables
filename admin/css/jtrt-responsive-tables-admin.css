@@ -5468,6 +5468,10 @@ div.jt_table_steps {
     padding: 14px;
     background: #f8f8f8;
     overflow-x: scroll; }
+  .jtrt__table_creator_container .jtrt_btstles fieldset {
+    background: #f8f8f8;
+    padding: 14px;
+    margin: 14px 0; }
   .jtrt__table_creator_container .jt_col_form_cont table td:not(:first-child) {
     background: #82ca9c;
     color: #fff;
@@ -5508,6 +5512,17 @@ div.jt_table_steps {
     background: none;
     color: #444; }
   .jtrt__table_creator_container #jt-table-delete-btn, .jtrt__table_creator_container #jt-table-delete-btn-col {
+    float: left; }
+  .jtrt__table_creator_container .jtrt_btstles.modal-footer #jt-table-move-btn {
+    float: left; }
+  .jtrt__table_creator_container #jt_moveRowToLabel {
+    margin-top: 8px;
+    margin-left: 14px;
+    margin-right: 8px; }
+  .jtrt__table_creator_container #jt_moveRowTo {
+    margin-top: 4px;
+    margin-right: 14px; }
+  .jtrt__table_creator_container #jt_moveRowToLabel, .jtrt__table_creator_container #jt_moveRowTo {
     float: left; }
 
 .jt_nav_container {

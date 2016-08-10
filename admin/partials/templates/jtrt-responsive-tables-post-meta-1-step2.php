@@ -134,9 +134,18 @@
                         </tr>
                     </table>
                 </div>
+
+                
+
                 </div>
                 <div class="jtrt_btstles modal-footer">
+                
                 <button type="button" class="jtrt_btstles btn btn-danger" id="jt-table-delete-btn">Delete Row</button>
+                <label for="jt_moveRowTo" id="jt_moveRowToLabel">Move Row To:</label>
+                <select name="jt_moveRowTo" class="jtrt_btstles" id="jt_moveRowTo">
+                     
+                </select>
+                <button type="button" class="jtrt_btstles btn btn-warning" id="jt-table-move-btn">Move Row</button>
                 <button type="button" class="jtrt_btstles btn btn-default" data-dismiss="modal">Close</button>
                 <button type="button" id="jt-table-save-btn" class="jtrt_btstles btn btn-primary">Save changes</button>
                 </div>

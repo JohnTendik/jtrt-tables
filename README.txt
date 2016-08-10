@@ -1,114 +1,156 @@
-=== Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
+=== JTRT Responsive Tables ===
+Contributors: MyThirdEye
 Donate link: //
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
+Tags: responsive tables, responsive, table, table generator, csv to table, csv, convert csv, responsive table generator, foo tables, responsive table, mobile tables, html table generator, html5 table
+Requires at least: 4.0
+Tested up to: 4.5.3
+Stable tag: 2.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Easily create responsive tables in the backend without having to read or write code. This plugin converts CSV files into responsive HTML.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+= Update Notice =
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+Please note, if you are updating from version 1.3.2, or 2.0.4, you will need to first UNINSTALL the previous version before installing v3.*. Because this update is complete re-write of the plugin, there is no backward compatibility with the older versions. If you have issues, please contact me via [GitHub](https://github.com/mythirdeye/jtrt-tables). Thanks!
 
-A few notes about the sections above:
+= JTRT Responsive Tables =
+ 
+JTRT Responsive Tables is a plugin designed to help average wordrpess users with creating amazing responsive tables for their websites without having to deal with HTML or CSS. This plugin works by converting CSV files into responsive HTML tables.
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
+= Features =
 
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
+* Simple Backend Table Editor
+* Covert your excel CSV files to responsive html with a few clicks!
+* 5 Custom Breakpoint sizes! (XS SM MD LG XL)
+* Edit Table cells within the backend!
+* Custom Breakpoints For Each Table
+* Multiple Tables on page!
+* Custom Shortcode, Easy to use!
+* Custom CSS classes for your tables!
+* 10 custom example styles!
+* Bootstrap styles!
+* Inherit Styles!
+* **WIP** - Table styler! 
+* Table sorting!
+* Table filtering! 
+* Table Pagination!
 
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+= Getting Started =
+
+This is a very straight forward plugin, however I have created the following resources to help you get started using my plugin. If you have any questions or comments, please contact me through github. The docs on the github is currently outdated, I am working on updating the DOCS and video tutorial for V3, please stay tuned and sorry for any inconvenience this may have caused. 
+
+[DOCS](https://github.com/mythirdeye/jtrt-tables) | Video Tutorial COMING SOON!
+
+= Credits =
+
+I'm a 21 year old self-taught student who created to plugin to help users easily create responsive tables on their wordpress website. Originally this was a simple personal project but grew to over 300+ active installs. I want to thank each and everyone of you who downloaded and used my plugin, it means a lot and I hope it has served you well. Having said this, I didn't create this plugin entirely from scratch. I made use of amazing frameworks and scripts developed by other amazing people who deserve all the credit for their work. This plugin makes use of other plugins which I have not created or contributed to in any way, I do not take credit for these works, the credits belong to their respective authors. These plugins are:
+1. [Footable](http://fooplugins.com/plugins/footable-jquery/)
+3. [jQuery](https://jquery.com/)
+4. [PapaParse](http://papaparse.com/)
+5. [Jquery Sortable](https://johnny.github.io/jquery-sortable/)
+4. Much love to those who helped me with issues, too many awesome people to list, love you all! 
+
+= Support =
+
+If you have any issues, the best way to get help is to contact me through [GitHub](https://github.com/mythirdeye/jtrt-tables). 
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
-1. Upload `jtrt-responsive-tables.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+1. Upload `jtrt-tables folder` to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Enjoy
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= How does this plugin work? =
 
-An answer to that question.
+JTRT Responsive Tables works by converting tables in csv formats, into responsive html5 markup language. 
 
-= What about foo bar? =
+= How does the responsiveness work? =
 
-Answer to foo bar dilemma.
+This plugin uses FooTables to make the responsiveness happen. It 'hides' columns on smaller sizes so the table isn't squished and looking ugly. Although it hides columns, you can always view the hidden columns by clicking on the rows. 
+
+= Do I need to know any HTML/CSS to use this plugin? =
+
+No, everything happens in the backend using a live representation of your table. You can manually select which columns to hide on the tablet and mobile sizes just by clicking your mouse.
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. All Tables Page.
+2. Table Options.
+3. Table Styles.
+4. Front End Sample 1
+5. Front End Sample 2
+6. Front End Sample 2.2
 
 == Changelog ==
 
-= 1.0 =
-* A change since the previous version.
-* Another change.
+= 3.0.0 = 
+* The best update, trust me. - Trump
+* add/edit/remove/sort columns
+* starting tables from scratch
+* 10 sample styles
+* minified code
+* each table has their own breakpoints
+* pagination
 
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
+= 2.0.4 = 
+* fixed sql errors
+* better fallback handling
+* fixed issues with table styles
+* added a "view html" button that now lets you view/copy your table html code.
+
+= 2.0.0 =
+* Updated plugin framework (More OOP oriented/modular/faster/cleaner)
+* Custom post type
+* Better table organization
+* Simpler UI
+* Updated DOCS / Video Tutorial
+* Ability to add custom classes to tables
+* Ability to edit/change table values
+* Added 2 more breakpoints for SM and MED breakpoints!
+* Improved database saving
+* Fixed issue with editing multiple tables at once
+* Fixed issue with improper loading of libraries
+* etc.. Too many to count!
+
+= 1.3.2 =
+* Updated backend styles
+* Added a new "General Tips" area to the Docs section
+* Added a new "Support the plugin" area to the Docs section
+* Added a table name option to help better identify different tables
+* Fixed issues with tables updating when they aren't supposed to
+* Fixed issues with tables showing up above other content
+
+= 1.3 =
+* Added a new shortcode method, you can now save tables as shortcodes
+* Fixed issues with csv conversion
+* Updated backend styles
+
+= 1.2.2 =
+* Added the ability to sort and filter the tables
+* Fixed headers error
+* Fixed some styling issues
+* Updated the backend styling
+* Added a new video tutorial to the docs section
+
+= 1.2.1 =
+* Updated the readme file.
+
+= 1.2 =
+* Added A Tabbed menu layout for the back-end.
 
 == Upgrade Notice ==
 
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
+= 2.0.4 =
+fixed various bugs and issues, improved fallback handling, added view html button that now lets you see your table html code.
 
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
+= 2.0.3 =
+New breakpoints, faster code, cleaner ui, custom classes, WIP table styler, varius bug fixes!
 
 == Arbitrary section ==
 
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`
+This plugin makes use of Foo Tables to create the responsiveness of the tables. 

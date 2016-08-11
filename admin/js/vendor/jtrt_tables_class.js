@@ -48,6 +48,10 @@ function JtrtTables(tableContainer){
 	this.jtModal.find('#jt-table-delete-btn').on('click',function(){
 		Iam.handleTDDelete("row");	
 	});
+
+	this.jtModal.find('#jt-table-move-btn').on('click',function(){
+		Iam.moveRow();
+	});
 	
 	this.jtColModal.find('#jt-table-delete-btn-col').on('click',function(){
 		Iam.handleTDDelete("col");	
@@ -140,6 +144,26 @@ function JtrtTables(tableContainer){
 		});
 		this.launchEditModal(data,elem.parent()[0].rowIndex);
 	}
+
+	this.moveRow = function(){
+		
+		var moveRowSelect = this.jtModal.find("#jt_moveRowTo").val(),
+			currentRow = this.jtModal.attr('data-jt-row-editting'),
+			currentRowElem = Iam.container.find("tbody tr").eq(currentRow - 2)
+			movedToElem = Iam.container.find("tbody tr").eq(moveRowSelect - 2);
+
+		if(moveRowSelect == currentRow)
+			return;
+		
+		if(parseInt(moveRowSelect) > parseInt(currentRow))
+			currentRowElem.insertAfter(movedToElem);
+		else
+			currentRowElem.insertBefore(movedToElem);	
+
+		this.recountRows();
+		this.jtModal.modal('hide');
+		
+	}
 	
 	this.editCol = function(elem){
 		var data = [];
@@ -151,6 +175,9 @@ function JtrtTables(tableContainer){
 
 		this.launchEditColModal(data,colIndex);
 	}
+
+
+
 
 	this.launchEditModal = function(data1,rowID){
 		this.jtModal.find('.modal-body p').text("You are now editting row " + rowID);
@@ -169,6 +196,23 @@ function JtrtTables(tableContainer){
 			modalForm.eq(0).append(theadData);
 			modalForm.eq(1).append(tbodyData);
 		}
+
+		if(rowID === 1){
+			this.jtModal.find("#jt-table-move-btn, #jt_moveRowTo, #jt_moveRowToLabel").hide();
+		}else{
+			this.jtModal.find("#jt-table-move-btn, #jt_moveRowTo, #jt_moveRowToLabel").show();
+		}
+
+		var moveRowSelect = this.jtModal.find("#jt_moveRowTo");
+		moveRowSelect.html("");
+		for(var i = 2;i<=this.rowCount;i++){
+			if(i == rowID){
+				moveRowSelect.append("<option value='"+ i +"' selected>Row "+ i +"</option>");
+			}else{
+				moveRowSelect.append("<option value='"+ i +"'>Row "+ i +"</option>");
+			}
+		}
+
 		this.jtModal.modal('show');
 	}
 

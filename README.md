@@ -1,8 +1,8 @@
 # Docs
 If you're here for the older version docs, they are now located on their own branch.
 
-1. [Version 1.3.2](https://github.com/JohnTendik/jtrt-tables/tree/Version-1.3.2-Legacy-%5D)
-2. [Version 2.0.4](https://github.com/JohnTendik/jtrt-tables/tree/Version-2.0.4-Legacy%5D)
+0. [Version 1.3.2](https://github.com/JohnTendik/jtrt-tables/tree/Version-1.3.2-Legacy-%5D)
+1. [Version 2.0.4](https://github.com/JohnTendik/jtrt-tables/tree/Version-2.0.4-Legacy%5D)
 
 
 # JTRT Responsive Tables Plugin V3!
@@ -10,14 +10,14 @@ This is a Wordpress Plugin designed to help users easily create responsive table
 
 This update added a few features such as:
 
-1. Simple Backend Table Editor
-2. Covert your excel CSV files to responsive html with a few clicks!
-3. 5 Custom Breakpoint sizes! (XS SM MD LG)
-4. Edit Table rows/columns 
-5. Add/delete/move columns or rows
-7. WIP - Table styler!
-8. Table pagination
-9. 10 sample styles
+0. Simple Backend Table Editor
+1. Covert your excel CSV files to responsive html with a few clicks!
+2. 5 Custom Breakpoint sizes! (XS SM MD LG)
+3. Edit Table rows/columns 
+4. Add/delete/move columns or rows
+5. WIP - Table styler!
+6. Table pagination
+7. 10 sample styles
 
 ### Update Notice **
 Unfortunately, because this update is completely different than the previous 2 versions and uses updated scripts/plugins, this update is not backward compatible with the previous version. If you already have tables you created with the earlier versions of this plugin, you will need to recreate them with this version. "It will be worth it, trust me" - Trump
@@ -40,15 +40,15 @@ So simple! Any hidden data can always be seen just by clicking the row.
 
 ## Setup Instructions
 ###### Installing With Wordpress
-1. Navigate to the plugins directory
-2. Locate JTRT responsive tables plugin
-3. Install and Activate
+0. Navigate to the plugins directory
+1. Locate JTRT responsive tables plugin
+2. Install and Activate
 
 ###### Installing Through FTP
-1. Download the contents of this git onto your computer.
-2. Create a folder in your wordpress/wp-content/plugins directory called "jtrt-responsive-tables"
-3. Upload the files you downloaded from Github inside the newly created folder "jtrt-responsive-tables" 
-4. Activate & Enjoy.
+0. Download the contents of this git onto your computer.
+1. Create a folder in your wordpress/wp-content/plugins directory called "jtrt-responsive-tables"
+2. Upload the files you downloaded from Github inside the newly created folder "jtrt-responsive-tables" 
+3. Activate & Enjoy.
 
 ## How To Use
 ** Coming Soon ** 
@@ -141,4 +141,5 @@ Simply copy paste your HTML code into your page/post. Or better yet, copy paste 
 
 ## Planned Features For The Future
 
+0. Bug fixes
 1. I'm open to suggestions

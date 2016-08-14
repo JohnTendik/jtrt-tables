@@ -123,6 +123,14 @@
                 </div>
                 <div class="jtrt_btstles modal-body">
                 <p>You are about to edit row </p>
+                <nav id="jtmodal_hidden_nav">
+                    <ul>
+                        <li><a href="#0" id="bold"><strong>Bold</strong></a></li>
+                        <li><a href="#0" id="italic"><em>Italic</em></a></li>
+                        <li><a href="#0" id="image">Insert Image</a></li>
+                        <li><a href="#0" id="link">Insert Link</a></li>
+                    </ul>
+                </nav>
                 <div class="jtrt_edit_cont">
                     <table>
                         <tr>
@@ -135,7 +143,39 @@
                     </table>
                 </div>
 
+                <div id="dialog-form-image" title="Insert an Image">
+                <p class="validateTips">Only the link is required. Set a width and height if you need to.</p>
+        
+                <form>
+                    <fieldset>
+                    <label for="link">Image Link</label>
+                    <input type="URL" name="link" id="link" placeholder="http://linktoimage.png" value="" class="text ui-widget-content ui-corner-all">
+                    <label for="width">width</label>
+                    <input type="text" name="width" id="width" placeholder="190px" value="" class="text ui-widget-content ui-corner-all">
+                    <label for="height">height</label>
+                    <input type="text" name="height" id="height" placeholder="190px" value="" class="text ui-widget-content ui-corner-all">
                 
+                    <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                    </fieldset>
+                </form>
+                </div>
+
+                <div id="dialog-form-link" title="Insert a link">
+                <p class="validateTips">Insert a link and the text for the link.</p>
+        
+                <form>
+                    <fieldset>
+                    <label for="link2">Link</label>
+                    <input type="URL" name="link" id="link2" placeholder="http://linktoimage.png" value="" class="text ui-widget-content ui-corner-all">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="190px" value="" class="text ui-widget-content ui-corner-all">
+
+                    <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                    </fieldset>
+                </form>
+                </div>
 
                 </div>
                 <div class="jtrt_btstles modal-footer">

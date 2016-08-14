@@ -9,6 +9,9 @@ function JtrtTables(tableContainer){
 	this.jtColModal = jQuery('#jtrt_edit_col_modal');
 	this.colBreakpoints = "";
 	this.postID = jQuery('#post_ID').val();
+	this.jtModalHiddenNav = this.jtModal.find("#jtmodal_hidden_nav");
+	
+
 	this.container.find('td.jt_addrowcol').on('click', function(element){
 		if(jQuery(this).attr('data-jttable-controller') == "rowAdd"){
 			Iam.addRows();
@@ -34,7 +37,7 @@ function JtrtTables(tableContainer){
 
 	var exampleClass = this.container.attr('class').match(/jtrt_\d+_exStyle_example\d+/g);
 	if(exampleClass != null){
-	this.container.removeClass(exampleClass[0]);
+		this.container.removeClass(exampleClass[0]);
 	}
 
 	this.container.on('click','td.jtrt_custom_td:not(:last-child)', function(elem){
@@ -56,6 +59,108 @@ function JtrtTables(tableContainer){
 	this.jtColModal.find('#jt-table-delete-btn-col').on('click',function(){
 		Iam.handleTDDelete("col");	
 	});
+
+	this.jtModal.find("tr").on('click',".redit_modal_theader span",function(ev){
+		ev.preventDefault();
+		Iam.showModalHiddenNav(jQuery(this).parent().prevAll().length);
+	});
+
+	jQuery(document).on("click","body",function(ev){
+		if(jQuery(ev.target).is("span") || jQuery(ev.target).is("#jtmodal_hidden_nav ul"))
+			return;
+		if(Iam.jtModalHiddenNav.hasClass("shownNav"))
+			Iam.closeHiddenNav();	
+	});
+
+	this.changeColType = function(indx){
+		this.container.find("tr.sorted_head td:not(.jtrt_custom_td)").eq(indx).attr("data-type","html");
+	}
+
+	var imgDialog = this.jtModal.find( "#dialog-form-image" ).dialog({
+      autoOpen: false,
+      height: 400,
+      width: 350,
+      modal: true,
+      buttons: {
+        "Insert An Image": function(){
+			var elem = imgDialog.data("Params").myElem,
+				link = imgDialog.find("#link").val(),
+				widthsss = imgDialog.find("#width").val(),
+				heightsss = imgDialog.find("#height").val();
+			
+			elem.val("<img src='"+link+"' width='"+widthsss+"' height='"+heightsss+"' >");
+			imgDialog.dialog("close");
+		},
+        Cancel: function() {
+          imgDialog.dialog( "close" );
+        }
+      },
+	  close: function() {
+        imgDialog.find("input").val("");
+      }
+    });
+
+	var linkDialog = this.jtModal.find( "#dialog-form-link" ).dialog({
+      autoOpen: false,
+      height: 400,
+      width: 350,
+      modal: true,
+      buttons: {
+        "Insert link": function(){
+			var elem = linkDialog.data("Params").myElem,
+				link = linkDialog.find("#link2").val(),
+				name = linkDialog.find("#name").val();
+			
+			elem.val("<a href='"+link+"'>"+name+"</a>");
+			linkDialog.dialog("close");
+		},
+        Cancel: function() {
+          linkDialog.dialog( "close" );
+        }
+      },
+	  close: function() {
+        linkDialog.find("input").val("");
+      }
+    });
+
+	this.jtModalHiddenNav.on("click","li",function(){
+		
+		var thisId = jQuery(this).children("a").attr("id"),
+			thisIndex = Iam.jtModalHiddenNav.parent().parent().prevAll().length,
+			inputElem = Iam.jtModal.find("table tr:last-child td").eq(thisIndex).children("input");
+
+		switch (thisId) {
+			case "bold":
+				var currentVal = inputElem.val();
+				if(currentVal.indexOf("<strong>") != -1)
+					return;
+				inputElem.val("<strong>"+currentVal+"</strong>");
+				Iam.changeColType(thisIndex);
+				break;
+				
+			case "italic":
+				var currentVal = inputElem.val();
+				if(currentVal.indexOf("<em>") != -1)
+					return;
+				inputElem.val("<em>"+currentVal+"</em>");
+				Iam.changeColType(thisIndex);
+				break;
+
+			case "image":
+				imgDialog.data( "Params", { myElem: inputElem, thisIndex: thisIndex } ).dialog( "open" );
+				Iam.changeColType(thisIndex);
+				break;
+
+			case "link":
+				linkDialog.data( "Params", { myElem: inputElem, thisIndex: thisIndex } ).dialog( "open" );
+				Iam.changeColType(thisIndex);
+				break;
+		}
+
+
+
+	});
+
 	
 	this.jtColModal.find('a').on('click',function(e){
 		e.preventDefault();
@@ -190,7 +295,7 @@ function JtrtTables(tableContainer){
 		this.jtModal.attr('data-jt-row-editting', rowID);
 		modalForm.html("");
 		for(var i = 0; i < data1.length; i++){
-			var theadData = "<td>"+ tableHeaderData[i] +"</td>";
+			var theadData = "<td class='redit_modal_theader'>"+ tableHeaderData[i] +" <span class='dashicons dashicons-admin-generic'></span></td>";
 			var tbodyData = "<td><input id='column"+ i +"' type='text' value='"+ data1[i] +"' ></td>";
 			
 			modalForm.eq(0).append(theadData);
@@ -214,6 +319,21 @@ function JtrtTables(tableContainer){
 		}
 
 		this.jtModal.modal('show');
+	}
+
+	this.showModalHiddenNav = function(indx){
+		this.jtModalHiddenNav.appendTo(Iam.jtModal.find(".redit_modal_theader span").eq(indx));
+		this.jtModalHiddenNav.addClass("shownNav");
+		this.jtModalHiddenNav.fadeIn("fast");
+	}
+
+	this.closeHiddenNav = function(){
+		this.jtModalHiddenNav.fadeOut("fast");
+		this.jtModalHiddenNav.removeClass("shownNav");
+		window.setTimeout(function(){
+			Iam.jtModalHiddenNav = Iam.jtModal.find("#jtmodal_hidden_nav").detach();
+		},300);
+		
 	}
 
 	this.launchEditColModal = function(data,colID){

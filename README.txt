@@ -3,46 +3,45 @@ Contributors: MyThirdEye
 Donate link: //
 Tags: responsive tables, responsive, table, table generator, csv to table, csv, convert csv, responsive table generator, foo tables, responsive table, mobile tables, html table generator, html5 table
 Requires at least: 4.0
-Tested up to: 4.5.3
-Stable tag: 2.0.4
+Tested up to: 4.6
+Stable tag: 3.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Easily create responsive tables in the backend without having to read or write code. This plugin converts CSV files into responsive HTML.
+Easily create responsive tables in the backend without having to read or write code. Start from scratch or import a CSV table.
 
 == Description ==
 
-= Update Notice =
-
-Please note, if you are updating from version 1.3.2, or 2.0.4, you will need to first UNINSTALL the previous version before installing v3.*. Because this update is complete re-write of the plugin, there is no backward compatibility with the older versions. If you have issues, please contact me via [GitHub](https://github.com/mythirdeye/jtrt-tables). Thanks!
-
 = JTRT Responsive Tables =
  
-JTRT Responsive Tables is a plugin designed to help average wordrpess users with creating amazing responsive tables for their websites without having to deal with HTML or CSS. This plugin works by converting CSV files into responsive HTML tables.
+JTRT Responsive Tables is a plugin designed to help average wordrpess users with creating amazing responsive tables for their websites without having to deal with HTML or CSS. You can either start from scratch or import/convert a CSV table. 
 
 = Features =
 
-* Simple Backend Table Editor
-* Covert your excel CSV files to responsive html with a few clicks!
-* 5 Custom Breakpoint sizes! (XS SM MD LG XL)
-* Edit Table cells within the backend!
-* Custom Breakpoints For Each Table
-* Multiple Tables on page!
-* Custom Shortcode, Easy to use!
-* Custom CSS classes for your tables!
-* 10 custom example styles!
-* Bootstrap styles!
-* Inherit Styles!
-* **WIP** - Table styler! 
-* Table sorting!
-* Table filtering! 
-* Table Pagination!
+* Simple WYSIWYG backend table editor
+* Covert your excel CSV files to responsive html with a few clicks
+* 5 Custom responsive breakpoint sizes (XS SM MD LG XL)
+* Edit table cells within the backend
+* Easily add links/images to your table
+* Custom breakpoints for each table
+* Support for multiple tables on one page
+* Custom shortcode, easy to use
+* Custom CSS classes for your tables
+* 10 Custom example styles
+* Bootstrap styles
+* Inherit theme styles
+* **WIP** - Custom table styler! - coming soon
+* Table sorting! Sort by column headers.
+* Table filtering! Search through your table with a searchbox
+* Table pagination! Divide your table up into pages
 
 = Getting Started =
 
-This is a very straight forward plugin, however I have created the following resources to help you get started using my plugin. If you have any questions or comments, please contact me through github. The docs on the github is currently outdated, I am working on updating the DOCS and video tutorial for V3, please stay tuned and sorry for any inconvenience this may have caused. 
+This is a very straight forward plugin, however I have created the following resources to help you get started using my plugin. If you have any questions or comments, please contact me through GITHUB.
 
-[DOCS](https://github.com/mythirdeye/jtrt-tables) | Video Tutorial COMING SOON!
+[DOCS](https://github.com/mythirdeye/jtrt-tables) | Video Tutorial below :) ( More vids will come soon, this should suffice for now I hope )
+
+[youtube https://www.youtube.com/watch?v=t64BmrpfBIw]
 
 = Credits =
 
@@ -67,7 +66,7 @@ If you have any issues, the best way to get help is to contact me through [GitHu
 
 = How does this plugin work? =
 
-JTRT Responsive Tables works by converting tables in csv formats, into responsive html5 markup language. 
+Before this plugin worked by converting CSV files into HTML Tables, but now you can start from scratch and build your table in the backend. The ability to convert CSV files is still here, and improved graatly.  
 
 = How does the responsiveness work? =
 
@@ -76,6 +75,15 @@ This plugin uses FooTables to make the responsiveness happen. It 'hides' columns
 = Do I need to know any HTML/CSS to use this plugin? =
 
 No, everything happens in the backend using a live representation of your table. You can manually select which columns to hide on the tablet and mobile sizes just by clicking your mouse.
+
+= My table wont show up, I'm getting a cannot found error =
+
+This is mainly caused by the plugin having issues saving to the backend. This issue is usually caused by updating the plugin from previous versions. If you encounter this issue and you upgraded plugins, simply re-install the new version after removing the previous. 
+
+= My links/images wont show up in the front end =
+
+If you can see your images/links in the backend but not on the frontend, then that means you have to set your column type to "html". The plugin does html character escaping unless you specify not to in the column options. 
+
 
 == Screenshots ==
 
@@ -87,6 +95,17 @@ No, everything happens in the backend using a live representation of your table.
 6. Front End Sample 2.2
 
 == Changelog ==
+
+= 3.0.2 =
+* Added the the ability to quickly and easily insert links/images
+* Fixed issues with page builders not properly loading scripts
+* Fixed issues with deactivating plugin
+* Fixed uninstall so that the plugin will cleanup after itself
+* Minor text fixes -pokes Niantic-
+
+= 3.0.1 =
+* Added the ability to move rows
+* Minor text fixes
 
 = 3.0.0 = 
 * The best update, trust me. - Trump
@@ -144,6 +163,9 @@ No, everything happens in the backend using a live representation of your table.
 * Added A Tabbed menu layout for the back-end.
 
 == Upgrade Notice ==
+
+= 3.0.2 =
+Fixed bugs, added ability to quickly and easily insert images/links
 
 = 2.0.4 =
 fixed various bugs and issues, improved fallback handling, added view html button that now lets you see your table html code.

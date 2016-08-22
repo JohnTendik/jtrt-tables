@@ -16,7 +16,7 @@
  * Plugin Name:       JTRT Responsive Tables
  * Plugin URI:        https://wordpress.org/plugins/jtrt-responsive-tables/
  * Description:       Easily create responsive tables in the backend without having to read or write code. This plugin converts CSV files into responsive HTML..
- * Version:           3.0.0
+ * Version:           3.0.2
  * Author:            John Tendik
  * Author URI:        https://github.com/mythirdeye/jtrt-tables
  * License:           GPL-2.0+

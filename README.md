@@ -50,8 +50,10 @@ So simple! Any hidden data can always be seen just by clicking the row.
 2. Upload the files you downloaded from Github inside the newly created folder "jtrt-responsive-tables" 
 3. Activate & Enjoy.
 
-## How To Use
-** Coming Soon ** 
+## How To Use Video Tutorial
+[![video tutorial jtrt responsive tables](https://img.youtube.com/vi/t64BmrpfBIw/0.jpg)](https://www.youtube.com/watch?v=t64BmrpfBIw)
+
+## How To Use Written Tutorial
 
 ### Step 1: Add New Table
 Assuming you've already activated the JTRT responsive tables plugin, click the "add new" button located inside the new JTRT Tables menu

@@ -34,4 +34,7 @@ require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 global $wpdb;
 global $charset_collate;
 $jtrt_tables_name = $wpdb->prefix . "jtrt_tables";
+$posts_table = $wpdb->posts;
 $wpdb->query("DROP TABLE IF EXISTS $jtrt_tables_name");
+$wpdb->query( "DELETE FROM ".$posts_table." WHERE post_type IN ( 'jtrt_tables_post' );" );
+$wpdb->query( "DELETE meta FROM {$wpdb->postmeta} meta LEFT JOIN {$wpdb->posts} posts ON posts.ID = meta.post_id WHERE posts.ID IS NULL;" );

@@ -111,7 +111,7 @@ function JtrtTables(tableContainer){
 				link = linkDialog.find("#link2").val(),
 				name = linkDialog.find("#name").val();
 			
-			elem.val("<a href='"+link+"'>"+name+"</a>");
+			elem.val("<a href='"+link+"' target='_blank'>"+name+"</a>");
 			linkDialog.dialog("close");
 		},
         Cancel: function() {

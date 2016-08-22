@@ -169,7 +169,7 @@
                     <label for="link2">Link</label>
                     <input type="URL" name="link" id="link2" placeholder="http://linktoimage.png" value="" class="text ui-widget-content ui-corner-all">
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" placeholder="190px" value="" class="text ui-widget-content ui-corner-all">
+                    <input type="text" name="name" id="name" placeholder="Link name" value="" class="text ui-widget-content ui-corner-all">
 
                     <!-- Allow form submission with keyboard without duplicating the dialog button -->
                     <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">

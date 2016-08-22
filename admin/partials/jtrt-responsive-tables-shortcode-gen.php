@@ -21,7 +21,20 @@ function jtrt_shortcode_table( $atts ){
            $jtrt_example_style = explode(",",$retrieve_data[0]->jttable_styles);
            $htmlContent = str_replace("jtrt_table_creator","jtrt_table_creator jtrt_".$jtrt_settings['id']."_exStyle_".$jtrt_example_style[1],$htmlContent);
        }
+       wp_enqueue_style( 'jtrt-table-styles-public' );
+       $file = WP_PLUGIN_DIR . '/jtrt-responsive-tables/dist/public/css/jtrt_custom_styles.css';
+       $current = file_get_contents($file);
+        // Append a new person to the file
+        $current .= jtrt_custom_styler($retrieve_data);
+        // Write the contents back to the file
+        file_put_contents($file, $current);
+       wp_enqueue_style( "jtrt-table-custom-styles-public" );
+       wp_enqueue_script( "jtrt-table-vendor-scripts" );
+	   wp_enqueue_script( "jtrt-table-scripts" );
        return $htmlContent;
+       
+        
+
     }else{
         echo "<div class='jtrt_error_message'><strong>Oops, Looks like something went wrong,</strong><br/>Unfortunately the table you were looking for has not been found on the server, Please double check that you have the correct table ID set for the shortcode.</div>";
         return "error:cannotLocateTable";

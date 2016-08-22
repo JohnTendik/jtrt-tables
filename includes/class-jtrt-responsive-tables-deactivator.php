@@ -30,12 +30,7 @@ class Jtrt_Responsive_Tables_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-		global $wpdb;
-		global $charset_collate;
-		$jtrt_tables_name = $wpdb->prefix . "jtrt_tables";
-		$wpdb->query("DROP TABLE IF EXISTS $jtrt_tables_name");
-
+		// Deactivate code
 	}
 
 }

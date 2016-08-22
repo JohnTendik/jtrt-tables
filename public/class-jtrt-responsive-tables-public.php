@@ -105,9 +105,12 @@ class Jtrt_Responsive_Tables_Public {
 
 		$test_array = isJTRTonThePage();
 
+		wp_register_style( 'jtrt-table-styles-public', plugin_dir_url( __FILE__ ) . '../dist/public/css/jtrt-responsive-tables-public.min.css', array(), $this->version, 'all' );
+		wp_register_style( 'jtrt-table-custom-styles-public', plugin_dir_url( __FILE__ ) . '../dist/public/css/jtrt_custom_styles.css', array(), $this->version, 'all' );
+
 		if( !empty( $test_array ) ){
 
-			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . '../dist/public/css/jtrt-responsive-tables-public.min.css', array(), $this->version, 'all' );
+			wp_enqueue_style( 'jtrt-table-styles-public' );
 			$file = WP_PLUGIN_DIR . '/jtrt-responsive-tables/dist/public/css/jtrt_custom_styles.css';
 			// Open the file to get existing content
 			$current = file_get_contents($file);
@@ -115,7 +118,7 @@ class Jtrt_Responsive_Tables_Public {
 			$current = get_table_styles_jtrt();
 			// Write the contents back to the file
 			file_put_contents($file, $current);
-			wp_enqueue_style( "jtrt_custom_css", plugin_dir_url( __FILE__ ) . '../dist/public/css/jtrt_custom_styles.css', array(), $this->version, 'all' );
+			wp_enqueue_style( "jtrt-table-custom-styles-public" );
 		}
 
 		
@@ -141,9 +144,12 @@ class Jtrt_Responsive_Tables_Public {
 		 */
 		$test_array = isJTRTonThePage();
 
+		wp_register_script( "jtrt-table-vendor-scripts", plugin_dir_url( __FILE__ ) . '../dist/public/js/jtrt-responsive-tables-vendor-public.min.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( "jtrt-table-scripts", plugin_dir_url( __FILE__ ) . '../dist/public/js/jtrt-responsive-tables-public.min.js', array( 'jquery', 'jtrt-table-vendor-scripts' ), $this->version, true );
+
 		if( !empty( $test_array ) ){
-			wp_enqueue_script( $this->plugin_name . "-vendor", plugin_dir_url( __FILE__ ) . '../dist/public/js/jtrt-responsive-tables-vendor-public.min.js', array( 'jquery' ), $this->version, true );
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . '../dist/public/js/jtrt-responsive-tables-public.min.js', array( 'jquery' ), $this->version, true );
+			wp_enqueue_script( "jtrt-table-vendor-scripts" );
+			wp_enqueue_script( "jtrt-table-scripts" );
 		}
 	}
 

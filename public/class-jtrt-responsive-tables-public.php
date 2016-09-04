@@ -216,7 +216,7 @@ function isJTRTonThePage(){
 }
 
 function jtrt_custom_styler($data){
-	if(strpos($data->jttable_styles, 'example') !== false){
+	if(isset($data->jttable_styles) && strpos($data->jttable_styles, 'example') !== false){
 		$styleType = explode(",",$data->jttable_styles)[1];
 		$file = WP_PLUGIN_DIR . '/jtrt-responsive-tables/public/css/' . $styleType . ".css";
 		$current = file_get_contents($file);

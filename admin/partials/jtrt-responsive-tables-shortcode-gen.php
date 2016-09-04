@@ -8,10 +8,12 @@ function jtrt_shortcode_table( $atts ){
 	$jtrt_tables_name = $wpdb->prefix . "jtrt_tables";
 	$retrieve_data = $wpdb->get_results( "SELECT * FROM $jtrt_tables_name WHERE jttable_IDD = " . $jtrt_settings['id'] );
     
-    if($retrieve_data){   
+    if($retrieve_data){ 
+       $get_post_meta = get_post_meta($jtrt_settings['id'], 'jtrt_general_settings');
+       $post_title_setting = (isset($get_post_meta[0]['showTitle']) ? $get_post_meta[0]['showTitle'] : null);
        $htmlContent = "";
-       if(get_post_meta($jtrt_settings['id'], 'jtrt_general_settings')[0]['showTitle'] !== undefined && get_post_meta($jtrt_settings['id'], 'jtrt_general_settings')[0]['showTitle'] === "true"){
-          $htmlContent .="<h2 style='text-align:". get_post_meta($jtrt_settings['id'], 'jtrt_general_settings')[0]['titlePos'] .";'>".$retrieve_data[0]->jttable_name."</h2>";
+       if($post_title_setting !== null && $post_title_setting === "true"){
+          $htmlContent .="<h2 style='text-align:". (isset($get_post_meta[0]['titlePos']) ? $get_post_meta[0]['titlePos'] : "Left") .";'>".$retrieve_data[0]->jttable_name."</h2>";
        }
        ob_start();
        echo "<input name='' id='jtrt_hidden_tableBP".$jtrt_settings['id']."' type='hidden' value='".(isset(get_post_meta($jtrt_settings['id'], 'jtrt_general_settings')[0]['hiddenCols']) ? get_post_meta($jtrt_settings['id'], 'jtrt_general_settings')[0]['hiddenCols'] : '')."'>";

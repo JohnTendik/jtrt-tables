@@ -30,6 +30,7 @@
 	 */
 	
 	var jtrt_table_content = jQuery('.jtrt_table_creator');
+	jtrt_table_content.hide();
 	jtrt_table_content.find('thead tr:not(.sorted_head)').remove();
 	jtrt_table_content.find('tr td.jtrt_custom_td').remove();
 	jtrt_table_content.find('tbody tr:last-child').remove();
@@ -37,7 +38,7 @@
 		return String(str)
 			.replace(/\\/g, "");
 	};
-	
+
 	jtrt_table_content.each(function(i,elem){
 		var tableBPs = JSON.parse(jQuery(this).prev().val()) || JSON.parse(jQuery(this).prev().find('input').val());
 		jQuery(this).footable({
@@ -50,8 +51,7 @@
 				"xl": tableBPs['x-large']
 			}			
 		});
-		elem.show();
 	});
-
+	jtrt_table_content.show();
 	
 })( jQuery );

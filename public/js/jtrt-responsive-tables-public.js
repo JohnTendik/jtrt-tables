@@ -37,8 +37,9 @@
 		return String(str)
 			.replace(/\\/g, "");
 	};
+	
 	jtrt_table_content.each(function(i,elem){
-		var tableBPs = JSON.parse(jQuery(this).prev().val());
+		var tableBPs = JSON.parse(jQuery(this).prev().val()) || JSON.parse(jQuery(this).prev().find('input').val());
 		jQuery(this).footable({
 			"useParentWidth": true,
 			"breakpoints": {
@@ -48,7 +49,9 @@
 				"lg": tableBPs['large'],
 				"xl": tableBPs['x-large']
 			}			
-		})
+		});
+		elem.show();
 	});
+
 	
 })( jQuery );

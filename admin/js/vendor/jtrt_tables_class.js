@@ -10,6 +10,7 @@ function JtrtTables(tableContainer){
 	this.colBreakpoints = "";
 	this.postID = jQuery('#post_ID').val();
 	this.jtModalHiddenNav = this.jtModal.find("#jtmodal_hidden_nav");
+	this.loader = "<div id='jt_loader_ad'><div class='uil-cube-css' style='-webkit-transform:scale(0.5)'><div></div><div></div><div></div><div></div></div></div>";
 	
 
 	this.container.find('td.jt_addrowcol').on('click', function(element){
@@ -202,6 +203,13 @@ function JtrtTables(tableContainer){
 		}
 	}
 	
+	this.jtLoader = function(opt){
+		if(opt == "show"){
+			jQuery(this.loader).appendTo('#wpcontent');
+		}else{
+			jQuery('#wpcontent').find("#jt_loader_ad").remove();
+		}
+	}
 	
 	this.addRows = function(data,index){
 		this.rowCount++;
@@ -447,6 +455,7 @@ function JtrtTables(tableContainer){
 	
 	this.handleCSVImport = function(elem){
 		var csvFile = jQuery(elem)[0].files[0];
+		
 		Papa.parse(csvFile, {
 			complete: function(results) {
 				if(results.errors.length > 0){
@@ -465,6 +474,7 @@ function JtrtTables(tableContainer){
 					Iam.addRows(results.data,i);
 				}
 				Iam.enable_jtcolSorting();
+				Iam.jtLoader('hide');
 			}
 		});
 	}
@@ -537,5 +547,6 @@ function JtrtTables(tableContainer){
 	}
 
 	this.enable_jtcolSorting();
+	
 
 } // end of tables class

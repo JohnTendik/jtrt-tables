@@ -37,7 +37,7 @@ class Jtrt_Responsive_Tables_Activator {
 		$sql_create_table = "CREATE TABLE " . $jtrt_tables_name . " ( 
 	          jttable_id bigint(20) unsigned NOT NULL auto_increment,
 	          jttable_IDD bigint(20),
-	          object_type MEDIUMTEXT,
+	          object_type LONGTEXT,
 	          jttable_name TEXT,
 			  jttable_styles TEXT,
 	          PRIMARY KEY  (jttable_id) 

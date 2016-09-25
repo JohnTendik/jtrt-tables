@@ -3289,3 +3289,6 @@ ul.pagination {
   height: auto; }
   .footable-filtering .input-group-btn .dropdown-toggle:after {
     display: none; }
+
+.jtrt_table_creator {
+  display: none; }

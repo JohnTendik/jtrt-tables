@@ -120,6 +120,7 @@
 	});
 	
 	jQuery('#jt_upload_Csv').on('change',function(elem){
+		jtTables.jtLoader('show');
 		jtTables.handleCSVImport(jQuery(this));
 		jtrt_Steps.nextStep();
 		

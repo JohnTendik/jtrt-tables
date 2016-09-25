@@ -33,7 +33,7 @@ function jtrt_shortcode_table( $atts ){
        wp_enqueue_style( "jtrt-table-custom-styles-public" );
        wp_enqueue_script( "jtrt-table-vendor-scripts" );
 	   wp_enqueue_script( "jtrt-table-scripts" );
-       return $htmlContent;
+       return do_shortcode($htmlContent);
        
         
 

@@ -51,6 +51,8 @@
             <h2>Allow Sorting: <small>If enabled this, your table will be sortable by its row values. For this option to work properly, you must correctly set the data-type attribute for your columns.</small></h2>    
             <ul>
                 <li><label>Enable: <input type="checkbox" name="jtrt_general_settings[allowSorting]" value="<?php echo (isset($value['allowSorting']) ? $value['allowSorting'] : "false");?>" id="jtrt_table_allow_sorting" value="false"></label></li>
+                <li><label for="jtrt_table_allow_sorting_default_col">Default sort column: <select name="jtrt_general_settings[defaultallowSorting]" id="jtrt_table_allow_sorting_default_col" data-defcol="<?php echo (isset($value['defaultallowSorting']) ? $value['defaultallowSorting'] : 1);?>"></select></label>    
+                </li>
             </ul>
         </fieldset>
         <fieldset id="data-paging">

@@ -11,6 +11,7 @@ function JtrtTables(tableContainer){
 	this.postID = jQuery('#post_ID').val();
 	this.jtModalHiddenNav = this.jtModal.find("#jtmodal_hidden_nav");
 	this.loader = "<div id='jt_loader_ad'><div class='uil-cube-css' style='-webkit-transform:scale(0.5)'><div></div><div></div><div></div><div></div></div></div>";
+	this.defaultColSort = 1; 
 	
 
 	this.container.find('td.jt_addrowcol').on('click', function(element){
@@ -33,7 +34,7 @@ function JtrtTables(tableContainer){
 	}
 	
 	this.container.siblings('h2').remove();
-	this.container.siblings('#jtrt_hidden_tableBP'+this.postID).remove();
+	this.container.siblings('p').remove();
 	this.container.removeClass('table table-striped table-hover table-condensed table-bordered');
 
 	var exampleClass = this.container.attr('class').match(/jtrt_\d+_exStyle_example\d+/g);
@@ -472,7 +473,7 @@ function JtrtTables(tableContainer){
 				}
 				for(var i = 0; i < results.data.length - 1; i++){
 					Iam.addRows(results.data,i);
-				}
+				}			
 				Iam.enable_jtcolSorting();
 				Iam.jtLoader('hide');
 			}
@@ -547,6 +548,17 @@ function JtrtTables(tableContainer){
 	}
 
 	this.enable_jtcolSorting();
+
+	this.updateDefaultSortColsSelect = function(){
+
+		var selectb = jQuery("select#jtrt_table_allow_sorting_default_col");
+			selectb.find('option').remove();
+		
+		this.container.find("thead tr.sorted_head td:not(:first-child)").map(function(v,item){
+			selectb.append("<option name='"+ item.innerText +"' value='"+ v +"'>"+ item.innerText +"</option>");
+		});	
+
+	}
 	
 
 } // end of tables class

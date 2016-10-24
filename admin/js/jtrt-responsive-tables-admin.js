@@ -90,7 +90,7 @@
 
 	jtrtStyles.handleOnLoad();
 	jtrtStyles.handleOnChange();
-
+	jtTables.updateDefaultSortColsSelect();
 
 	function getParameterByName(name, url) {
 		if (!url) url = window.location.href;
@@ -180,6 +180,8 @@
 		
 		var opts = ['data-breakpoints', 'data-filtering', 'data-paging', 'data-sorting'];
 		
+		table.attr('data-jtrt-id',jQuery('input#post_ID').val());
+
 		for(var i = 0; i < opts.length; i++){
 			if(opts[i] == "data-breakpoints"){
 				var jttable_breakpoints = {
@@ -201,6 +203,13 @@
 				var optValue2 = optsContainer.find('fieldset#'+opts[i]+' input#jtrt_table_allow_paging_rowCount').val();
 				table.attr(opts[i], optValue);
 				table.attr('data-paging-size',optValue2);
+			}else if(opts[i] == "data-sorting"){
+				var optValue = optsContainer.find('fieldset#'+opts[i]+' input').val();
+				var optValue2 = optsContainer.find("#jtrt_table_allow_sorting_default_col").val();
+				table.attr(opts[i], optValue);
+				console.log(optValue2);
+				table.find('thead tr.sorted_head td:not(:first-child)[data-sorted="true"]').attr('data-sorted','');
+				table.find('thead tr.sorted_head td:not(:first-child)').eq(optValue2).attr("data-sorted",'true');
 			}else{
 				var optValue = optsContainer.find('fieldset#'+opts[i]+' input').val();
 				table.attr(opts[i], optValue);
@@ -232,6 +241,8 @@
 	jQuery('#jtrt_table_creator_options_container fieldset:not(:first-child) ul li input:not(#jtrt_table_allow_paging_rowCount)').on('click', function(){
 		jQuery(this).val(jQuery(this).prop('checked'));
 	});
+
+	jQuery('#jtrt_table_allow_sorting_default_col option').eq(jQuery('#jtrt_table_allow_sorting_default_col').attr('data-defcol')).prop('selected',true);
 	
 
 	jQuery('#jtrt_generate_table_btn').on('click', function(){

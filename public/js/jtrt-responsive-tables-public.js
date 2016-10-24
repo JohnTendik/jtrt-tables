@@ -40,7 +40,8 @@
 	};
 
 	jtrt_table_content.each(function(i,elem){
-		var tableBPs = JSON.parse(jQuery(this).prev().val()) || JSON.parse(jQuery(this).prev().find('input').val());
+		var jtrt_table_id = jQuery(jtrt_table_content[i]).attr('data-jtrt-id');
+		var tableBPs = JSON.parse(jQuery('input#jtrt_hidden_tableBP'+jtrt_table_id).val());
 		jQuery(this).footable({
 			"useParentWidth": true,
 			"breakpoints": {

@@ -217,10 +217,11 @@ function isJTRTonThePage(){
 
 function jtrt_custom_styler($data){
 	if(isset($data->jttable_styles) && strpos($data->jttable_styles, 'example') !== false){
-		$styleType = explode(",",$data->jttable_styles)[1];
-		$file = WP_PLUGIN_DIR . '/jtrt-responsive-tables/public/css/' . $styleType . ".css";
+		$styleType = explode(",",$data->jttable_styles);
+		$actualStyleType = $styleType[1];
+		$file = WP_PLUGIN_DIR . '/jtrt-responsive-tables/public/css/' . $actualStyleType . ".css";
 		$current = file_get_contents($file);
-		$current = str_replace(".replace-me-for-specific-class.".$styleType,".jtrt_".$data->jttable_IDD."_exStyle_".$styleType,$current);
+		$current = str_replace(".replace-me-for-specific-class.".$actualStyleType,".jtrt_".$data->jttable_IDD."_exStyle_".$actualStyleType,$current);
 		return $current;
 	}
 }
@@ -249,11 +250,12 @@ function jtrt_handle_custom_HTML($idd,$origContent){
 	$retrieve_data = $wpdb->get_results( "SELECT * FROM $jtrt_tables_name WHERE jttable_IDD = " . $idd );
     if($retrieve_data){   
        $htmlContent = "";
-       if(get_post_meta($idd, 'jtrt_general_settings')[0]['showTitle'] !== undefined && get_post_meta($idd, 'jtrt_general_settings')[0]['showTitle'] === "true"){
-          $htmlContent .="<h2 style='text-align:". get_post_meta($idd, 'jtrt_general_settings')[0]['titlePos'] .";'>".$retrieve_data[0]->jttable_name."</h2>";
+	   $get_post_meta_jtrt = get_post_meta($idd, 'jtrt_general_settings');
+       if($get_post_meta_jtrt[0]['showTitle'] !== undefined && $get_post_meta_jtrt[0]['showTitle'] === "true"){
+          $htmlContent .="<h2 style='text-align:". $get_post_meta_jtrt[0]['titlePos'] .";'>".$retrieve_data[0]->jttable_name."</h2>";
        }
        ob_start();
-       echo "<input name='' id='jtrt_hidden_tableBP".$idd."' type='hidden' value='".(isset(get_post_meta($idd, 'jtrt_general_settings')[0]['hiddenCols']) ? get_post_meta($idd, 'jtrt_general_settings')[0]['hiddenCols'] : '')."'>";
+       echo "<input name='' id='jtrt_hidden_tableBP".$idd."' type='hidden' value='".(isset($get_post_meta_jtrt[0]['hiddenCols']) ? $get_post_meta_jtrt[0]['hiddenCols'] : '')."'>";
        $htmlContent .= ob_get_clean();
 	   $htmlContent .= "<table class=\"jtrt_table_creator jtrt_table_" . $idd;
 	   $origContent = str_replace("<table class=\"jtrt_table_creator jtrt_table_".$idd,$htmlContent,$origContent);

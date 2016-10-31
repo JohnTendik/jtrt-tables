@@ -16,7 +16,14 @@ function jtrt_shortcode_table( $atts ){
           $htmlContent .="<h2 style='text-align:". (isset($get_post_meta[0]['titlePos']) ? $get_post_meta[0]['titlePos'] : "Left") .";'>".$retrieve_data[0]->jttable_name."</h2>";
        }
        ob_start();
-       echo "<p><input name='' id='jtrt_hidden_tableBP".$jtrt_settings['id']."' type='hidden' value='".(isset(get_post_meta($jtrt_settings['id'], 'jtrt_general_settings')[0]['hiddenCols']) ? get_post_meta($jtrt_settings['id'], 'jtrt_general_settings')[0]['hiddenCols'] : '')."'></p>";
+
+       // Check if breakpoints is set
+       $custom_bp_jtrt = "";
+       if(isset($get_post_meta[0]['hiddenCols'])){
+            $custom_bp_jtrt = $get_post_meta[0]['hiddenCols'];
+       }
+
+       echo "<p><input name='' id='jtrt_hidden_tableBP".$jtrt_settings['id']."' type='hidden' value='".$custom_bp_jtrt."'></p>";
 	   echo html_entity_decode(stripslashes($retrieve_data[0]->object_type));
        $htmlContent .= ob_get_clean();
        if(strpos($retrieve_data[0]->jttable_styles, 'example') !== false){

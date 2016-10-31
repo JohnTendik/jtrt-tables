@@ -3,8 +3,8 @@ Contributors: MyThirdEye
 Donate link: //
 Tags: responsive tables, responsive, table, table generator, csv to table, csv, convert csv, responsive table generator, foo tables, responsive table, mobile tables, html table generator, html5 table
 Requires at least: 4.0
-Tested up to: 4.6
-Stable tag: 3.0.2
+Tested up to: 4.6.1
+Stable tag: 3.0.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,6 +95,14 @@ If you can see your images/links in the backend but not on the frontend, then th
 6. Front End Sample 2.2
 
 == Changelog ==
+
+= 3.0.3.1 =
+* Quick hotfix for non saving tables
+* php 5.3 Support
+
+= 3.0.3 = 
+* Added default column sorting
+* Fixed issues with styling
 
 = 3.0.2 =
 * Added the the ability to quickly and easily insert links/images

@@ -73,12 +73,14 @@ class Jtrt_Responsive_Tables_Admin {
 		 * class.
 		 */
 		if(CheckIfJTRTExists()){
+
 			wp_enqueue_style('plugin_name-admin-ui-css',
                 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css',
                 false,
                 PLUGIN_VERSION,
                 false);
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . '../dist/admin/css/jtrt-responsive-tables-admin.min.css', array(), $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name . "hansonds", plugin_dir_url( __FILE__ ) . 'css/handsontable.full.css', array(), $this->version, 'all' );
 		}
 	}
 
@@ -104,6 +106,7 @@ class Jtrt_Responsive_Tables_Admin {
 			wp_enqueue_script('jquery-ui-dialog');
 			wp_enqueue_script( $this->plugin_name . '-vendor', plugin_dir_url( __FILE__ ) . '../dist/admin/js/jtrt-responsive-tables-vendor-admin.min.js', array( 'jquery' ), $this->version, true );
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . '../dist/admin/js/jtrt-responsive-tables-admin.min.js', array( 'jquery' ), $this->version, true );
+			wp_enqueue_script( $this->plugin_name . "gahand", plugin_dir_url( __FILE__ ) . 'js/vendor/handsontable.full.js', array( 'jquery' ), $this->version, true );		
 		}
 		
 		

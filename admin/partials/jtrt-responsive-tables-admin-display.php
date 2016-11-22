@@ -5,7 +5,7 @@
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *
- * @link       //
+ * @link       http://johntendik.github.io
  * @since      1.0.0
  *
  * @package    Jtrt_Responsive_Tables

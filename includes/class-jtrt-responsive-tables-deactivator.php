@@ -3,7 +3,7 @@
 /**
  * Fired during plugin deactivation
  *
- * @link       //
+ * @link       http://johntendik.github.io
  * @since      1.0.0
  *
  * @package    Jtrt_Responsive_Tables
@@ -30,7 +30,7 @@ class Jtrt_Responsive_Tables_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-		// Deactivate code
+
 	}
 
 }

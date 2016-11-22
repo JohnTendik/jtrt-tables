@@ -28,31 +28,48 @@
 	 * Although scripts in the WordPress core, Plugins and Themes may be
 	 * practising this, we should strive to set a better example in our own work.
 	 */
-	
-	var jtrt_table_content = jQuery('.jtrt_table_creator');
-	jtrt_table_content.hide();
-	jtrt_table_content.find('thead tr:not(.sorted_head)').remove();
-	jtrt_table_content.find('tr td.jtrt_custom_td').remove();
-	jtrt_table_content.find('tbody tr:last-child').remove();
-	var fixJson = function(str) {
-		return String(str)
-			.replace(/\\/g, "");
-	};
 
-	jtrt_table_content.each(function(i,elem){
-		var jtrt_table_id = jQuery(jtrt_table_content[i]).attr('data-jtrt-id');
-		var tableBPs = JSON.parse(jQuery('input#jtrt_hidden_tableBP'+jtrt_table_id).val());
-		jQuery(this).footable({
-			"useParentWidth": true,
-			"breakpoints": {
-				"xs": tableBPs['x-small'],
-				"sm": tableBPs['small'],
-				"md": tableBPs['medium'],
-				"lg": tableBPs['large'],
-				"xl": tableBPs['x-large']
-			}			
-		});
+	$(document).ready(function(){
+
+		var jtrt_table_data = JSON.parse($('#jtrt_options textarea').html());
+		var table = $('table');
+
+		jtrt_table_data[1].forEach(function(element) {
+			var tRow = table.find('tr').eq(element['row']);
+			var tCell = tRow.find('td').eq(element['col']);
+			tCell.addClass(element['className']);
+
+			if(element['borders']){
+				var borderInfor = element['borders'];
+
+				for (var key in borderInfor) {
+					// skip loop if the property is from prototype
+					if (!borderInfor.hasOwnProperty(key)) continue;
+
+					var obj = borderInfor[key];
+					for (var prop in obj) {
+						// skip loop if the property is from prototype
+						if(!obj.hasOwnProperty(prop)) continue;
+
+						// your code
+						if(key == "left" || key == "right" || key == "top" || key == "bottom"){
+							if(obj['hide'] != true){
+								tCell.addClass('border-'+key);
+							}
+						}
+					}
+				}
+
+			}
+
+			for (var k in element['jtcellstyle']){
+				if (element['jtcellstyle'].hasOwnProperty(k)) {
+					tCell.css(k,element['jtcellstyle'][k])
+				}
+			}
+
+		}, this);
+
 	});
-	jtrt_table_content.show();
-	
+
 })( jQuery );

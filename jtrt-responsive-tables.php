@@ -8,15 +8,15 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              //
+ * @link              http://johntendik.github.io
  * @since             1.0.0
  * @package           Jtrt_Responsive_Tables
  *
  * @wordpress-plugin
  * Plugin Name:       JTRT Responsive Tables
  * Plugin URI:        https://wordpress.org/plugins/jtrt-responsive-tables/
- * Description:       Easily create responsive tables in the backend without having to read or write code. This plugin converts CSV files into responsive HTML..
- * Version:           3.0.3.1
+ * Description:       Light weight plugin that helps you easily create responsive tables in the backend without having to read or write code. 
+ * Version:           4.0
  * Author:            John Tendik
  * Author URI:        https://github.com/mythirdeye/jtrt-tables
  * License:           GPL-2.0+
@@ -24,7 +24,6 @@
  * Text Domain:       jtrt-responsive-tables
  * Domain Path:       /languages
  */
-
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

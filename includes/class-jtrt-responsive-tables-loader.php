@@ -3,7 +3,7 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @link       //
+ * @link       http://johntendik.github.io
  * @since      1.0.0
  *
  * @package    Jtrt_Responsive_Tables

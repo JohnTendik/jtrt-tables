@@ -1,5 +1,5 @@
 (function( $ ) {
-
+	'use strict';
 
 	/**
 	 * All of the code for your admin-facing JavaScript source
@@ -28,241 +28,117 @@
 	 * Although scripts in the WordPress core, Plugins and Themes may be
 	 * practising this, we should strive to set a better example in our own work.
 	 */
-	function Jtrt_Steps_Handler(container) {
-		
-		this.container = container;
-		this.children = this.container.children();
-		this.activePage = this.container.children('.active');
-		this.activePageNum = this.activePage.attr('id')[8];
-		
-		var _this = this;
-		var jt_steps_ui = jQuery('.jt_table_steps ul');
-		
-		
-		this.nextStep = function(dir){
-			if(dir === "prev"){
-				this.updatePageNum("down");
-			}else{
-				this.updatePageNum("up");
-			}
-			
-			this.activePage.fadeOut(300,function(){
-				jQuery(this).removeClass('active');
-				_this.activePage = _this.container.children('#jt_step_' + _this.activePageNum).fadeIn(300).addClass('active');
-			});
 
-			jt_steps_ui.find('.jt_step_active').removeClass('jt_step_active');
-			jt_steps_ui.find('li').eq(this.activePageNum - 1).addClass('jt_step_active');										
-		}
 
-		this.setStepPage = function(num){
-			this.activePageNum = num;
-			this.activePage.fadeOut(300,function(){
-				jQuery(this).removeClass('active');
-				_this.activePage = _this.container.children('#jt_step_' + _this.activePageNum).fadeIn(300).addClass('active');
-			});
+	// Global table obj
+	var JTrtTableEditor = {};
 
-			jt_steps_ui.find('.jt_step_active').removeClass('jt_step_active');
-			jt_steps_ui.find('li').eq(this.activePageNum-1).addClass('jt_step_active');
-		}	
-		
-		this.updatePageNum = function(dir){
-			if(dir == "up"){
-				this.activePageNum++;
-				if(this.activePageNum > 4){
-					this.activePageNum = 4;
-				}
-			}else{
-				this.activePageNum--;
-				if(this.activePageNum < 1){
-					this.activePageNum = 1;
-				}
-			}
-		}
-	}
-	
-	var jtrt_Steps = new Jtrt_Steps_Handler(jQuery('.jtrt_editor_container'));
-	var jtTables = new JtrtTables(jQuery('table.jtrt_table_creator'));
-	var jtTablesStyles = "";
-	var tablePig = jQuery('.jtrt_style_pig_bt');
-	var jtrtStyles = new Jtrt_styles_editor(jQuery('#jt_step_3 .jtrt_options_styles'));
-	var jtrt_table_style_type = "inherit";
+	$(document).ready(function(){
 
-	jtrtStyles.handleOnLoad();
-	jtrtStyles.handleOnChange();
-	jtTables.updateDefaultSortColsSelect();
+		JTrtTableEditor = new JTrtEditor(document.getElementById('jtrt-table-handson'));
 
-	function getParameterByName(name, url) {
-		if (!url) url = window.location.href;
-		name = name.replace(/[\[\]]/g, "\\$&");
-		var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-			results = regex.exec(url);
-		if (!results) return null;
-		if (!results[2]) return '';
-		return decodeURIComponent(results[2].replace(/\+/g, " "));
-	}
-	
-	if(getParameterByName('post') != null){
-		jtrt_Steps.nextStep();
-	}
-	
-	jQuery('.jt_table_steps ul li').on('click',function(){
-		var num = jQuery(this).attr('data-page-id');
-		jtrt_Steps.setStepPage(num);
-	});
+		//Setup the click event for the publish/update button
+		jQuery('#publish').on('click',JTrtTableEditor.handleOnSave);
 
-	jQuery('.jt_step_1_btn').on('click',function(){
-		if(!jQuery(this).hasClass('scratch')){
-			return;
-		}
-		
-		jtrt_Steps.nextStep();
-
-	});
-	
-	jQuery('#jt_upload_Csv').on('change',function(elem){
-		jtTables.jtLoader('show');
-		jtTables.handleCSVImport(jQuery(this));
-		jtrt_Steps.nextStep();
-		
-	});
-	
-	jQuery('div.jt_nav_container a').on('click',function(){
-		jtrt_Steps.nextStep(jQuery(this).attr('data-jt-steps-dir'));
-	});
-
-	function updateTableStyles(){
-		if(jQuery('#jtrt_table_styles_type select').attr('data-table-style-type') === "bootstrap"){
-			jQuery('#bootstrap_opts_jtrt fieldset ul li input').each(function(){
-				
-				if(jQuery(this).val() === "true"){
-					jtTables.container.addClass(jQuery(this).attr('data-bt-classes-jt'));
-				}else{
-					jtTables.container.removeClass(jQuery(this).attr('data-bt-classes-jt'));
-				}
-				
-			});
-			jtrt_table_style_type = "bootstrap";
-		}
-		else if(jQuery('#jtrt_table_styles_type select').attr('data-table-style-type') === "example1"){
-			var classList = $('.jtrt_example_pig').attr('class').split(" ");
-			var exampleStyle = classList[1];
-			jtrt_table_style_type = "example,"+ exampleStyle;
-		}
-	}
-	
-	jQuery('#publish').on("click",function(e){
-		
-		jQuery('div#jtrt_table_container .jtrt_error_message').remove();
-		updateTableOptions();
-		updateTableStyles();
-
-		var data = {
-		'action': 'gen_table_1',
-		'idd': jQuery('input#post_ID').val(),
-		'data': jQuery('div#jtrt_table_container').html(),
-		'table_name': jQuery('input#title').val(),
-		'table_styles': jtrt_table_style_type			
-		};
-		
-		jQuery.post(ajaxurl, data, function(response) {
-			jQuery('#publish').click();
+		//click event for the undo/redo button
+		jQuery('#jtundo,#jtredo').on('click',function(){
+			JTrtTableEditor.rudo($(this).attr('data-jtrt-btnType'));
 		});
-			
-	});
-	
-	jQuery('#jtrt_short_code').html('[jtrt_tables id="'+jQuery('#post_ID').val()+'"]')
-	
-	function updateTableOptions(){
-		
-		var table = jQuery('table.jtrt_table_creator');
-		var optsContainer = jQuery('#jtrt_table_creator_options_container');
-		
-		var opts = ['data-breakpoints', 'data-filtering', 'data-paging', 'data-sorting'];
-		
-		table.attr('data-jtrt-id',jQuery('input#post_ID').val());
 
-		for(var i = 0; i < opts.length; i++){
-			if(opts[i] == "data-breakpoints"){
-				var jttable_breakpoints = {
-					"x-small": 480,
-					"small": 768,
-					"medium": 992,
-					"large": 1200,
-					"x-large": 1400
-				};
-				optsContainer.find('fieldset#data-breakpoints input').each(function(i,elem){
-					if(jQuery(this).attr('type') === "hidden"){
-						return;
-					}
-					jttable_breakpoints[jQuery(this).attr('data-jtbp')] = parseInt(jQuery(this).val());
-				});
-				jQuery('#jtrt_hidden_tableBP').val(fixJson(JSON.stringify(jttable_breakpoints)));
-			}else if(opts[i] == "data-paging"){
-				var optValue = optsContainer.find('fieldset#'+opts[i]+' input#jtrt_table_allow_paging').val();
-				var optValue2 = optsContainer.find('fieldset#'+opts[i]+' input#jtrt_table_allow_paging_rowCount').val();
-				table.attr(opts[i], optValue);
-				table.attr('data-paging-size',optValue2);
-			}else if(opts[i] == "data-sorting"){
-				var optValue = optsContainer.find('fieldset#'+opts[i]+' input').val();
-				var optValue2 = optsContainer.find("#jtrt_table_allow_sorting_default_col").val();
-				table.attr(opts[i], optValue);
-				console.log(optValue2);
-				table.find('thead tr.sorted_head td:not(:first-child)[data-sorted="true"]').attr('data-sorted','');
-				table.find('thead tr.sorted_head td:not(:first-child)').eq(optValue2).attr("data-sorted",'true');
-			}else{
-				var optValue = optsContainer.find('fieldset#'+opts[i]+' input').val();
-				table.attr(opts[i], optValue);
+		var modal = document.getElementById('jtFindAndReplaceModal');
+		var linkModal = document.getElementById('jtlinkModal');
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+			if (event.target == linkModal) {
+				linkModal.style.display = "none";
 			}
 		}
 		
-		optsContainer.find('');
-		
-	}
-	
 
-	var fixJson = function(str) {
-		return String(str)
-			.replace(/"/g, "&quot;");
-	};
-	
-	jQuery('#jtrt_table_creator_options_container fieldset:not(#data-breakpoints) ul li input').each(function(i,elem){
-		if(jQuery(this).val() == "true"){
-			jQuery(this).prop('checked', true);
-		}	
-	});
-	
-	
-	// Change the title position options to reflect the saved values. 
-	var showTitleOpt = jQuery('#jtrt_showTitle_pos').attr('data-jt-titlepos');
-	jQuery('#jtrt_showTitle_pos').find('option[value="'+showTitleOpt+'"]').prop('selected', true);
-	
-	// Change the enabled options to reflect the saved values. //don't select first fieldset inputs and dont select the rowcount input
-	jQuery('#jtrt_table_creator_options_container fieldset:not(:first-child) ul li input:not(#jtrt_table_allow_paging_rowCount)').on('click', function(){
-		jQuery(this).val(jQuery(this).prop('checked'));
-	});
+		$('#jtrt_tables_post').removeClass("postbox");
+		$('#normal-sortables, #jtrt_tables_post .hndle, #jtrt_tables_post .handlediv').remove();
+		$('#jtrt_tables_post').prepend("<h1>JT Responsive Tables</h1>");
 
-	jQuery('#jtrt_table_allow_sorting_default_col option').eq(jQuery('#jtrt_table_allow_sorting_default_col').attr('data-defcol')).prop('selected',true);
-	
+		window.myColorPicker = $('input.jtcoloreditpicker').colorPicker({
+			customBG: '#222',
+			margin: '4px -2px 0',
+			doRender: 'div div',
+			
+			buildCallback: function($elm) {
+				var colorInstance = this.color,
+					colorPicker = this;
 
-	jQuery('#jtrt_generate_table_btn').on('click', function(){
+				$elm.prepend('<div class="cp-panel">' +
+					'R <input type="text" class="cp-r" /><br>' +
+					'G <input type="text" class="cp-g" /><br>' +
+					'B <input type="text" class="cp-b" /><hr>' +
+					'H <input type="text" class="cp-h" /><br>' +
+					'S <input type="text" class="cp-s" /><br>' +
+					'B <input type="text" class="cp-v" /><hr>' +
+					'<input type="text" class="cp-HEX" />' +
+				'</div>').on('change', 'input', function(e) {
+					var value = this.value,
+						className = this.className,
+						type = className.split('-')[1],
+						color = {};
 
-		var currentHtml = jQuery("#jtrt_table_container").clone();
-		var thead = currentHtml.find('tr.sorted_head').clone();	
-		currentHtml.find('thead').html(thead[0].outerHTML);
-		currentHtml.find('table').addClass('jtrt_custom_html');
-		currentHtml.find('td.jtrt_custom_td').remove();
-		jQuery('#jtrt_html_code textarea').text(currentHtml[0].innerHTML);
-		jQuery('#jtrt_html_code').fadeIn();
+					color[type] = value;
+					colorInstance.setColor(type === 'HEX' ? value : color,
+						type === 'HEX' ? 'HEX' : /(?:r|g|b)/.test(type) ? 'rgb' : 'hsv');
+					colorPicker.render();
+					this.blur();
+				}).on('click',function(e){
+					e.stopPropagation();
+				});
+			},
 
-	});
-	
-	
-	
-	
-	
-	
+			cssAddon: // could also be in a css file instead
+				'.cp-color-picker{box-sizing:border-box; width:226px;z-index:99999;}' +
+				'.cp-color-picker .cp-panel {line-height: 21px; float:right;' +
+					'padding:0 1px 0 8px; margin-top:-1px; overflow:visible}' +
+				'.cp-xy-slider:active {cursor:none;}' +
+				'.cp-panel, .cp-panel input {color:#bbb; font-family:monospace,' +
+					'"Courier New",Courier,mono; font-size:12px; font-weight:bold;}' +
+				'.cp-panel input {width:28px; height:12px; padding:2px 3px 1px;' +
+					'text-align:right; line-height:12px; background:transparent;' +
+					'border:1px solid; border-color:#222 #666 #666 #222;}' +
+				'.cp-panel hr {margin:0 -2px 2px; height:1px; border:0;' +
+					'background:#666; border-top:1px solid #222;}' +
+				'.cp-panel .cp-HEX {width:44px; position:absolute; margin:1px -3px 0 -2px;}' +
+				'.cp-alpha {width:155px;}',
+
+			renderCallback: function($elm, toggled) {
+				var colors = this.color.colors.RND,
+					modes = {
+						r: colors.rgb.r, g: colors.rgb.g, b: colors.rgb.b,
+						h: colors.hsv.h, s: colors.hsv.s, v: colors.hsv.v,
+						HEX: this.color.colors.HEX
+					};
+
+				$('input', '.cp-panel').each(function() {
+					this.value = modes[this.className.substr(3)];
+				});
+
+				if(toggled === false){
+					
+					var colVal = "color";
+					if(jQuery($elm.context).attr('id') == "jtcellcolor")
+						colVal = "background"
+
+					JTrtTableEditor.editCellText(colVal,$elm.val());
+
+				}
+			}
+
+			
 
 
+		});
+
+	}); // .ready
 
 })( jQuery );

@@ -6,7 +6,7 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       //
+ * @link       http://johntendik.github.io
  * @since      1.0.0
  *
  * @package    Jtrt_Responsive_Tables
@@ -69,7 +69,7 @@ class Jtrt_Responsive_Tables {
 	public function __construct() {
 
 		$this->plugin_name = 'jtrt-responsive-tables';
-		$this->version = '1.0.0';
+		$this->version = '4.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -153,13 +153,15 @@ class Jtrt_Responsive_Tables {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'init', $plugin_admin, 'jtrt_tables_post' ); // Hook into init so we can display the JTRT tables custom post page.	
-		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'jtrt_table_add_meta_box' );
+		
+		// Create the Custom Post Type
+		$this->loader->add_action( 'init', $plugin_admin, 'jtrt_create_tables_cpost' );
+		// Add the meta box on the custom JTRT post type
+		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'jtrt_cpost_add_meta_box' );
 		$this->loader->add_action( 'save_post', $plugin_admin, 'jtrt_save_metabox_data' );
-		$this->loader->add_action( 'wp_ajax_gen_table_1', $plugin_admin, 'jtrt_tables_generate_ajax' );
-		$this->loader->add_action( 'before_delete_post', $plugin_admin, 'delete_jtrt_tables_func' );
 		
-		
+
+
 	}
 
 	/**

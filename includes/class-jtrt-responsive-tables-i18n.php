@@ -6,7 +6,7 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       //
+ * @link       http://johntendik.github.io
  * @since      1.0.0
  *
  * @package    Jtrt_Responsive_Tables

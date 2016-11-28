@@ -33,6 +33,12 @@
     margin: 0;
     padding:14px;
     text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+#jt-editor-container header ul li:hover{
+    background:#f06d06;
+    color: white;
 }
 
 #jt-editor-container header ul li.active{
@@ -177,11 +183,11 @@
     color: white;
 }
 
-#jteditfont,#jtinsertlink,#jtbordersbtn,#jthighlight{
+#jteditfont,#jtinsertlink,#jtbordersbtn,#jthighlight,#jthidecolsbtn{
     position: relative;
 }
 
-#jteditfont ul,#jtinsertlink ul,#jtbordersbtn ul, #jthighlight ul{
+#jteditfont ul,#jtinsertlink ul,#jtbordersbtn ul, #jthighlight ul, #jthidecolsbtn ul{
     position:absolute;
     z-index:9999;
     background:rgba(255,255,255,0.9);
@@ -381,4 +387,169 @@
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
+}
+
+.jtrteditorsection{
+    display: none;
+}
+
+.jtrteditorshow.jtrteditorsection{
+    display: block;
+}
+
+#jtoptionsContainer{
+    max-width: 100%;
+    display: flex;
+    background: white;
+    padding: 14px;
+    align-items: top;
+}
+
+#jtoptionsContainer .leftSidejt{
+    max-width: 30%;
+    background: #f1f1f1;
+    width: 100%;
+    margin-right: 14px;
+    margin-bottom: -14px;
+}
+
+#jtoptionsContainer .leftSidejt ul{
+    margin:0;
+    padding: 0;
+
+}
+
+#jtoptionsContainer .leftSidejt ul li{
+    padding: 8px 14px;
+    width: 100%;
+    left: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition:all 0.3s;
+    cursor: pointer;
+}
+
+#jtoptionsContainer .leftSidejt ul li.active{
+    background: #f06d06;
+    color: white;
+}
+
+#jtoptionsContainer .leftSidejt ul li:hover{
+    background: #f06d06;
+    color: white;
+}
+
+#jtoptionsContainer .rightSidejt h2{
+    padding:0;
+    margin:0;
+}
+
+#jtoptionsContainer .rightSidejt{
+    width:100%;
+}
+
+#jtoptionsContainer .rightSidejt table{
+    width: 100%;
+}
+
+#jtoptionsContainer .rightSidejt table tbody tr td:last-child{
+    float:right;
+    text-align: right;
+}
+
+#jtoptionsContainer .rightSidejt table tbody tr{
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    background: #fbfbfb;
+    vertical-align: middle;
+    margin-bottom: 3px;
+}
+
+#jtoptionsContainer .rightSidejt table tbody tr td{
+    padding:8px;
+}
+
+.rightSidejt .optionsPagejt{
+    display: none;
+}
+
+.rightSidejt .optionsPagejt.jtoptionsshow{
+    display: block;
+}
+
+div#jtrshortcontainer{
+    background:white;
+    padding:14px;
+
+}
+
+div#jtrshortcontainer table{
+    width:100%;
+}
+
+div#jtrshortcontainer h2{
+    margin: 0;
+    padding: 0;
+}
+
+div#jtrt_tables_post h1{
+    display: none;
+}
+
+div#jtConverAvailMessage{
+    padding:8px 14px;
+    background:white;
+    box-shadow:0 0 7px #ccc;
+    margin-bottom: 24px;
+    border-left:12px solid #f06d06;
+}
+
+div#jtConverAvailMessage div{
+    text-align: right;
+    margin: 14px;
+}
+
+div#jtConverAvailMessage a{
+    padding:8px 14px;
+    background:#f06d06;
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+}
+
+div#jtresponsiveoptionscontainer div{
+    display: none;
+}
+
+#jthidecolsbtn ul tr td{
+    white-space: nowrap;
+    padding:8px;
+}
+
+.jtfootablehide{
+    text-align: center;
+    border-radius: 2px;
+}
+
+.jtfootablehide.selectedCol{
+    background:#f06d06;
+    color:white;
+}
+
+#jtsupportcolumn{
+    display: flex;
+    margin-bottom: 1px;
+    align-items: flex-start;
+    background:white;
+    padding:14px;
+    justify-content: space-between;
+}
+
+#jtsupportcolumn div{
+    width:33%;
+    padding: 14px;
 }

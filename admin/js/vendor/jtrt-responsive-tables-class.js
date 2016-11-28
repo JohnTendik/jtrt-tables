@@ -93,8 +93,37 @@ JTrtEditor.prototype.init = function(){
 				
 				jQuery(this).find('ul select').val(selectopt);
 				jQuery(this).find('ul input[type="number"]').val(selectopt2);
-                console.log(selectopt3);
+
                 jQuery(this).find('ul input#jtfontcolor').val(selectopt3).css('background',selectopt3);
+            }
+
+            if(jQuery(this).attr('id') == "jthidecolsbtn"){
+                var selectopt = (Iam.handsOnTab.getCellMeta(0,selected[1])['jtfootablebps'] ? Iam.handsOnTab.getCellMeta(0,selected[1])['jtfootablebps'] : {
+                    "xsmall":"",
+                    "small":"",
+                    "medium":"",
+                    "large":"",
+                    "xlarge":""     
+                });
+								
+				var bpopts = jQuery(this).find('.jtfootablehide');
+                bpopts.each(function(element,uindx) {
+   
+                    var thisElem = jQuery(this);
+                    var thisvarvaljt = thisElem.attr('data-footab-hidden');
+
+                    if(selectopt[thisvarvaljt] == thisvarvaljt){
+                        jQuery(this).addClass('selectedCol');
+                    }else{
+                        
+                        jQuery(this).removeClass('selectedCol');
+                    }
+
+                }, this);
+
+                var headerBreakPoints = Iam.handsOnTab.getCellMeta(0,selected[1])['jtfootabcoltype'] || "text";
+                jQuery('#jtavailcoltype').val(headerBreakPoints);
+
             }
 
             if(jQuery(this).find('ul').css('display') == "none"){
@@ -213,6 +242,81 @@ JTrtEditor.prototype.init = function(){
         Iam.linkModal.css('display','none');
         Iam.editCellText("insertlink", jtLink);  
     });   
+
+
+    jQuery('#jthidecolsbtn .jtfootablehide').on('click',function(){
+        
+        if(jQuery(this).hasClass('selectedCol')){
+            jQuery(this).removeClass('selectedCol');
+        }else{
+            jQuery(this).addClass('selectedCol');
+        }
+
+        var hiddenSelectJt = jQuery(this).attr('data-footab-hidden');
+        var Iamyo = jQuery(this);
+        Iam.loader.fadeIn();
+
+    window.setTimeout(function(){
+        var selected = Iam.handsOnTab.getSelected();
+        
+        if(selected != undefined && selected.length > 0){
+            
+            Iam.generateSelectionFunc(selected,function(i,t){
+                var headerBreakPoints = Iam.handsOnTab.getCellMeta(0,t)['jtfootablebps'] || {
+                    "xsmall":"",
+                    "small":"",
+                    "medium":"",
+                    "large":"",
+                    "xlarge":""     
+                };
+               
+                if(headerBreakPoints[hiddenSelectJt] != hiddenSelectJt){
+                    headerBreakPoints[hiddenSelectJt] = hiddenSelectJt;
+                }else{
+                    headerBreakPoints[hiddenSelectJt] = "";
+                }
+                
+                Iam.handsOnTab.setCellMeta(0,t,'jtfootablebps',headerBreakPoints);
+                Iam.reRenderTable();
+            });
+
+
+        }else{
+            alert('You have to first select cells that you want to edit');
+        }
+
+        Iam.loader.fadeOut();
+    },300);
+        
+    });
+
+
+
+    jQuery('#jtavailcoltype').on('change',function(){
+
+
+        var coltypejt = jQuery(this).val();
+        Iam.loader.fadeIn();
+
+        window.setTimeout(function(){
+            var selected = Iam.handsOnTab.getSelected();
+            
+            if(selected != undefined && selected.length > 0){
+                
+                Iam.generateSelectionFunc(selected,function(i,t){                                      
+                    Iam.handsOnTab.setCellMeta(0,t,'jtfootabcoltype',coltypejt);
+                    Iam.reRenderTable();
+                });
+
+
+            }else{
+                alert('You have to first select cells that you want to edit');
+            }
+
+            Iam.loader.fadeOut();
+        },300);
+
+    });
    
 
 } // init
@@ -222,7 +326,7 @@ JTrtEditor.prototype.getData = function(){
     if(this.dataBox.html() !== ""){
         var jtrt_saved_data = JSON.parse(this.dataBox.html());		
         
-        return [jtrt_saved_data[0],jtrt_saved_data[1],jtrt_saved_data[2] || true];
+        return [jtrt_saved_data[0],jtrt_saved_data[1] || {},jtrt_saved_data[2] || true];
 
     }else{
         return [[
@@ -348,6 +452,12 @@ JTrtEditor.prototype.handleOnSave = function(event){
                 case "jtcellstyle":
                     tableCellData[key] = element[key];
                     break;
+                case "jtfootablebps":
+                    tableCellData[key] = element[key];
+                    break;
+                case "jtfootabcoltype":
+                    tableCellData[key] = element[key];
+                    break;
             }				
         }
         tableCellDataNew.push(tableCellData);
@@ -407,13 +517,16 @@ JTrtEditor.prototype.editCellText = function(opt,vals,borderc){
                     customBorders: [{}]
                 }
 
+                
                 for(var keyjt in vals){
                     newbrd[keyjt] = vals[keyjt];
                     newupdateborder['customBorders'][0][keyjt] = vals[keyjt];
                 }
                 Iam.generateSelectionFunc(selected,function(i,t){
+
                     newbrd['row'] = i;
                     newbrd['col'] = t;
+
                     newupdateborder['customBorders'][0]['range'] = {
                         from: {
                             row: selected[0],
@@ -441,11 +554,11 @@ JTrtEditor.prototype.editCellText = function(opt,vals,borderc){
                     }
                     Iam.handsOnTab.updateSettings(newupdateborder);
                     Iam.handsOnTab.setCellMeta(i,t,'borders',newbrd);
+                  
+                                    
                     
-                    Iam.reRenderTable();
-                    Iam.handsOnTab.runHooks('afterInit');
                 });
-                
+                 Iam.handsOnTab.runHooks('afterInit');
             }else{
                 Iam.generateSelectionFunc(selected,function(i,t){
                     var currentMeta = Iam.handsOnTab.getCellMeta(i,t)['jtcellstyle'] || {};

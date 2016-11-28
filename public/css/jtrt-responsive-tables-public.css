@@ -3,31 +3,117 @@
  * included in this file.
  */
 
- table tr td.htRight{
+  .jtTableContainer table{
+     border-collapse: collapse;
+     border: none;
+
+ }
+
+  .jtTableContainer table tr{
+     border: none;   
+ }
+
+   .jtTableContainer table tr td, .jtTableContainer table tr th{
+     border: none;   
+     white-space: nowrap;
+ }
+
+ table tr td.htRight, table tr th.htRight{
      text-align: right;
  }
 
- table tr td.htCenter{
+ table tr td.htCenter, table tr th.htCenter{
      text-align: center;
  }
 
- table tr td.htLeft{
+ table tr td.htLeft,table tr th.htLeft{
      text-align: left;
  }
 
- table tr td.htJustify{
+ table tr td.htJustify,table tr th.htJustify{
      text-align: justify;
  }
 
- table tr td.border-bottom{
+ table tr td.border-bottom,table tr th.border-bottom{
      border-bottom:solid 1px black;
  }
- table tr td.border-top{
+ table tr td.border-top,table tr th.border-top{
      border-top:solid 1px black;
  }
- table tr td.border-right{
+ table tr td.border-right,table tr th.border-right{
      border-right:solid 1px black;
  }
- table tr td.border-left{
+ table tr td.border-left,table tr th.border-left{
      border-left:solid 1px black;
  }
+
+.jtrespo-scroll{
+     overflow-x:scroll;
+ }
+
+ .jtrespo-scroll table{
+     table-layout: inherit;
+ }
+ 
+ .jtrespo-scroll{
+     overflow-x:scroll;
+ }
+ .jtrespo-stack table.stackMeNowJT thead{
+     display: none;
+ }
+
+ .jtrespo-stack .stackedheadtitlejt{
+     display:none;
+ }
+
+  .jtrespo-stack table.stackMeNowJT .stackedheadtitlejt{
+      display: inline-block;
+  }
+
+.jtrespo-stack table.stackMeNowJT tr,
+.jtrespo-stack table.stackMeNowJT th,
+.jtrespo-stack table.stackMeNowJT td {
+	display: block;
+}
+
+.jtrespo-stack table.stackMeNowJT tr{
+    margin-bottom:24px;
+    padding:8px;
+    background:#f1f1f1;
+    border:solid 1px #ccc;
+}
+.jtrespo-stack table.stackMeNowJT td {
+	border-top: none;
+}
+.jtrespo-stack table.stackMeNowJT tr td:first-child {
+	border-top: 1px solid #ddd;
+	font-weight: bold;
+}
+
+.dataTables_filter{
+    float: left!important;
+    display: block;
+}
+
+.dataTables_filter label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.dataTables_filter input{
+    height: 32px;
+    margin-left:8px;
+}
+
+.dataTables_length{
+    float: none!important;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.dataTables_paginate{
+    float: none!important;
+    text-align: left!important;
+    margin: 14px 0;
+}

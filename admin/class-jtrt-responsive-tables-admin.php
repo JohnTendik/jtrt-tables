@@ -172,6 +172,34 @@ class Jtrt_Responsive_Tables_Admin {
 		
 	}
 
+	public function get_old_table_callback(){
+		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+		global $wpdb;
+
+		$getTableId = $_POST['tableId'];
+		$tableopt = $_POST['tableOpt'];
+		$jtrt_tables_name = $wpdb->prefix . "jtrt_tables";
+
+		if($tableopt == "delete"){
+			global $post_type;
+			$wpdb->delete( $jtrt_tables_name, array( 'jttable_IDD' => $getTableId ), array( '%d' ) );
+			
+			echo false;
+			return false;
+		}
+
+		
+		$retrieve_data = $wpdb->get_results( "SELECT * FROM $jtrt_tables_name WHERE jttable_IDD = " . $getTableId );
+
+		if($retrieve_data){ 
+			echo html_entity_decode(stripslashes($retrieve_data[0]->object_type));
+		}else{
+			echo 'no';
+		}
+
+
+	}
+
 }
 
 // load in the extra functions 

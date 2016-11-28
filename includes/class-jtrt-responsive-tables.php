@@ -159,6 +159,7 @@ class Jtrt_Responsive_Tables {
 		// Add the meta box on the custom JTRT post type
 		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'jtrt_cpost_add_meta_box' );
 		$this->loader->add_action( 'save_post', $plugin_admin, 'jtrt_save_metabox_data' );
+		$this->loader->add_action( 'wp_ajax_get_old_table', $plugin_admin, 'get_old_table_callback' );
 		
 
 

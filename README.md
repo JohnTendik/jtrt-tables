@@ -76,17 +76,19 @@ Updated video coming soon, hopefully.
 Assuming you've already activated the JTRT responsive tables plugin, click the "add new" button located inside the new JTRT Tables menu
 
 ##### Edit your table to your liking. 
-![](https://ps.w.org/jtrt-responsive-tables/assets/screenshot-2.jpg?rev=1541631)
+![](docs/edittor.jpg)
 The UI should look familiar hopefully to what you're used to. If you have any questions or feedback please contact me. 
 
 ### Step 2: Choose Your options
 
 ###### Show Table Title
 If enabled, your table title will apear in the front end. 
+
 ###### Table Title Position
 Show Table Title needs to be enabled. These are the positions available for your title 
 * Top Left, Center, Right
 * Bottom Left, Center, Right
+
 ###### Responsive Styles
 * Scrolling
   * This option is usually the least responsive, this will add a scroll bar to your table if it excedes the table width
@@ -94,16 +96,21 @@ Show Table Title needs to be enabled. These are the positions available for your
   * This is the footable option. If the video is released please watch that to get an idea of how this option works or read through the [footable documentation.](https://github.com/fooplugins/FooTable)
 * Column Stacking
   * This option will turn your table rows into block content when the size of the table is below the given pixel ( you can set this yourself the default is 500px )
+  
 ###### Filtering
 This will add a search box in the front end so your users who see the table will be able to search through the table
+
 ###### Sorting
 This will allow your users to sort the table data by the columns. Note however if you're using the footable responsive option, you need to also specify the column type (text,html,number,date).
 ###### Pagination
 If your table has a lot of rows, this option will break up your table into pages so your table doesn't stretch the page out
+
 ###### Row Highlighting 
 If enabled, when a user hovers over your table rows, the set color will be applied to the cells
+
 ###### Column Highlighting
 Same as above but for columns.
+
 ###### Shortcode Row Filter Option
 * [jtrt_tables id="1" filterrows="3,5,6" filtercols="2"]
 

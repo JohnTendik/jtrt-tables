@@ -15,8 +15,8 @@
  * @wordpress-plugin
  * Plugin Name:       JTRT Responsive Tables
  * Plugin URI:        https://wordpress.org/plugins/jtrt-responsive-tables/
- * Description:       Light weight plugin that helps you easily create responsive tables in the backend without having to read or write code. 
- * Version:           4.0
+ * Description:       The most advanced table editor for wordpress.
+ * Version:           4.0.1
  * Author:            John Tendik
  * Author URI:        https://github.com/mythirdeye/jtrt-tables
  * License:           GPL-2.0+

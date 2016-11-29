@@ -5,7 +5,9 @@ function jtrt_shortcode_table( $atts ){
 
 	global $wpdb;
 	$jtrt_settings = shortcode_atts( array(
-        'id' => ''
+        'id' => '',
+        'filterrows' => '',
+        'filtercols' => ''
     ), $atts );
 	
     $table_post_meta = get_post_meta( $jtrt_settings['id'], 'jtrt_data_settings', false ); // get the table meta options
@@ -17,8 +19,8 @@ function jtrt_shortcode_table( $atts ){
         echo 'Unfortunately we could not locate the table you\'re looking for.'; 
         return;
     }
-    
-    $showTableTitle = $table_post_meta[0]['jtShowTableTitle'];
+
+    $showTableTitle = (isset($table_post_meta[0]['jtShowTableTitle']) ? "true" : "false");
     $showTableTitlePos = explode(",",$table_post_meta[0]['jtShowTableTitlePos']);
     $myTableTitle = get_the_title($jtrt_settings['id']);
 
@@ -31,6 +33,7 @@ function jtrt_shortcode_table( $atts ){
     $myTableHoverColsCol = (isset($table_post_meta[0]['jtTableEnableColHighlight']) ? "data-jtrt-colhighligh-color='".$table_post_meta[0]['jtTableEnableColHighlightcol']."'" : "");
     
     $myjtbpfootab = array();
+    
 
     if($myTableResponsiveStyle == "footable"){
         
@@ -50,7 +53,7 @@ function jtrt_shortcode_table( $atts ){
 
     $html = "";
 
-    if($showTableTitlePos[0] == "top"){
+    if($showTableTitle == "true" && $showTableTitlePos[0] == "top"){
         $html .= "<h3 style='margin-top:24px;margin-bottom:14px;text-align:".$showTableTitlePos[1].";'>".$myTableTitle."</h3>";
     }
     
@@ -61,27 +64,51 @@ function jtrt_shortcode_table( $atts ){
     // We can only return once, so let's build our html!
     $html .= "<div class='jtsettingcontainer' style='display:none;position:absolute;left:-9999px;'><textarea data-jtrt-table-id='".$jtrt_settings['id']."' id='jtrt_table_settings_".$jtrt_settings['id']."' cols='30' rows='10'>".json_encode($table_data_json)."</textarea><textarea data-jtrt-table-id='".$jtrt_settings['id']."' id='jtrt_table_bps_".$jtrt_settings['id']."' cols='30' rows='10'>".json_encode($myjtbpfootab)."</textarea></div><table id='jtrt_table_".$jtrt_settings['id']."' data-sorting='".$myjttableSorting."' data-paging='".$myjttablePaging."' data-paging-size='".$myjttablePagingCnt."'  data-filtering='".$myjttableFiltering."' data-jtrt-table-id='".$jtrt_settings['id']."' class='jtrt-table' >";
     
+
+    if($jtrt_settings['filterrows'] != ""){
+
+        $filteredRows = explode(",",$jtrt_settings['filterrows']);
+
+    }else{
+        $filteredRows = array();
+    }
+    if($jtrt_settings['filtercols'] != ""){
+
+        $filteredCols = explode(",",$jtrt_settings['filtercols']);
+
+    }else{
+        $filteredCols = array();
+    }
+
     // For each loop to loop through the table data, the first loop is the rows. 
     foreach($table_data as $indx => $row){
 
-        if($indx == 0){
-            $html .= "<thead><tr>";
-            foreach($row as $cellindx => $cell){
-            // For each col item, insert the table data tag and put the data inside it.
-                $html .= "<th>" .$cell. "</th>";                         
-            }
-            $html .= "</tr></thead><tbody>";
-        }else{
-            // For each row, add the table row tag
-            $html .= "<tr>";
-            // Start another loop just for good measure. just kidding, we need this loop for the columns within the rows.
-            foreach($row as $cellindx => $cell){
+        if(!in_array($indx+1,$filteredRows)){
+            if($indx == 0){
+                $html .= "<thead><tr>";
+                foreach($row as $cellindx => $cell){
                 // For each col item, insert the table data tag and put the data inside it.
-                    $html .= "<td>" .$cell. "</td>";                         
-            }
+                    if(!in_array($cellindx+1,$filteredCols)){
+                        $html .= "<td>" .$cell. "</td>";
+                    }                 
+                }
+                $html .= "</tr></thead><tbody>";
+            }else{
+                // For each row, add the table row tag
+            
+                $html .= "<tr>";
+                // Start another loop just for good measure. just kidding, we need this loop for the columns within the rows.
+                foreach($row as $cellindx => $cell){
+                    // For each col item, insert the table data tag and put the data inside it.
+                        if(!in_array($cellindx+1,$filteredCols)){
+                            $html .= "<td>" .$cell. "</td>";
+                        }                         
+                }
 
-            // close our tr so the HTML inspectors happy. Just kidding this is important.
-            $html .= "</tr>";
+                // close our tr so the HTML inspectors happy. Just kidding this is important.
+                $html .= "</tr>";
+                
+            }
         }
         
     }
@@ -93,7 +120,7 @@ function jtrt_shortcode_table( $atts ){
     $html .= "</div>";
 
     $html .= "<div id='jtFooterHolder-".$jtrt_settings['id']."'></div>";
-    if($showTableTitlePos[0] == "bottom"){
+    if($showTableTitle == "true" && $showTableTitlePos[0] == "bottom"){
         $html .= "<h3 style='margin-top:0;margin-bottom:14px;text-align:".$showTableTitlePos[1].";'>".$myTableTitle."</h3>";
     }
 

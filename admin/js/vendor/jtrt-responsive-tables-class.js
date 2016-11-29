@@ -63,7 +63,7 @@ JTrtEditor.prototype.init = function(){
         Iam.editCellText(jQuery(this).attr('data-jtrt-toolbar-opt'),jQuery(this).attr('data-jtrt-toolbar-opt-val'));
     });
 
-    jQuery(document).on("keypress", "#jteditfont ul input[type='number'],#jtinsertlink ul input[type='url'],#jtinputvalbox,.jtcoloreditpicker,#jtlink", function(event) { 
+    jQuery(document).on("keypress", "#jteditfont ul input[type='number'],#jtinsertlink ul input[type='text'],#jtinputvalbox,.jtcoloreditpicker,#jtlink", function(event) { 
         return event.keyCode != 13;
     });
 
@@ -153,10 +153,24 @@ JTrtEditor.prototype.init = function(){
         
     });
 
-    jQuery('#jteditfont ul button').on('click',function(elem){
+    jQuery('#jteditfont ul button#jtsetfontsizebtn').on('click',function(elem){
 			
         var vall = jQuery("#jteditfont ul input[type='number']").val();			
         Iam.editCellText('font-size',vall);
+        
+    });
+
+    jQuery('#jteditfont ul button#jtsetfontcolorbtn').on('click',function(elem){
+			
+        var vall = jQuery("#jteditfont ul input#jtfontcolor").val();			
+        Iam.editCellText('color',vall);
+        
+    });
+
+    jQuery('#jthighlight ul button#jtsetcellcolorbtn').on('click',function(elem){
+			
+        var vall = jQuery("#jthighlight ul input#jtcellcolor").val();			
+        Iam.editCellText('background',vall);
         
     });
 
@@ -169,7 +183,7 @@ JTrtEditor.prototype.init = function(){
 
     jQuery('#jtinsertlink ul button').on('click',function(elem){
 			
-		var vall = jQuery("#jtinsertlink ul input[type='url']").val();
+		var vall = jQuery("#jtinsertlink ul input[type='text']").val();
         Iam.editCellText("insertlink", vall);
 
     });

@@ -58,6 +58,12 @@
  .jtrespo-scroll{
      overflow-x:scroll;
  }
+
+ .jtrespo-stack{
+     table-layout: fixed;
+     max-width: 100%;
+ }
+
  .jtrespo-stack table.stackMeNowJT thead{
      display: none;
  }

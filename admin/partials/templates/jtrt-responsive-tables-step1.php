@@ -105,11 +105,15 @@
                             </tr>
                             <tr>
                                 <td><?php _e('Font Size:',$text_domain); ?></td>
-                                <td><input novalidate type="number" min='10' max='72' style="width:100%;"><button id="jtsetfontsizebtn"><?php _e('Set',$text_domain); ?></button></td>
+                                <td>
+                                    <input novalidate type="number" min='10' max='72' style="width:100%;">
+                                    <button id="jtsetfontsizebtn"><?php _e('Set',$text_domain); ?></button>
+                                </td>
                             </tr>
                             <tr>
                                 <td><?php _e('Font Color:', $text_domain); ?></td>
                                 <td><input class="jtcoloreditpicker" id="jtfontcolor" type="text" novalidate></td>
+                                <td><button class="jtsetbutton" id="jtsetfontcolorbtn"><?php _e('Apply',$text_domain); ?></button></td>
                             </tr>
                         </table>      
                     </ul>
@@ -120,6 +124,7 @@
                             <tr>
                                 <td><?php _e('Cell Color',$text_domain); ?></td>
                                 <td><input class="jtcoloreditpicker" id="jtcellcolor" type="text" novalidate></td>
+                                <td><button class="jtsetbutton" id="jtsetcellcolorbtn"><?php _e('Apply',$text_domain); ?></button></td>
                             </tr>
                         </table>              
                     </ul>
@@ -174,7 +179,7 @@
                                 <td class="jtfootablehide" data-footab-hidden="xlarge">X-Large</td>
                             </tr>
                             <tr>
-                                <td>Column Type: </td>
+                                <td><?php _e('Column Type: ',$text_domain); ?></td>
                                 <td>
                                     <select id="jtavailcoltype">
                                     <?php

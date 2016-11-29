@@ -217,15 +217,7 @@
 					this.value = modes[this.className.substr(3)];
 				});
 
-				if(toggled === false){
-					
-					var colVal = "color";
-					if(jQuery($elm.context).attr('id') == "jtcellcolor")
-						colVal = "background"
-
-					JTrtTableEditor.editCellText(colVal,$elm.val());
-
-				}
+				
 			}
 
 		});

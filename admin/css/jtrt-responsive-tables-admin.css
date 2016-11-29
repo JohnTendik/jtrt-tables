@@ -553,3 +553,13 @@ div#jtresponsiveoptionscontainer div{
     width:33%;
     padding: 14px;
 }
+
+button.jtsetbutton{
+    background: #f3f3f3;
+    border: 1px solid #CCC;
+    padding-top: 0;
+    /* width: 50%; */
+    height: 28px;
+    padding-bottom: 0;
+    display: block;
+}

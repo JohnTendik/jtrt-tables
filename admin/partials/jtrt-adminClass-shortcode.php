@@ -89,7 +89,7 @@ function jtrt_shortcode_table( $atts ){
                 foreach($row as $cellindx => $cell){
                 // For each col item, insert the table data tag and put the data inside it.
                     if(!in_array($cellindx+1,$filteredCols)){
-                        $html .= "<td>" .$cell. "</td>";
+                        $html .= "<th>" .$cell. "</th>";
                     }                 
                 }
                 $html .= "</tr></thead><tbody>";

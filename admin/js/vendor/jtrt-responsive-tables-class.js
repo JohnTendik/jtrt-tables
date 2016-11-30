@@ -376,7 +376,7 @@ JTrtEditor.prototype.safeHtmlRenderer = function(instance, td, row, col, prop, v
 
     Handsontable.TextCell.renderer.apply(this, arguments);
     var escaped = Handsontable.helper.stringify(value);
-    escaped = Iam.strip_tags(escaped, '<em><b><strong><a><u><big><img>'); //be sure you only allow certain HTML tags to avoid XSS threats (you should also remove unwanted HTML attributes)
+    escaped = Iam.strip_tags(escaped, '<em><b><strong><a><u><big><img><i><br><caption><figure><span><hr><ul><li><dl><dd><dt><form><input><div><select><option>'); //be sure you only allow certain HTML tags to avoid XSS threats (you should also remove unwanted HTML attributes)
     td.innerHTML = jQuery('<textarea />').html(escaped).text();	
 
     if(cellProperties['jtcellstyle']!= undefined && cellProperties['jtcellstyle']['font-family'] != undefined){
@@ -513,7 +513,7 @@ JTrtEditor.prototype.editCellText = function(opt,vals,borderc){
                     var curval = Iam.decodeHtml(Iam.handsOnTab.getDataAtCell(i,t));
                     if(curval.indexOf('</a>') != -1){
                         var curlink = jQuery(Iam.handsOnTab.getCell(i,t)).find('a').attr('href');
-                        var newvl = Iam.strip_tags(curval, '<em><b><strong><u><big><img>');
+                        var newvl = Iam.strip_tags(curval, '<em><b><strong><u><big><img><i><br><caption><figure><span><hr><ul><li><dl><dd><dt><form><input><div><select><option>');
                         Iam.handsOnTab.setDataAtCell(i, t,"<a href='"+vals+"'>"+newvl+"</a>");
                     }else{
                         Iam.handsOnTab.setDataAtCell(i, t, "<a href='"+vals+"'>"+curval+"</a>");

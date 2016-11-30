@@ -6,14 +6,17 @@
   .jtTableContainer table{
      border-collapse: collapse;
      border: none;
+ }
 
+  .jtTableContainer table tr th, .jtTableContainer table tr td{
+     border: none;
  }
 
   .jtTableContainer table tr{
      border: none;   
  }
 
-   .jtTableContainer table tr td, .jtTableContainer table tr th{
+   .jtrespo-scroll table tr td, .jtrespo-scroll table tr th{
      border: none;   
      white-space: nowrap;
  }
@@ -62,6 +65,7 @@
  .jtrespo-stack{
      table-layout: fixed;
      max-width: 100%;
+     width:100%;
  }
 
  .jtrespo-stack table.stackMeNowJT thead{
@@ -83,13 +87,15 @@
 }
 
 .jtrespo-stack table.stackMeNowJT tr{
-    margin-bottom:24px;
-    padding:8px;
-    background:#f1f1f1;
-    border:solid 1px #ccc;
+    margin-bottom: 24px;
+    padding: 8px;
+    background: #fbfafa;
+    border: solid 1px #ccc;
+    box-shadow: 0px 0px 4px #ccc;
 }
 .jtrespo-stack table.stackMeNowJT td {
 	border-top: none;
+    margin-bottom: 4px;
 }
 .jtrespo-stack table.stackMeNowJT tr td:first-child {
 	border-top: 1px solid #ddd;

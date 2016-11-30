@@ -160,7 +160,8 @@ class Jtrt_Responsive_Tables {
 		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'jtrt_cpost_add_meta_box' );
 		$this->loader->add_action( 'save_post', $plugin_admin, 'jtrt_save_metabox_data' );
 		$this->loader->add_action( 'wp_ajax_get_old_table', $plugin_admin, 'get_old_table_callback' );
-		
+		$this->loader->add_action( 'admin_action_jtrt_duplicate_post_as_draft', $plugin_admin, 'jtrt_duplicate_post_as_draft' );
+ 		$this->loader->add_filter( 'post_row_actions', $plugin_admin,'jtrt_duplicate_post_link', 10, 2 );
 
 
 	}

@@ -132,7 +132,7 @@
 
 					mytdcol.each(function(indxx,elemm){
 						var mytdcolval = $(elemm).html();
-						$(elemm).html("<span class='stackedheadtitlejt' style='font-weight:bold;'>" + myVals[indxx] + ":</span> " + mytdcolval);
+						$(elemm).html("<span class='stackedheadtitlejt' style='font-weight:bold;'>" + myVals[indxx] + ":</span><br>" + mytdcolval);
 					});
 
 				});

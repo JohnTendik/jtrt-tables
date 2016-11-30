@@ -1,0 +1,696 @@
+# Copyright (C) 2016 JTRT Responsive Tables
+# This file is distributed under the same license as the JTRT Responsive Tables package.
+msgid ""
+msgstr ""
+"Project-Id-Version: JTRT Responsive Tables 4.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/jtrt-responsive-"
+"tables\n"
+"POT-Creation-Date: 2016-11-29 06:23:28+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: admin/class-jtrt-responsive-tables-admin.php:128
+msgid "JTRT Table Creator"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:4
+#: admin/partials/jtrt_tables_customPT.php:4
+msgctxt "Post Type General Name"
+msgid "JTRT Tables"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:5
+#: admin/partials/jtrt_tables_customPT.php:5
+msgctxt "Post Type Singular Name"
+msgid "JTRT Table"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:6
+#: admin/partials/jtrt-custom-post-type.php:7
+#: admin/partials/jtrt-custom-post-type.php:31
+#: admin/partials/jtrt_tables_customPT.php:6
+#: admin/partials/jtrt_tables_customPT.php:7
+#: admin/partials/jtrt_tables_customPT.php:31
+msgid "JTRT Table"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:8
+#: admin/partials/jtrt_tables_customPT.php:8
+msgid "Table Archives"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:9
+#: admin/partials/jtrt_tables_customPT.php:9
+msgid "Parent Table:"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:10
+#: admin/partials/jtrt_tables_customPT.php:10
+msgid "All Tables"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:11
+#: admin/partials/jtrt_tables_customPT.php:11
+msgid "Add New Table"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:12
+#: admin/partials/jtrt_tables_customPT.php:12
+msgid "Add New"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:13
+#: admin/partials/jtrt_tables_customPT.php:13
+msgid "New Table"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:14
+#: admin/partials/jtrt_tables_customPT.php:14
+msgid "Edit Table"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:15
+#: admin/partials/jtrt_tables_customPT.php:15
+msgid "Update Table"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:16
+#: admin/partials/jtrt_tables_customPT.php:16
+msgid "View Table"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:17
+#: admin/partials/jtrt_tables_customPT.php:17
+msgid "Search Table"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:18
+#: admin/partials/jtrt_tables_customPT.php:18
+msgid "Not found"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:19
+#: admin/partials/jtrt_tables_customPT.php:19
+msgid "Not found in Trash"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:20
+#: admin/partials/jtrt_tables_customPT.php:20
+msgid "Featured Image"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:21
+#: admin/partials/jtrt_tables_customPT.php:21
+msgid "Set featured image"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:22
+#: admin/partials/jtrt_tables_customPT.php:22
+msgid "Remove featured image"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:23
+#: admin/partials/jtrt_tables_customPT.php:23
+msgid "Use as featured image"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:24
+#: admin/partials/jtrt_tables_customPT.php:24
+msgid "Insert into table"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:25
+#: admin/partials/jtrt_tables_customPT.php:25
+msgid "Uploaded to this Table"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:26
+#: admin/partials/jtrt_tables_customPT.php:26
+msgid "Tables list"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:27
+#: admin/partials/jtrt_tables_customPT.php:27
+msgid "Tables list navigation"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:28
+#: admin/partials/jtrt_tables_customPT.php:28
+msgid "Filter Tables list"
+msgstr ""
+
+#: admin/partials/jtrt-custom-post-type.php:32
+#: admin/partials/jtrt_tables_customPT.php:32
+msgid "Easy tables for display! "
+msgstr ""
+
+#: admin/partials/templates/extras/jtrt-responsive-tables-extra-temps.php:7
+msgid "Find And Replace"
+msgstr ""
+
+#: admin/partials/templates/extras/jtrt-responsive-tables-extra-temps.php:10
+msgid "Use this to feature to search and replace text in your table."
+msgstr ""
+
+#: admin/partials/templates/extras/jtrt-responsive-tables-extra-temps.php:14
+msgid "Find:"
+msgstr ""
+
+#: admin/partials/templates/extras/jtrt-responsive-tables-extra-temps.php:18
+msgid "Replace:"
+msgstr ""
+
+#: admin/partials/templates/extras/jtrt-responsive-tables-extra-temps.php:21
+msgid "Replace"
+msgstr ""
+
+#: admin/partials/templates/extras/jtrt-responsive-tables-extra-temps.php:35
+msgid "Insert a link"
+msgstr ""
+
+#: admin/partials/templates/extras/jtrt-responsive-tables-extra-temps.php:38
+msgid "This will wrap your current cell data inside a link tag"
+msgstr ""
+
+#: admin/partials/templates/extras/jtrt-responsive-tables-extra-temps.php:42
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:142
+msgid "Link:"
+msgstr ""
+
+#: admin/partials/templates/extras/jtrt-responsive-tables-extra-temps.php:45
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:24
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:143
+msgid "Insert"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-post-meta-1-display.php:29
+msgid "Doing calculations, please wait.."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-post-meta-1-display.php:40
+msgid "Table Editor"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-post-meta-1-display.php:41
+msgid "Table Options"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:4
+msgid "File"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:6
+msgid "Import CSV"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:8
+msgid "Export Table"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:10
+msgid "Clear Table"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:12
+msgid "Print"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:15
+msgid "Edit"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:17
+msgid "Undo"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:18
+msgid "Redo"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:20
+msgid "Find & Replace"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:21
+msgid "Delete Values"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:26
+msgid "Row above"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:27
+msgid "Row below"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:29
+msgid "Column left"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:30
+msgid "Column right"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:32
+msgid "Image"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:33
+msgid "Link"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:34
+msgid "Graph"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:37
+msgid "Format"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:39
+msgid "Bold"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:40
+msgid "Italic"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:41
+msgid "Underline"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:42
+msgid "Strikethrough"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:44
+msgid "Align"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:46
+msgid "Left"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:47
+msgid "Center"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:48
+msgid "Right"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:49
+msgid "Justify"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:55
+msgid "View"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:57
+msgid "Guidelines"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:59
+msgid "Show"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:60
+msgid "Hide"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:64
+msgid "Value Box"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:66
+msgid "Column Headers"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:69
+msgid "Tools"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:71
+msgid "Sort Column"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:73
+msgid "Asc"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:74
+msgid "Desc"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:95
+msgid "Font Family:"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:107
+msgid "Font Size:"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:110
+msgid "Set"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:114
+msgid "Font Color:"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:116
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:127
+msgid "Apply"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:125
+msgid "Cell Color"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:182
+msgid "Column Type: "
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step1.php:204
+msgid "Value:"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:13
+msgid "Support Further Development!"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:14
+msgid ""
+"If you like this plugin, please consider supporting future development by "
+"giving it a "
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:14
+msgid "positive review on the wordpress plugin page"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:14
+msgid "This help others see this plugin and motivates me to keep building."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:18
+msgid "Support"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:19
+msgid "If you need support, or experience bugs or any issues,"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:19
+msgid "please create a ticket on my github page"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:19
+msgid "and I will do my best to help you out. Thank you!"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:23
+msgid "Credits"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:24
+msgid ""
+"I'd like to thank Footable, HandsOnTable, DataTables, jQuery, PapaParse, "
+"Wordpress, Freepik, colorPicker, StackOverflow, for making this plugin "
+"possible!"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:32
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:42
+msgid "General Options"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:33
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:84
+msgid "Responsive Options"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:34
+msgid "Front-end Options"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:35
+msgid "DOCS"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:43
+msgid "These are general options for your table."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:51
+msgid "Show Table Title"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:53
+msgid "This will enable your table title in the front-end."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:59
+msgid "Title Position"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:61
+msgid "Select the position you want the title to show"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:66
+msgid "Top Left"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:66
+msgid "Top Center"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:66
+msgid "Top Right"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:66
+msgid "Bottom Left"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:66
+msgid "Bottom Center"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:66
+msgid "Bottom Right"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:85
+msgid ""
+"JTRT Table include 3 different responsive options for you to choose from."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:93
+msgid "Responsive Type"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:95
+msgid "Select how you want your table to respond on smaller screens"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:100
+msgid "Classic Scroller"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:100
+msgid "Column Hiding"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:100
+msgid "Column Stacking"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:120
+msgid "Scrolling"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:121
+msgid ""
+"This option will add a scrollbar on your table where you can scroll left-"
+"right when the size of the page gets smaller. This is usually the least "
+"responsive option."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:125
+msgid "Hiding"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:126
+msgid ""
+"This option will hide some of your columns when the page gets smaller. "
+"Hidden columns can be easily accessed by clicking the row content. If you "
+"would like more information about this option, please refer to the FooTables "
+"documentation."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:127
+msgid ""
+"Please note, if you chose this option you will need to add extra options to "
+"your table in the editor, pease refer to the tutorial/video on my github "
+"page for more information."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:129
+msgid "Custom Breakpoints"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:135
+msgid "X-Large Breakpoint"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:137
+msgid "Select the pixel size you want the X-Large breakpoint to take effect."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:151
+msgid "Large Breakpoint"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:153
+msgid "Select the pixel size you want the Large breakpoint to take effect."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:167
+msgid "Medium Breakpoint"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:169
+msgid "Select the pixel size you want the Medium breakpoint to take effect."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:183
+msgid "Small Breakpoint"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:185
+msgid "Select the pixel size you want the Small breakpoint to take effect."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:199
+msgid "X-Small Breakpoint"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:201
+msgid "Select the pixel size you want the X-Small breakpoint to take effect."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:220
+msgid "Stacking"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:221
+msgid ""
+"This option will automatically stack your columns once the table size is "
+"below the set value down below. For example, the default is 500px,if your "
+"table gets below 500px, all of the rows will turn into block content. This "
+"usually only works with certain types of tables. I'm including it just in "
+"case, this shouldn't be your first pick."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:228
+msgid "Prefered Breakpoint"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:230
+msgid "Select the table size at which you want your table columns to stack."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:250
+msgid "Front-End Options"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:251
+msgid ""
+"These options will help you personalize your table for the customer facing "
+"part of your website."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:259
+msgid "Filtering"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:261
+msgid ""
+"This will enable a searchbox on top of your table where users can search "
+"your table in real time."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:267
+msgid "Sorting"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:269
+msgid ""
+"This will allow users in the frontend to sort your table by clicking on the "
+"column headers."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:275
+msgid "Pagination"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:277
+msgid ""
+"This option will split your table into multiple pages. Recommended if your "
+"table has a lot of rows."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:284
+msgid "Row Highlighting"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:286
+msgid ""
+"If enabled, this option will add a highlighting effect on your table rows "
+"when the user hovers over them."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:293
+msgid "Column Highlighting"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:295
+msgid ""
+"If enabled, this option will add a highlighting effect on your table columns "
+"when the user hovers over them."
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:305
+msgid "Documentation"
+msgstr ""
+
+#: admin/partials/templates/jtrt-responsive-tables-step2.php:306
+msgid "Coming Soon!"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "JTRT Responsive Tables"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/jtrt-responsive-tables/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "The most advanced table editor for wordpress."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "John Tendik"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/mythirdeye/jtrt-tables"
+msgstr ""

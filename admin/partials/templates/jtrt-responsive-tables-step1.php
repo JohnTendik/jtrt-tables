@@ -90,43 +90,44 @@
                 <li id="jteditfont" class="jtrt-toolbar-more">
                     <img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/edit-font.png" alt="">
                     <ul>
-                        <table>
-                            <tr>
-                                <td><?php _e('Font Family:',$text_domain); ?></td>
-                                <td><select id="">
-                                    <?php
-                                        $availableFonts = explode(",","Inherit,Arial,Helvetica,Arial Black,Bookman Old Style,Comic Sans MS,Courier,Courier New,Garamond,Georgia,Impact,Lucida Console,Lucida Sans Unicode,MS Sans Serif,MS Serif,Palatino Linotype,Symbol,Tahoma,Times New Roman,Trebuchet MS,Verdana");
-                                        foreach ($availableFonts as $value){
-                                            echo "<option value='$value'>$value</option>";
-                                        }
-                
-                                    ?>
-                                </select></td>
-                            </tr>
-                            <tr>
-                                <td><?php _e('Font Size:',$text_domain); ?></td>
-                                <td>
-                                    <input novalidate type="number" min='10' max='72' style="width:100%;">
-                                    <button id="jtsetfontsizebtn"><?php _e('Set',$text_domain); ?></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><?php _e('Font Color:', $text_domain); ?></td>
-                                <td><input class="jtcoloreditpicker" id="jtfontcolor" type="text" novalidate></td>
-                                <td><button class="jtsetbutton" id="jtsetfontcolorbtn"><?php _e('Apply',$text_domain); ?></button></td>
-                            </tr>
-                        </table>      
+                        <div>
+                            <p style="margin:0;"><?php _e('Font Family:',$text_domain); ?></p>
+                            <select id="">
+                                <?php
+                                    $availableFonts = explode(",","Inherit,Arial,Helvetica,Arial Black,Bookman Old Style,Comic Sans MS,Courier,Courier New,Garamond,Georgia,Impact,Lucida Console,Lucida Sans Unicode,MS Sans Serif,MS Serif,Palatino Linotype,Symbol,Tahoma,Times New Roman,Trebuchet MS,Verdana");
+                                    foreach ($availableFonts as $value){
+                                        echo "<option value='$value'>$value</option>";
+                                    }
+            
+                                ?>
+                            </select>
+                        </div>
+                        <div>
+                            <p style="margin:0;"><?php _e('Font Size:',$text_domain); ?></p>
+                            <div class="jtrtEditorBtnGrp">
+                                <input novalidate type="number" min='10' max='72' style="width:100%;">
+                                <button id="jtsetfontsizebtn"><?php _e('Set',$text_domain); ?></button>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="margin:0;"><?php _e('Font Color:', $text_domain); ?></p>
+                            <div class="jtrtEditorBtnGrp">
+                                <input class="jtcoloreditpicker" id="jtfontcolor" type="text" novalidate>
+                                <button class="jtsetbutton" id="jtsetfontcolorbtn"><?php _e('Apply',$text_domain); ?></button>
+                            </div>
+                        </div>
+                       
                     </ul>
                 </li>
                 <li id="jthighlight" class="jtrt-toolbar-more"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/highlight.png" alt="">
                     <ul>
-                        <table>
-                            <tr>
-                                <td><?php _e('Cell Color',$text_domain); ?></td>
-                                <td><input class="jtcoloreditpicker" id="jtcellcolor" type="text" novalidate></td>
-                                <td><button class="jtsetbutton" id="jtsetcellcolorbtn"><?php _e('Apply',$text_domain); ?></button></td>
-                            </tr>
-                        </table>              
+                        <div>
+                            <p style="margin:0;"><?php _e('Cell Color',$text_domain); ?></p>
+                            <div class="jtrtEditorBtnGrp">
+                                <input class="jtcoloreditpicker" id="jtcellcolor" type="text" novalidate>
+                                <button class="jtsetbutton" id="jtsetcellcolorbtn"><?php _e('Apply',$text_domain); ?></button>
+                            </div>
+                        </div>             
                     </ul>
                 </li>
                 <span></span>

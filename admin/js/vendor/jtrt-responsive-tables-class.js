@@ -30,6 +30,7 @@ var JTrtEditor = function (tableContainer) {
 			manualRowMove: true, // Manually move rows. probably not needed since editting the tables are so friken easy
 			sortIndicator: true, // the little arrow that shows up if you sort your table by clicking on the headers
 			manualColumnMove: true, // manual column moving, very nice
+            formulas:true,
 			columnSorting: true, // allow column sorting
 			outsideClickDeselects: false, // do not deselect the selected cell(s) if they click outside of the table. VERY IMPORTANT
 			renderer: this.safeHtmlRenderer, // Custom renderer so HTML, and custom styles will show up. So mach work man
@@ -89,12 +90,19 @@ JTrtEditor.prototype.init = function(){
             if(jQuery(this).attr('id') == "jteditfont"){
                 var selectopt = (Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle'] && Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle']['font-family'] != undefined) ? Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle']['font-family'] : "Inherit";
 				var selectopt2 = (Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle'] && Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle']['font-size'] != undefined) ? parseInt(Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle']['font-size']) : 14;
-				var selectopt3 = (Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle'] && Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle']['color'] != undefined) ? Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle']['color'] : "rgb(0,0,0)";
+				var selectopt3 = (Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle'] && Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle']['color'] != undefined) ? Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle']['color'] : "#000000";
 				
 				jQuery(this).find('ul select').val(selectopt);
 				jQuery(this).find('ul input[type="number"]').val(selectopt2);
 
-                jQuery(this).find('ul input#jtfontcolor').val(selectopt3).css('background',selectopt3);
+                jQuery(this).find('ul input#jtfontcolor').val(selectopt3).trigger('keyup');
+                jQuery(this).find('.wp-color-result').css('background',selectopt3);
+            }
+
+            if(jQuery(this).attr('id') == "jthighlight"){
+                var selectopt3 = (Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle'] && Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle']['background'] != undefined) ? Iam.handsOnTab.getCellMeta(selected[0],selected[1])['jtcellstyle']['background'] : "#ffffff";
+                jQuery(this).find('ul input#jtcellcolor').val(selectopt3).trigger('keyup');
+                jQuery(this).find('.wp-color-result').css('background',selectopt3);
             }
 
             if(jQuery(this).attr('id') == "jthidecolsbtn"){
@@ -331,6 +339,8 @@ JTrtEditor.prototype.init = function(){
         },300);
 
     });
+
+    Iam.reRenderTable();
    
 
 } // init
@@ -340,14 +350,27 @@ JTrtEditor.prototype.getData = function(){
     if(this.dataBox.html() !== ""){
         var jtrt_saved_data = JSON.parse(this.dataBox.html());		
         
-        return [jtrt_saved_data[0],jtrt_saved_data[1] || {},jtrt_saved_data[2] || true];
+        return [jtrt_saved_data[0],jtrt_saved_data[1] || {},jtrt_saved_data[2] || [{
+        row: 0,
+        col: 0,
+        left: {
+          width: 2,
+          color: 'red'
+        }
+      }]];
 
     }else{
         return [[
         ['Header 1', 'Header 2', 'Header 3'],
         ['Cell 1', "Cell 2", "Cell 3"],
         ['Cell 1', "Cell 2", "Cell 3"]
-        ],[],true];
+        ],[],[{
+        row: 0,
+        col: 0,
+        left: {
+          hide:true
+        }
+      }]];
     }
 
 }
@@ -373,11 +396,17 @@ JTrtEditor.prototype.strip_tags = function(input, allowed){
 }
 
 JTrtEditor.prototype.safeHtmlRenderer = function(instance, td, row, col, prop, value, cellProperties){
+  
 
     Handsontable.TextCell.renderer.apply(this, arguments);
     var escaped = Handsontable.helper.stringify(value);
     escaped = Iam.strip_tags(escaped, '<em><b><strong><a><u><big><img><i><br><caption><figure><span><hr><ul><li><dl><dd><dt><form><input><div><select><option>'); //be sure you only allow certain HTML tags to avoid XSS threats (you should also remove unwanted HTML attributes)
-    td.innerHTML = jQuery('<textarea />').html(escaped).text();	
+    if(value){
+        if (value.substring(0,1) != "=") {
+            td.innerHTML = jQuery('<textarea />').html(escaped).text();
+        }
+    }
+    
 
     if(cellProperties['jtcellstyle']!= undefined && cellProperties['jtcellstyle']['font-family'] != undefined){
         td.style.fontFamily = cellProperties['jtcellstyle']['font-family'];
@@ -410,6 +439,7 @@ JTrtEditor.prototype.reRenderTable = function(){
     this.handsOnTab.colOffset();
     this.handsOnTab.rowOffset();
     this.handsOnTab.render();
+    this.handsOnTab.validateCells();
 }
 
 JTrtEditor.prototype.handleOnSave = function(event){
@@ -418,9 +448,28 @@ JTrtEditor.prototype.handleOnSave = function(event){
 
     var tableDataJT = JSON.stringify(Iam.handsOnTab.getData()),
 				tableCellDataJT = Iam.handsOnTab.getCellsMeta(),
-				tableCellDataNew = [];
-				var tableCellBorderData = [];
+				tableCellDataNew = [],
+				tableCellBorderData = [],
+                tableFuncResData = [];
 
+    
+    
+    JSON.parse(tableDataJT).forEach(function(emel,dataRowIndex){
+        
+
+        emel.forEach(function(colEmel,dataColIndex){
+            if (colEmel != null && colEmel[0] === "=") {	
+                var calculatedCell = jQuery(Iam.handsOnTab.getCell(dataRowIndex,dataColIndex)).html();
+                var funcCellData = {
+                    "row": dataRowIndex,
+                    "col": dataColIndex,
+                    "val": calculatedCell
+                };
+                tableFuncResData.push(funcCellData);
+            }
+        });
+        
+    });
 
     tableCellDataJT.forEach(function(element) {
         var tableCellData = {};
@@ -477,7 +526,7 @@ JTrtEditor.prototype.handleOnSave = function(event){
         tableCellDataNew.push(tableCellData);
     }, this);
 
-    Iam.dataBox.html("["+tableDataJT+","+JSON.stringify(tableCellDataNew)+"," +JSON.stringify(tableCellBorderData)+"]");
+    Iam.dataBox.html("["+tableDataJT+","+JSON.stringify(tableCellDataNew)+"," +JSON.stringify(tableCellBorderData)+","+JSON.stringify(tableFuncResData)+"]");
 	
 } // End of handleOnSave
 	

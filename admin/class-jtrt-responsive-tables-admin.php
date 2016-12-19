@@ -74,7 +74,9 @@ class Jtrt_Responsive_Tables_Admin {
 		 */
 		if(CheckIfJTRTExists()){
 			wp_enqueue_style( $this->plugin_name . "-handsontable", plugin_dir_url( __FILE__ ) . 'css/vendor/handsontable.full.min.css', array(), $this->version, 'all' ); 
-		
+			wp_enqueue_style( $this->plugin_name . "-handsontable2", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/handsontable.formula.css', array(), $this->version, 'all' ); 
+			wp_enqueue_style( 'wp-color-picker' );
+    
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/jtrt-responsive-tables-admin.css', array(), $this->version, 'all' );
 		}
 
@@ -101,12 +103,19 @@ class Jtrt_Responsive_Tables_Admin {
 		 * class.
 		 */
 		if(CheckIfJTRTExists()){
+			
 			wp_enqueue_media();
-			wp_enqueue_script( $this->plugin_name . "-handsontable", plugin_dir_url( __FILE__ ) . 'js/vendor/handsontable.full.min.js',array(), $this->version, true );
-			wp_enqueue_script( $this->plugin_name . "-colorpicker", plugin_dir_url( __FILE__ ) . 'js/vendor/colorpicker.js', array( 'jquery' ), $this->version, true );
+
+			wp_enqueue_script( $this->plugin_name . "-handsontable", plugin_dir_url( __FILE__ ) . 'js/vendor/handsontable.full.min.js',array(), $this->version);
+			
+			wp_enqueue_script( $this->plugin_name . "-handsontable1", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/ruleJS.lib.full.js',array(), $this->version);
+			wp_enqueue_script( $this->plugin_name . "-handsontable2", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/ruleJS.parser.full.js',array(), $this->version);
+			wp_enqueue_script( $this->plugin_name . "-handsontable3", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/ruleJS.all.full.min.js',array(), $this->version);
+			wp_enqueue_script( $this->plugin_name . "-handsontable4", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/handsontable.formula.js',array(), $this->version);
+			
 			wp_enqueue_script( $this->plugin_name . "-papa", plugin_dir_url( __FILE__ ) . 'js/vendor/papaparse.min.js', array( 'jquery' ), $this->version, true );
 			wp_enqueue_script( $this->plugin_name . "-class", plugin_dir_url( __FILE__ ) . 'js/vendor/jtrt-responsive-tables-class.js',array(), $this->version, true );
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/jtrt-responsive-tables-admin.js', array( 'jquery' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/jtrt-responsive-tables-admin.js', array( 'jquery', 'wp-color-picker'), $this->version, false );
 		}
 	}
 
@@ -300,6 +309,12 @@ public function jtrt_duplicate_post_link( $actions, $post ) {
        
 	}
 	return $actions;
+}
+
+public function jtrt_edit_save_form_encytpe() {   
+    if(CheckIfJTRTExists()){
+		echo ' enctype="multipart/form-data"';
+	}
 }
  
 

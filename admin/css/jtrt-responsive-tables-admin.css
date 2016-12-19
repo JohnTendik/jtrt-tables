@@ -563,3 +563,69 @@ button.jtsetbutton{
     padding-bottom: 0;
     display: block;
 }
+
+.jtrtEditorBtnGrp{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.jtrtEditorBtnGrp .wp-picker-container a.wp-color-result{
+    margin:0;
+}
+
+.jtrtEditorBtnGrp .wp-picker-container a.wp-color-result:after{
+    white-space: nowrap;
+}
+
+.jtrtEditorBtnGrp .wp-picker-container .wp-picker-input-wrap{
+    border:none!important;
+    margin: 0!important;
+}
+
+#jtfontcolor{
+    background: #fff!important;
+}
+
+.jtrtEditorBtnGrp .wp-picker-active .wp-picker-input-wrap{
+    display:flex;
+    vertical-align: top;
+    margin-top: 8px!important;
+    position: absolute;
+    background: white;
+    padding: 8px;
+    left: 0;
+    border: 1px solid #ccc!important;
+    color: black;
+}
+
+.jtrtEditorBtnGrp .wp-picker-container .wp-picker-holder{
+    position: absolute;
+    margin-top: 3px;
+    bottom: 0;
+    margin-left: calc(100% - 7px);
+}
+
+.jtrtEditorBtnGrp button{
+    background: #f3f3f3;
+    border: 1px solid #CCC;
+    padding-top: 0;
+    /* width: 50%; */
+    height:28px;
+    padding-bottom: 0;
+    display: block;
+}
+
+.jtrtEditorBtnGrp #jtsetfontcolorbtn, .jtrtEditorBtnGrp #jtsetcellcolorbtn{
+    align-self:flex-start;
+    height: 24px;
+}
+
+td.formula{
+    background-color: #fff;
+}
+
+#optionsSection3 .wp-picker-container .wp-color-result{
+    margin: 0;
+    white-space: nowrap;
+}

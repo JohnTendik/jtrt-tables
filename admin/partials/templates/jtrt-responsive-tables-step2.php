@@ -218,7 +218,7 @@ $text_domain = 'jtrt-responsive-tables';
                     <div data-jtresponsive-select="stack">
                        <hr>
                         <strong><?php _e('Stacking',$text_domain); ?></strong>
-                        <p><?php _e('This option will automatically stack your columns once the table size is below the set value down below. For example, the default is 500px,if your table gets below 500px, all of the rows will turn into block content. This usually only works with certain types of tables. I\'m including it just in case, this shouldn\'t be your first pick.',$text_domain); ?></p>
+                        <p><?php _e('This option will automatically stack your columns once the table size is below the set value down below. For example, the default is 500px,if your table gets below 500px, all of the rows will turn into block content. This usually only works with certain types of tables. I\'m including it just in case, this shouldn\'t be your first pick. Also please note, with this option- the table sorting option is disabled and you wont be able to use the headers to sort your table in the front-end. Pagination + filter still work though.',$text_domain); ?></p>
                         <table>
 
                             <tbody>
@@ -266,9 +266,9 @@ $text_domain = 'jtrt-responsive-tables';
                             <td>
                                 <label for=""><?php _e('Sorting',$text_domain); ?></label>
                                 <br>
-                                <small><?php _e('This will allow users in the frontend to sort your table by clicking on the column headers.',$text_domain); ?></small>
+                                <small><?php _e('This will allow users in the frontend to sort your table by clicking on the column headers. (does not work with Column Stacking responsive option)',$text_domain); ?></small> 
                             </td>
-                            <td><input name="jtrt-table-data[jtTableEnableSorting]" type="checkbox" <?php echo (isset($value['jtTableEnableSorting']) ? "checked" : ""); ?>></td>
+                            <td><input name="jtrt-table-data[jtTableEnableSorting]" type="checkbox" <?php echo $value['jtTableResponsiveStyle'] == "stack" ? "disabled" : ""; ?> <?php echo (isset($value['jtTableEnableSorting']) ? "checked" : ""); ?>></td>
                         </tr>
                         <tr>
                             <td>

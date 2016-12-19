@@ -23,3 +23,4 @@ function bs_event_table_content( $column_name, $post_id ) {
       echo "[jtrt_tables id='" . $post_id . "']";
     }
 }
+

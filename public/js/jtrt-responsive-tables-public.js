@@ -37,13 +37,20 @@
 			var table = jQuery(jtrt_tables[element]);
 			var id = table.attr('data-jtrt-table-id');
 			var jtrt_table_data = JSON.parse($('textarea#jtrt_table_settings_'+id).html());
+			
+			jtrt_table_data[3].forEach(function(element, indx1) {
+				var tRow = table.find('tr').eq(element['row']);
+				var tCell = tRow.find('td,th').eq(element['col']);
+				tCell.html(element['val']);
 
+			});
+			
 	
 			jtrt_table_data[1].forEach(function(element) {
 				var tRow = table.find('tr').eq(element['row']);
 				var tCell = tRow.find('td,th').eq(element['col']);
 				tCell.addClass(element['className']);
-
+								
 				if(element['borders']){
 					var borderInfor = element['borders'];
 
@@ -96,10 +103,12 @@
 				}
 			}, this);
 
-
+		
 		}, this);
 
-		$('.jtrespo-scroll table').each(function(infxx,tableee){
+		
+
+		$('.jtrespo-scroll table, .jtrespo-stack table').each(function(infxx,tableee){
 			var mytablr = $(tableee),
 				isfiltered = mytablr.attr('data-filtering'),
 				isSorted = mytablr.attr('data-sorting'),
@@ -107,41 +116,20 @@
 				isPagedCtn = mytablr.attr('data-paging-size');
 
 			if(isfiltered == "true" || isSorted == "true" || isPaged == "true"){
-				mytablr.DataTable({
+				var jtrtDTcopy = mytablr.DataTable({
 					"paging":isPaged,
 					"ordering":isSorted,
 					"searching":isfiltered,
 					"info":false,
 				});
+
 			}
 		});
 
 
-		$('.jtrespo-stack').each(function(infxx,tableee){
-			var theadVals = $(tableee).find('thead tr th');
-				var myVals = [];
-				theadVals.each(function(indx,elem){
-					myVals.push($(elem).html());
-				});
-
-				var mytbodyRows = $(tableee).find('tbody tr');
-
-				mytbodyRows.each(function(indx,elem){
-					var mytdcol = $(elem).find('td');
-					
-
-					mytdcol.each(function(indxx,elemm){
-						var mytdcolval = $(elemm).html();
-						$(elemm).html("<span class='stackedheadtitlejt' style='font-weight:bold;'>" + myVals[indxx] + ":</span><br>" + mytdcolval);
-					});
-
-				});
-		});
-
 		function checkTableWidth(table){
-			if(table.outerWidth(true) < table.parent('.jtrespo-stack').attr('data-jtrt-stack-width')){
-				table.addClass('stackMeNowJT');
-				
+			if(table.outerWidth(true) < table.parents('.jtrespo-stack').attr('data-jtrt-stack-width')){
+				table.addClass('stackMeNowJT');		
 			}else{
 				table.removeClass('stackMeNowJT');
 			}

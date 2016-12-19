@@ -51,13 +51,13 @@ function jtrt_shortcode_table( $atts ){
     $myjttablePaging = (isset($table_post_meta[0]['jtTableEnablePaging']) ? "true" : "false");
     $myjttablePagingCnt = (isset($table_post_meta[0]['jtTableEnablePagingCnt']) ? $table_post_meta[0]['jtTableEnablePagingCnt'] : "10");
 
-    $html = "";
+    $html = "<div class='jtrt_table_MotherShipContainer'>";
 
     if($showTableTitle == "true" && $showTableTitlePos[0] == "top"){
-        $html .= "<h3 style='margin-top:24px;margin-bottom:14px;text-align:".$showTableTitlePos[1].";'>".$myTableTitle."</h3>";
+        $html .= "<div id='jtHeaderHolder-".$jtrt_settings['id']."'><h3 style='margin-top:24px;margin-bottom:14px;text-align:".$showTableTitlePos[1].";'>".$myTableTitle."</h3>";
+        $html .= "</div>";
     }
     
-    $html .= "<div id='jtHeaderHolder-".$jtrt_settings['id']."'></div>";
     $html .= "<div class='jtTableContainer jtrespo-".$myTableResponsiveStyle." ".$myTableHoverRows." ".$myTableHoverCols."' ".($myTableResponsiveStyle == 'stack' ? "data-jtrt-stack-width='".$myTableStackPrefWidth."'" : "")." ".$myTableHoverRowsCol." ".$myTableHoverColsCol.">";
 
 
@@ -89,7 +89,7 @@ function jtrt_shortcode_table( $atts ){
                 foreach($row as $cellindx => $cell){
                 // For each col item, insert the table data tag and put the data inside it.
                     if(!in_array($cellindx+1,$filteredCols)){
-                        $html .= "<th>" .$cell. "</th>";
+                        $html .= "<th>" .preg_replace("/[\n\r]/","<br>",$cell). "</th>";
                     }                 
                 }
                 $html .= "</tr></thead><tbody>";
@@ -101,7 +101,12 @@ function jtrt_shortcode_table( $atts ){
                 foreach($row as $cellindx => $cell){
                     // For each col item, insert the table data tag and put the data inside it.
                         if(!in_array($cellindx+1,$filteredCols)){
-                            $html .= "<td>" .$cell. "</td>";
+                            if($myTableResponsiveStyle == "stack"){
+                                $html .= "<td><span class='stackedheadtitlejt' style='font-weight:bold;'>". $table_data[0][$cellindx] .":</span><br>" .preg_replace("/[\n\r]/","<br>",$cell). "</td>";
+                            }else{
+                                $html .= "<td>" .preg_replace("/[\n\r]/","<br>",$cell). "</td>";
+                            }
+                            
                         }                         
                 }
 
@@ -119,17 +124,20 @@ function jtrt_shortcode_table( $atts ){
 
     $html .= "</div>";
 
-    $html .= "<div id='jtFooterHolder-".$jtrt_settings['id']."'></div>";
+    
     if($showTableTitle == "true" && $showTableTitlePos[0] == "bottom"){
+        $html .= "<div id='jtFooterHolder-".$jtrt_settings['id']."'>";
         $html .= "<h3 style='margin-top:0;margin-bottom:14px;text-align:".$showTableTitlePos[1].";'>".$myTableTitle."</h3>";
+        $html .= "</div>";
     }
 
+    $html .= "</div>";
 
     if($myTableResponsiveStyle == "footable"){
         wp_enqueue_script( 'jtbackendfrontendfoo-js', plugin_dir_url( __FILE__ ) . '../../public/js/vendor/footable.min.js', array( 'jquery' ), '4.0', false );
         wp_enqueue_style( 'jtbackendfrontendss-jskka12', plugin_dir_url( __FILE__ ) . '../../public/css/font-awesome.min.css', '4.0', 'all' );
         wp_enqueue_style( 'jtbackendfrontendss-jskk', plugin_dir_url( __FILE__ ) . '../../public/css/footable.standalone.min.css', '4.0', 'all' );    
-    }elseif($myTableResponsiveStyle == "scroll"){
+    }elseif($myTableResponsiveStyle == "scroll" || $myTableResponsiveStyle == "stack"){
         if($myjttableFiltering == "true" || $myjttablePaging == "true" || $myjttableSorting == "true"){
             wp_enqueue_style( 'jtbackendfrontendss-jskka', 'https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css', '4.0', 'all' );
             wp_enqueue_script( 'jtbackendfrontend-js-dtb', 'https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js', array( 'jquery' ), '4.0', false );         

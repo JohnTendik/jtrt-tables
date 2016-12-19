@@ -1,0 +1,34 @@
+<script src="handsontable.full.min.js"></script>
+<link rel="stylesheet" media="screen" href="handsontable.full.min.css">
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+<script src="ruleJS.lib.full.js"></script>
+<script src="ruleJS.parser.full.js"></script>
+<script src="ruleJS.all.full.min.js"></script>
+<script src="handsontable.formula.js"></script>
+<link rel="stylesheet" media="screen" href="handsontable.formula.css">
+
+
+<div id="example1"></div>
+<script>
+ $(document).ready(function(){
+     var data = [
+    ['=$B$2', "Maserati", "Mazda", "Mercedes", "Mini", "=A$1"],
+    [2009, 0, 2941, 4303, 354, 5814],
+    [2010, 5, 2905, 2867, '=SUM(A4,2,3)', '=$B1'],
+    [2011, 4, 2517, 4822, 552, 6127],
+    [2012, '=SUM(A2:A5)', '=SUM(B5,E3)', '=A2/B2', 12, 4151]
+  ];
+
+  $('#example1').handsontable({
+    data: data,
+    colHeaders: true,
+    rowHeaders: true,
+    formulas: true
+  });
+ });
+</script>

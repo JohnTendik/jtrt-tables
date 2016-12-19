@@ -38,12 +38,13 @@
 			var id = table.attr('data-jtrt-table-id');
 			var jtrt_table_data = JSON.parse($('textarea#jtrt_table_settings_'+id).html());
 			
-			jtrt_table_data[3].forEach(function(element, indx1) {
-				var tRow = table.find('tr').eq(element['row']);
-				var tCell = tRow.find('td,th').eq(element['col']);
-				tCell.html(element['val']);
-
-			});
+			if(jtrt_table_data[3] != undefined){
+				jtrt_table_data[3].forEach(function(element, indx1) {
+					var tRow = table.find('tr').eq(element['row']);
+					var tCell = tRow.find('td,th').eq(element['col']);
+					tCell.html(element['val']);
+				});
+			}
 			
 	
 			jtrt_table_data[1].forEach(function(element) {

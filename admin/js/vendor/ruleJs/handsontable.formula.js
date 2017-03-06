@@ -156,12 +156,12 @@
 
       var r = index.row,
         c = index.col,
-        value = data[r][c],
+        value = data[0][c],
         delta = 0,
         rlength = data.length, // rows
         clength = data ? data[0].length : 0; //cols
 
-      if (value[0] === '=') { // formula
+      if (value != undefined && value[0] === '=') { // formula
 
         if (['down', 'up'].indexOf(direction) !== -1) {
           delta = rlength * iterators.row;

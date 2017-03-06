@@ -122,6 +122,21 @@
 					"ordering":isSorted,
 					"searching":isfiltered,
 					"info":false,
+					"language": {
+						"emptyTable":     translation_for_frontend.emptyTable,
+						"info":           translation_for_frontend.info,
+						"infoEmpty":      translation_for_frontend.infoEmpty,
+						"infoFiltered":   translation_for_frontend.infoFiltered,
+						"lengthMenu":     translation_for_frontend.lengthMenu,
+						"search":         translation_for_frontend.search_string,
+						"zeroRecords":    translation_for_frontend.zeroRecords,
+						"paginate": {
+							"first":      translation_for_frontend.first,
+							"last":       translation_for_frontend.last,
+							"next":       translation_for_frontend.next_string,
+							"previous":   translation_for_frontend.prev_string
+						},
+					}
 				});
 
 			}

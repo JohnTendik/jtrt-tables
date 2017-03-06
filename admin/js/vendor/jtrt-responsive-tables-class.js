@@ -186,6 +186,7 @@ JTrtEditor.prototype.init = function(){
 
 		var vall = jQuery(this).attr('data-align-opt');
         Iam.editCellText("className",vall);
+        Iam.reRenderTable();
 
     });
 
@@ -811,7 +812,7 @@ JTrtEditor.prototype.renderMediaUploader = function() {
                 return;  
             }
 
-            file_frame = wp.media.frames.file_frame = wp.media({
+            file_frame = wp.media({
                 frame:    'post',
                 state:    'insert',
                 multiple: false

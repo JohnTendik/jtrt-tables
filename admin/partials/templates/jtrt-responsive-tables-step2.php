@@ -3,6 +3,11 @@
 $value = get_post_meta( $post->ID, 'jtrt_data_settings',true ); 
 $text_domain = 'jtrt-responsive-tables';
 
+$sortDisabledVal = "";
+if(isset($value['jtTableResponsiveStyle']) && $value['jtTableResponsiveStyle'] == "stack"){
+    $sortDisabledVal = "disabled";
+};
+
 ?>
 
 <div id="step2" class="jtrteditorsection">
@@ -268,7 +273,7 @@ $text_domain = 'jtrt-responsive-tables';
                                 <br>
                                 <small><?php _e('This will allow users in the frontend to sort your table by clicking on the column headers. (does not work with Column Stacking responsive option)',$text_domain); ?></small> 
                             </td>
-                            <td><input name="jtrt-table-data[jtTableEnableSorting]" type="checkbox" <?php echo $value['jtTableResponsiveStyle'] == "stack" ? "disabled" : ""; ?> <?php echo (isset($value['jtTableEnableSorting']) ? "checked" : ""); ?>></td>
+                            <td><input name="jtrt-table-data[jtTableEnableSorting]" type="checkbox" <?php echo $sortDisabledVal; ?> <?php echo (isset($value['jtTableEnableSorting']) ? "checked" : ""); ?>></td>
                         </tr>
                         <tr>
                             <td>

@@ -140,7 +140,23 @@ function jtrt_shortcode_table( $atts ){
     }elseif($myTableResponsiveStyle == "scroll" || $myTableResponsiveStyle == "stack"){
         if($myjttableFiltering == "true" || $myjttablePaging == "true" || $myjttableSorting == "true"){
             wp_enqueue_style( 'jtbackendfrontendss-jskka', 'https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css', '4.0', 'all' );
-            wp_enqueue_script( 'jtbackendfrontend-js-dtb', 'https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js', array( 'jquery' ), '4.0', false );         
+            wp_register_script( 'jtbackendfrontend-js-dtb', 'https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js', array( 'jquery' ), '4.0', false );         
+            
+            $translation_array = array( 
+                'next_string' => __( 'Next', 'jtrt-responsive-tables' ),
+                'prev_string' => __( 'Prev', 'jtrt-responsive-tables' ),
+                'search_string' => __( 'Search', 'jtrt-responsive-tables' ),
+                'emptyTable' => __( 'No data available in table', 'jtrt-responsive-tables' ),
+                'info' => __( 'Showing _START_ to _END_ of _TOTAL_ entries', 'jtrt-responsive-tables' ),
+                'infoEmpty' => __( 'Showing 0 to 0 of 0 entries', 'jtrt-responsive-tables' ),
+                'infoFiltered' => __( '(filtered from _MAX_ total entries)', 'jtrt-responsive-tables' ),
+                'lengthMenu' => __( 'Show _MENU_ entries', 'jtrt-responsive-tables' ),
+                'zeroRecords' => __( 'No matching records found', 'jtrt-responsive-tables' ),
+                'last' => __( 'Last', 'jtrt-responsive-tables' ),
+                'first' => __( 'First', 'jtrt-responsive-tables' ),
+            );
+            wp_localize_script( 'jtbackendfrontend-js-dtb', 'translation_for_frontend', $translation_array );
+            wp_enqueue_script( 'jtbackendfrontend-js-dtb' );
         }
     }
     wp_enqueue_style( 'jtbackendfrontend-css', plugin_dir_url( __FILE__ ) . '../../public/css/jtrt-responsive-tables-public.css', '4.0', 'all' );  

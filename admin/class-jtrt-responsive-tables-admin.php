@@ -73,10 +73,10 @@ class Jtrt_Responsive_Tables_Admin {
 		 * class.
 		 */
 		if(CheckIfJTRTExists()){
-			wp_enqueue_style( $this->plugin_name . "-handsontable", plugin_dir_url( __FILE__ ) . 'css/vendor/handsontable.full.min.css', array(), $this->version, 'all' ); 
-			wp_enqueue_style( $this->plugin_name . "-handsontable2", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/handsontable.formula.css', array(), $this->version, 'all' ); 
+			wp_enqueue_style( $this->plugin_name . "-handsontable", plugin_dir_url( __FILE__ ) . 'css/vendor/handsontable.full.min.css', array(), $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name . "-handsontable2", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/handsontable.formula.css', array(), $this->version, 'all' );
 			wp_enqueue_style( 'wp-color-picker' );
-    
+
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/jtrt-responsive-tables-admin.css', array(), $this->version, 'all' );
 		}
 
@@ -87,7 +87,7 @@ class Jtrt_Responsive_Tables_Admin {
 	 *
 	 * @since    1.0.0
 
-	 
+
 	 */
 	public function enqueue_scripts() {
 
@@ -103,7 +103,7 @@ class Jtrt_Responsive_Tables_Admin {
 		 * class.
 		 */
 		if(CheckIfJTRTExists()){
-			wp_enqueue_script( $this->plugin_name . "-handsontable", plugin_dir_url( __FILE__ ) . 'js/vendor/handsontable.full.min.js',array(), $this->version);	
+			wp_enqueue_script( $this->plugin_name . "-handsontable", plugin_dir_url( __FILE__ ) . 'js/vendor/handsontable.full.min.js',array(), $this->version);
 			wp_enqueue_script( $this->plugin_name . "-handsontable1", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/ruleJS.lib.full.js',array('jquery'), $this->version);
 			wp_enqueue_script( $this->plugin_name . "-handsontable2", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/ruleJS.parser.full.js',array('jquery'), $this->version);
 			wp_enqueue_script( $this->plugin_name . "-handsontable3", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/ruleJS.all.full.min.js',array('jquery'), $this->version);
@@ -117,8 +117,8 @@ class Jtrt_Responsive_Tables_Admin {
 
 	public function jtrt_create_tables_cpost(){
 		/**
-		 * This function will create, and register the JTRT Tables 
-		 * custom post type and create the admin menu page. 
+		 * This function will create, and register the JTRT Tables
+		 * custom post type and create the admin menu page.
 		 * File is loaded from offshore because I don't like messy long files.
 		 **/
 		require_once plugin_dir_path( __FILE__ ) . 'partials/jtrt-custom-post-type.php' ;
@@ -161,42 +161,42 @@ class Jtrt_Responsive_Tables_Admin {
 				return;
 			}
 		}
-		
+
 		/* OK, it's safe for us to save the data now. */
 		// Make sure that it is set.
 		if ( ! isset( $_POST['jtrt-table-data'] ) ) {
 			return;
 		}
-		
+
 		// Sanitize user input.
 		$my_data = $_POST['jtrt-table-data'];
 
-        
+
 		// Update the meta field in the database.
 		update_post_meta( $post_id, 'jtrt_data_settings', array_map(null, $my_data ) );
-		
+
 	}
 
 	public function get_old_table_callback(){
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		global $wpdb;
 
-		$getTableId = $_POST['tableId'];
+		$getTableId = (int)$_POST['tableId'];
 		$tableopt = $_POST['tableOpt'];
 		$jtrt_tables_name = $wpdb->prefix . "jtrt_tables";
 
 		if($tableopt == "delete"){
 			global $post_type;
 			$wpdb->delete( $jtrt_tables_name, array( 'jttable_IDD' => $getTableId ), array( '%d' ) );
-			
+
 			echo false;
 			return false;
 		}
 
-		
+
 		$retrieve_data = $wpdb->get_results( "SELECT * FROM $jtrt_tables_name WHERE jttable_IDD = " . $getTableId );
 
-		if($retrieve_data){ 
+		if($retrieve_data){
 			echo html_entity_decode(stripslashes($retrieve_data[0]->object_type));
 		}else{
 			echo 'no';
@@ -211,7 +211,7 @@ class Jtrt_Responsive_Tables_Admin {
 	if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'jtrt_duplicate_post_as_draft' == $_REQUEST['action'] ) ) ) {
 		wp_die('No post to duplicate has been supplied!');
 	}
- 
+
 	/*
 	 * get the original post id
 	 */
@@ -220,19 +220,19 @@ class Jtrt_Responsive_Tables_Admin {
 	 * and all the original post data then
 	 */
 	$post = get_post( $post_id );
- 
+
 	/*
 	 * if you don't want current user to be the new post author,
 	 * then change next couple of lines to this: $new_post_author = $post->post_author;
 	 */
 	$current_user = wp_get_current_user();
 	$new_post_author = $current_user->ID;
- 
+
 	/*
 	 * if post data exists, create the post duplicate
 	 */
 	if (isset( $post ) && $post != null) {
- 
+
 		/*
 		 * new post data array
 		 */
@@ -251,12 +251,12 @@ class Jtrt_Responsive_Tables_Admin {
 			'to_ping'        => $post->to_ping,
 			'menu_order'     => $post->menu_order
 		);
- 
+
 		/*
 		 * insert the post by wp_insert_post() function
 		 */
 		$new_post_id = wp_insert_post( $args );
- 
+
 		/*
 		 * get all current post terms ad set them to the new post draft
 		 */
@@ -265,7 +265,7 @@ class Jtrt_Responsive_Tables_Admin {
 			$post_terms = wp_get_object_terms($post_id, $taxonomy, array('fields' => 'slugs'));
 			wp_set_object_terms($new_post_id, $post_terms, $taxonomy, false);
 		}
- 
+
 		/*
 		 * duplicate all post meta just in two SQL queries
 		 */
@@ -280,8 +280,8 @@ class Jtrt_Responsive_Tables_Admin {
 			$sql_query.= implode(" UNION ALL ", $sql_query_sel);
 			$wpdb->query($sql_query);
 		}
- 
- 
+
+
 		/*
 		 * finally, redirect to the edit post screen for the new draft
 		 */
@@ -297,22 +297,22 @@ class Jtrt_Responsive_Tables_Admin {
  */
 public function jtrt_duplicate_post_link( $actions, $post ) {
 	if (current_user_can('edit_posts')) {
-		
+
         if ($post->post_type=='jtrt_tables_post')
         {
             $actions['duplicate'] = '<a href="admin.php?action=jtrt_duplicate_post_as_draft&amp;post=' . $post->ID . '" title="Duplicate this item" rel="permalink">Duplicate</a>';
         }
-       
+
 	}
 	return $actions;
 }
 
-public function jtrt_edit_save_form_encytpe() {   
+public function jtrt_edit_save_form_encytpe() {
     if(CheckIfJTRTExists()){
 		echo ' enctype="multipart/form-data"';
 	}
 }
- 
+
 
 
 }

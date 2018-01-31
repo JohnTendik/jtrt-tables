@@ -104,7 +104,7 @@ function jtrt_shortcode_table( $atts ){
                             if($myTableResponsiveStyle == "stack"){
                                 $html .= "<td><span class='stackedheadtitlejt' style='font-weight:bold;'>". $table_data[0][$cellindx] .":</span><br>" .preg_replace("/[\n\r]/","<br>",$cell). "</td>";
                             }else{
-                                $html .= "<td>" .preg_replace("/[\n\r]/","<br>",$cell). "</td>";
+                                $html .= "<td>" .do_shortcode(preg_replace("/[\n\r]/","<br>",$cell))."";
                             }
                             
                         }                         

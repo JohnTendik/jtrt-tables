@@ -120,6 +120,7 @@
 				var jtrtDTcopy = mytablr.DataTable({
 					"paging":isPaged,
 					"ordering":isSorted,
+					"order": [],
 					"searching":isfiltered,
 					"info":false,
 					"language": {

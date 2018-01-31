@@ -89,7 +89,7 @@ function jtrt_shortcode_table( $atts ){
                 foreach($row as $cellindx => $cell){
                 // For each col item, insert the table data tag and put the data inside it.
                     if(!in_array($cellindx+1,$filteredCols)){
-                        $html .= "<th>" .preg_replace("/[\n\r]/","<br>",$cell). "</th>";
+                        $html .= "<th>" . do_shortcode(preg_replace("/[\n\r]/", "<br>", $cell)) . "</th>";
                     }                 
                 }
                 $html .= "</tr></thead><tbody>";
@@ -102,9 +102,9 @@ function jtrt_shortcode_table( $atts ){
                     // For each col item, insert the table data tag and put the data inside it.
                         if(!in_array($cellindx+1,$filteredCols)){
                             if($myTableResponsiveStyle == "stack"){
-                                $html .= "<td><span class='stackedheadtitlejt' style='font-weight:bold;'>". $table_data[0][$cellindx] .":</span><br>" .preg_replace("/[\n\r]/","<br>",$cell). "</td>";
+                                $html .= "<td><span class='stackedheadtitlejt' style='font-weight:bold;'>". $table_data[0][$cellindx] .":</span><br>" . do_shortcode(preg_replace("/[\n\r]/", "<br>", $cell)) . "</td>";
                             }else{
-                                $html .= "<td>" .preg_replace("/[\n\r]/","<br>",$cell). "</td>";
+                                $html .= "<td>" . do_shortcode(preg_replace("/[\n\r]/", "<br>", $cell)) . "</td>";
                             }
                             
                         }                         

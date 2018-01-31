@@ -30,11 +30,10 @@
 	 */
 
 	$(document).ready(function(){
-
+		
 		var jtrt_tables = $('.jtrt-table');
 		jtrt_tables.each(function(element) {
-			
-			var table = jQuery(jtrt_tables[element]);
+			var table = $(jtrt_tables[element]);
 			var id = table.attr('data-jtrt-table-id');
 			var jtrt_table_data = JSON.parse($('textarea#jtrt_table_settings_'+id).html());
 			
@@ -158,19 +157,19 @@
 			checkTableWidth($('.jtrespo-stack table'));
 		});
 
-		$('.highlightRows tr').on('mouseenter',function(){
+		$('.highlightRows').on('mouseenter', 'tr', function(){
 			$(this).css('background',$('.highlightRows').attr('data-jtrt-rowhighligh-color'));
 		});
-		$('.highlightRows tr').on('mouseleave',function(){
+		$('.highlightRows').on('mouseleave', 'tr', function(){
 			$(this).css('background','inherit');
 		});
 
 
-		$('.highlightCols td').on('mouseenter',function(){
+		$('.highlightCols').on('mouseenter', 'td', function(){
 			var eq = $(this).index() + 1;
 			$('.highlightCols td:nth-child('+eq+')').css('background',$('.highlightCols').attr('data-jtrt-colhighligh-color'));
 		});
-		$('.highlightCols td').on('mouseleave',function(){
+		$('.highlightCols').on('mouseleave', 'td', function(){
 			var eq = $(this).index() + 1;
 			$('.highlightCols td:nth-child('+eq+')').css('background','inherit');
 		});

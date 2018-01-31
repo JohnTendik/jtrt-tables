@@ -1,3 +1,6 @@
+# SUPPORT IS NO LONGER AVAILABLE FOR THIS PROJECT
+### If you want to take this over, please contact me =)
+
 # Docs
 If you're here for the older version docs, they are now located on their own branch.
 

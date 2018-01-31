@@ -81,13 +81,13 @@
         </nav>
         <nav id="jteditbottomtoolbar">
             <ul>
-                <li id="jtundo" data-jtrt-btnType="undo"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/undo.png" alt=""></li>
-                <li id="jtredo" data-jtrt-btnType="redo"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/redo.png" alt=""></li>
+                <li id="jtundo" data-jtrt-btnType="undo" title="Undo"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/undo.png" alt=""></li>
+                <li id="jtredo" data-jtrt-btnType="redo" title="Redo"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/redo.png" alt=""></li>
                 <span></span>
-                <li class="jtedittexttoolbar" id="jtboldtext" data-jtrt-toolbar-opt="font-weight" data-jtrt-toolbar-opt-val="bold"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/bold-text.png" alt=""></li>
-                <li class="jtedittexttoolbar" id="jtitalictext" data-jtrt-toolbar-opt="font-style" data-jtrt-toolbar-opt-val="italic"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/italic-text.png" alt=""></li>
-                <li class="jtedittexttoolbar" id="jtunderlinetext" data-jtrt-toolbar-opt="text-decoration" data-jtrt-toolbar-opt-val="underline"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/underline-text.png" alt=""></li>
-                <li id="jteditfont" class="jtrt-toolbar-more">
+                <li class="jtedittexttoolbar" id="jtboldtext" data-jtrt-toolbar-opt="font-weight" data-jtrt-toolbar-opt-val="bold" title="Bold"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/bold-text.png" alt=""></li>
+                <li class="jtedittexttoolbar" id="jtitalictext" data-jtrt-toolbar-opt="font-style" data-jtrt-toolbar-opt-val="italic" title="Italic"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/italic-text.png" alt=""></li>
+                <li class="jtedittexttoolbar" id="jtunderlinetext" data-jtrt-toolbar-opt="text-decoration" data-jtrt-toolbar-opt-val="underline" title="Underline"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/underline-text.png" alt=""></li>
+                <li id="jteditfont" class="jtrt-toolbar-more" title="Edit Font">
                     <img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/edit-font.png" alt="">
                     <ul>
                         <div>
@@ -119,7 +119,7 @@
                        
                     </ul>
                 </li>
-                <li id="jthighlight" class="jtrt-toolbar-more"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/highlight.png" alt="">
+                <li id="jthighlight" class="jtrt-toolbar-more" title="Cell Color"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/highlight.png" alt="">
                     <ul>
                         <div>
                             <p style="margin:0;"><?php _e('Cell Color',$text_domain); ?></p>
@@ -131,12 +131,12 @@
                     </ul>
                 </li>
                 <span></span>
-                <li class="jtalignbtn" data-align-opt="htLeft"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/align-left.png" alt=""></li>
-                <li class="jtalignbtn" data-align-opt="htCenter"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/align-center.png" alt=""></li>
-                <li class="jtalignbtn" data-align-opt="htRight"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/align-right.png" alt=""></li>
-                <li class="jtalignbtn" data-align-opt="htJustify"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/align-justify.png" alt=""></li>
+                <li class="jtalignbtn" data-align-opt="htLeft" title="Align Text Left"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/align-left.png" alt=""></li>
+                <li class="jtalignbtn" data-align-opt="htCenter" title="Align Text Center"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/align-center.png" alt=""></li>
+                <li class="jtalignbtn" data-align-opt="htRight" title="Align Text Right"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/align-right.png" alt=""></li>
+                <li class="jtalignbtn" data-align-opt="htJustify" title="Justify"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/align-justify.png" alt=""></li>
                 <span></span>
-                <li id="jtinsertlink" class="jtrt-toolbar-more"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/link.png" alt="">
+                <li id="jtinsertlink" class="jtrt-toolbar-more" title="Insert Link"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/link.png" alt="">
                     <ul>
                         <table>
                             <tr>
@@ -147,7 +147,7 @@
                     </ul>
                 </li>
                 <span></span>
-                <li id="jtbordersbtn" class="jtrt-toolbar-more"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders.png" alt="">
+                <li id="jtbordersbtn" class="jtrt-toolbar-more" title="Borders"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders.png" alt="">
                     <ul>
                         <table>
                             <tr>
@@ -169,7 +169,7 @@
                         </table>      
                     </ul>
                 </li>
-                <li id="jthidecolsbtn" class="jtrt-toolbar-more"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/cols.png" alt="">
+                <li id="jthidecolsbtn" class="jtrt-toolbar-more" title="Hide Columns"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/cols.png" alt="">
                     <ul>
                         <table>
                             <tr>
@@ -197,13 +197,13 @@
                         </table>      
                     </ul>
                 </li>
-                <li id="jtprinttab"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/print.png" alt=""></li>
+                <li id="jtprinttab" title="Print"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/print.png" alt=""></li>
             </ul>
         </nav>
         <nav id="jteditbottomvalbar">
             <ul>
                 <li><?php _e('Value:',$text_domain); ?></li>
-                <li><input type="text" style="width:100%" id="jtinputvalbox"></li>
+                <li><input type="text" style="width:100%" id="jtinputvalbox" placeholder="Cell Value"></li>
             </ul>
         </nav>
         <div id="jtrt-table-handson" style="overflow:hidden;max-height:441px;height:auto;width:100%;max-width:100%;overflow-y:scroll"></div>

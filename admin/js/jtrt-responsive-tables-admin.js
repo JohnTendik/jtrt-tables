@@ -74,8 +74,8 @@
 
 		JTrtTableEditor = new JTrtEditor(document.getElementById('jtrt-table-handson'));
 
-		//Setup the click event for the publish/update button
-		jQuery('#publish').on('click',JTrtTableEditor.handleOnSave);
+		//Setup the click event for the publish/update/draft button
+		jQuery('#publish, #save-post').on('click',JTrtTableEditor.handleOnSave);
 
 		//click event for the undo/redo button
 		jQuery('#jtundo,#jtredo').on('click',function(){

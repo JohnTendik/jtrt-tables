@@ -57,10 +57,6 @@
  .jtrespo-scroll table{
      table-layout: inherit;
  }
- 
- .jtrespo-scroll{
-     overflow-x:scroll;
- }
 
  .jtrespo-stack table{
      max-width: 100%;

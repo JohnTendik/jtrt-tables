@@ -51,7 +51,7 @@
  }
 
 .jtrespo-scroll{
-     overflow-x:scroll;
+     overflow-x: auto;
  }
 
  .jtrespo-scroll table{

@@ -158,21 +158,13 @@
 			checkTableWidth($('.jtrespo-stack table'));
 		});
 
-		$('.highlightRows').on('mouseenter', 'tbody tr', function(){
-			$(this).css('background',$('.highlightRows').attr('data-jtrt-rowhighligh-color'));
-		});
-		$('.highlightRows').on('mouseleave', 'tbody tr', function(){
-			$(this).css('background','inherit');
-		});
-
-
 		$('.highlightCols').on('mouseenter', 'tbody td', function(){
 			var eq = $(this).index() + 1;
-			$('.highlightCols tbody td:nth-child('+eq+')').css('background',$('.highlightCols').attr('data-jtrt-colhighligh-color'));
+			$('.highlightCols tbody td:nth-child('+eq+')').addClass('jtrt-col-hoveredOver');
 		});
 		$('.highlightCols').on('mouseleave', 'tbody td', function(){
 			var eq = $(this).index() + 1;
-			$('.highlightCols tbody td:nth-child('+eq+')').css('background','inherit');
+			$('.highlightCols tbody td:nth-child('+eq+')').removeClass('jtrt-col-hoveredOver');
 		});
 
 		

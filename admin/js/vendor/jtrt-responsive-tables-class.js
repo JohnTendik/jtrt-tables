@@ -436,7 +436,7 @@ JTrtEditor.prototype.safeHtmlRenderer = function(instance, td, row, col, prop, v
 }
 
 JTrtEditor.prototype.reRenderTable = function(){
-    window.dispatchEvent(new Event('resize'));
+    if (!window.MSInputMethodContext && !document.documentMode) window.dispatchEvent(new Event('resize'));
     this.handsOnTab.colOffset();
     this.handsOnTab.rowOffset();
     this.handsOnTab.render();
@@ -445,7 +445,7 @@ JTrtEditor.prototype.reRenderTable = function(){
 
 JTrtEditor.prototype.handleOnSave = function(event){
 
-    //event.preventDefault();
+    event.preventDefault();
 
     var tableDataJT = JSON.stringify(Iam.handsOnTab.getData()),
 				tableCellDataJT = Iam.handsOnTab.getCellsMeta(),
@@ -528,7 +528,8 @@ JTrtEditor.prototype.handleOnSave = function(event){
     }, this);
 
     Iam.dataBox.html("["+tableDataJT+","+JSON.stringify(tableCellDataNew)+"," +JSON.stringify(tableCellBorderData)+","+JSON.stringify(tableFuncResData)+"]");
-	
+    
+    $(this).parents('form#post').submit();
 } // End of handleOnSave
 	
 

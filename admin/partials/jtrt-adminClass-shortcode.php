@@ -58,7 +58,7 @@ function jtrt_shortcode_table( $atts ){
         $html .= "</div>";
     }
     
-    $html .= "<div class='jtTableContainer jtrespo-".$myTableResponsiveStyle." ".$myTableHoverRows." ".$myTableHoverCols."' ".($myTableResponsiveStyle == 'stack' ? "data-jtrt-stack-width='".$myTableStackPrefWidth."'" : "")." ".$myTableHoverRowsCol." ".$myTableHoverColsCol.">";
+    $html .= "<div class='jtTableContainer jtrespo-".$myTableResponsiveStyle." ".$myTableHoverRows." ".$myTableHoverCols."' ".($myTableResponsiveStyle == 'stack' ? "data-jtrt-stack-width='".$myTableStackPrefWidth."'" : "").">";
 
 
     // We can only return once, so let's build our html!
@@ -161,6 +161,18 @@ function jtrt_shortcode_table( $atts ){
     }
     wp_enqueue_style( 'jtbackendfrontend-css', plugin_dir_url( __FILE__ ) . '../../public/css/jtrt-responsive-tables-public.css', '4.0', 'all' );  
     wp_enqueue_script( 'jtbackendfrontend-js', plugin_dir_url( __FILE__ ) . '../../public/js/jtrt-responsive-tables-public.js', array( 'jquery' ), '4.0', false );
+
+    $custom_css = '';
+    
+    if (isset($table_post_meta[0]['jtTableEnableColHighlight'])) {
+        $custom_css .= ".highlightCols #jtrt_table_" . $jtrt_settings['id'] . " tbody td.jtrt-col-hoveredOver { background:" . $table_post_meta[0]['jtTableEnableColHighlightcol'] . " !important; }";
+    }
+
+    if (isset($table_post_meta[0]['jtTableEnableRowHighlight'])) {
+        $custom_css .= ".highlightRows #jtrt_table_" . $jtrt_settings['id'] . " tbody tr:hover td { background:" . $table_post_meta[0]['jtTableEnableRowHighlightcol'] . " !important; }";
+    }    
+
+    wp_add_inline_style( 'jtbackendfrontend-css', $custom_css );
 
     // Blast off! We've done our part here in the server, Javascript will handle the rest.
     return $html;

@@ -50,8 +50,8 @@
      border-left:solid 1px black;
  }
 
-.jtrespo-scroll{
-     overflow-x: auto;
+ .jtrespo-scroll{
+     overflow-x: auto !important;
  }
 
  .jtrespo-scroll table{

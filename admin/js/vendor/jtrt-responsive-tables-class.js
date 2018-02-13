@@ -16,47 +16,80 @@ var JTrtEditor = function (tableContainer) {
 
     // This is the settings used to init handsontable the best table editor by far. TY handsontable <3
     this.tableSettings =  {
-			data: this.getData()[0], // Get the table data
-			rowHeaders: true, // Allow row headers [1,2,3,4,etc]
-			colHeaders: true, // Allow col headers [a,b,c,d,etc]
-			contextMenu: true, // Context menu for right click editting 
-			autoWrapRow: true, // I dont know, but its useful
-			stretchH:'all', // Stretch the columns to fit max size
-			cell: this.getData()[1], // These are the cell properties for each cell, this includes things like alignment,borders and custom styles
-			height:441, // Height of the table editor, this is necessary otherwise the table has problems with rendering
-			width:'100%', // this doesnt work but i include it anyway
-			customBorders: this.getData()[2], // Custom border data for each cell, the way handsontable is setup i have to have separate data for these 
-			dropdownMenu: true, // This also doesnt work dunno why, itd be nice if it did
-			manualRowMove: true, // Manually move rows. probably not needed since editting the tables are so friken easy
-			sortIndicator: true, // the little arrow that shows up if you sort your table by clicking on the headers
-			manualColumnMove: true, // manual column moving, very nice
-            formulas:true,
-			columnSorting: true, // allow column sorting
-			outsideClickDeselects: false, // do not deselect the selected cell(s) if they click outside of the table. VERY IMPORTANT
-			renderer: this.safeHtmlRenderer, // Custom renderer so HTML, and custom styles will show up. So mach work man
-			afterOnCellMouseDown: function(event,location,smth){
-                // This is the call back I used to change the 'value' input box 
-				var jtrt_toolbar_value_input = jQuery('#jtinputvalbox');
-                jtrt_toolbar_value_input.val(jQuery(Iam.handsOnTab.getCell(location['row'],location['col'])).html()); // set the value of the input box to equal the first selected cell's data'
-				jtrt_toolbar_value_input.attr('data-editting-row',location['row']); // add helper data attributes so I can do more editting later for when the input box is changed
-				jtrt_toolbar_value_input.attr('data-editting-col',location['col']); // same as above jeez
+        autoColumnSize: { syncLimit: 100 }, // first 100 columns will sync resize (browser blocking) - the rest will async resize
+        autofill: true, // drag-down, copy-down
+        autoRowSize: { syncLimit: 100 },
+        autoWrapRow: true, // I dont know, but its useful
+        cell: this.getData()[1], // These are the cell properties for each cell, this includes things like alignment,borders and custom styles
+        colHeaders: true, // Allow col headers [a,b,c,d,etc]
+        columnSorting: true, // allow column sorting        
+        customBorders: this.getData()[2], // Custom border data for each cell, the way handsontable is setup i have to have separate data for these 
+        data: this.getData()[0], // Get the table data        
+        formulas: true,
+        height: 441, // Height of the table editor, this is necessary otherwise the table has problems with rendering        
+        manualColumnMove: true, // manual column moving, very nice            
+        manualColumnResize: true,
+        manualRowMove: true, // Manually move rows. probably not needed since editting the tables are so friken easy
+        manualRowResize: true,
+        outsideClickDeselects: false, // do not deselect the selected cell(s) if they click outside of the table. VERY IMPORTANT
+        renderer: this.safeHtmlRenderer, // Custom renderer so HTML, and custom styles will show up. So mach work man            
+        rowHeaders: true, // Allow row headers [1,2,3,4,etc]        
+        sortIndicator: true, // the little arrow that shows up if you sort your table by clicking on the headers
+        stretchH: 'all', // Stretch the columns to fit max size
 
-                // Get the active editor for handsontable so I can unescape the html characters when they double click to edit
-				var activeeditor = Iam.handsOnTab.getCellMeta(location['row'],location['col']).instance.getActiveEditor();
-				// Set the original value of the cell to something more legible decodeHTML BRAH
-                activeeditor.originalValue = Iam.decodeHtml(activeeditor.originalValue);
-			}
-		};
+        afterOnCellMouseDown: function(event,location,smth){
+            // This is the call back I used to change the 'value' input box 
+            var jtrt_toolbar_value_input = jQuery('#jtinputvalbox');
+            jtrt_toolbar_value_input.val(jQuery(Iam.handsOnTab.getCell(location['row'],location['col'])).html()); // set the value of the input box to equal the first selected cell's data'
+            jtrt_toolbar_value_input.attr('data-editting-row',location['row']); // add helper data attributes so I can do more editting later for when the input box is changed
+            jtrt_toolbar_value_input.attr('data-editting-col',location['col']); // same as above jeez
 
-        // Start things rolling
-        this.init();
+            // Get the active editor for handsontable so I can unescape the html characters when they double click to edit
+            var activeeditor = Iam.handsOnTab.getCellMeta(location['row'],location['col']).instance.getActiveEditor();
+            // Set the original value of the cell to something more legible decodeHTML BRAH
+            activeeditor.originalValue = Iam.decodeHtml(activeeditor.originalValue);
+		}
+	};
 
+    // Start things rolling
+    this.init();
 };
 
 JTrtEditor.prototype.init = function(){
 
     // Initializing the handsontable editor
-    this.handsOnTab = new Handsontable(this.container, this.tableSettings);
+    this.handsOnTab = new Handsontable(this.container, this.tableSettings);    
+    
+    // there's probably a better way
+    var defaultItems = {
+        'row_above': {},
+        'row_below': {},
+        'hsep1': '---------',
+        'col_left': {},
+        'col_right': {},
+        'hsep2': '---------',
+        'remove_row': {},
+        'remove_col': {},
+        'hsep3': '---------',
+        'undo': {},
+        'redo': {},
+        'hsep4': '---------',
+        'make_read_only': {},
+        'hsep5': '---------',
+        'alignment': {},
+        'hsep6': '---------',
+        'borders': {}
+    }
+
+    // placeholder for possible context menu expansion
+    var newItems = {};    
+    
+    this.handsOnTab.updateSettings({
+        contextMenu: {
+            items: Object.assign({}, defaultItems, newItems)
+        }
+    });
+
     // rerender the table after init to get rid of sizing issue
     this.reRenderTable();
 

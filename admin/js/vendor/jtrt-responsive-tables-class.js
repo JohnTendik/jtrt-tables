@@ -739,15 +739,22 @@ JTrtEditor.prototype.handleImport = function(type,elem){
         
         if (csv == null) return;
 
-        if (!csv.match(/^data:text\/csv/i)) {
-            csv = 'data:text/csv;charset=utf-8,' + csv;
+        if (navigator.msSaveBlob) { // IE 10+
+            var blob = new Blob([csv],{type: "text/csv;charset=utf-8;"});
+            navigator.msSaveBlob(blob, filename);
         }
-        data = encodeURI(csv);
-
-        link = document.createElement('a');
-        link.setAttribute('href', data);
-        link.setAttribute('download', filename);
-        link.click();
+        else {
+            if (!csv.match(/^data:text\/csv/i)) {
+                csv = 'data:text/csv;charset=utf-8,' + csv;
+            }
+            data = encodeURI(csv);
+            var link = document.createElement('a');
+            link.setAttribute('href', data);
+            link.setAttribute('download', filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     }
 }
 

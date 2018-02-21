@@ -94,10 +94,10 @@
 
         // change background color
         if (instance.plugin.utils.isSet(error)) {
-          Handsontable.Dom.addClass(TD, 'formula-error');
+          Handsontable.dom.addClass(TD, 'formula-error');
         } else if (instance.plugin.utils.isSet(result)) {
-          Handsontable.Dom.removeClass(TD, 'formula-error');
-          Handsontable.Dom.addClass(TD, 'formula');
+          Handsontable.dom.removeClass(TD, 'formula-error');
+          Handsontable.dom.addClass(TD, 'formula');
         }
       }
 
@@ -375,8 +375,8 @@
 
         Handsontable.cellTypes['formula'] = formulaCell;
 
-        Handsontable.TextCell.renderer = formulaRenderer;
-        Handsontable.NumericCell.renderer = formulaRenderer;
+        Handsontable.renderers.TextRenderer = formulaRenderer;
+        Handsontable.renderers.NumericCell = formulaRenderer;
 
         instance.addHook('afterChange', afterChange);
         instance.addHook('beforeAutofillInsidePopulate', beforeAutofillInsidePopulate);

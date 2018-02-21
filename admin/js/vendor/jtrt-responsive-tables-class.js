@@ -14,17 +14,18 @@ var JTrtEditor = function (tableContainer) {
 
     this.loader = jQuery('#loaderIco').detach().hide().appendTo('body').css('height',document.documentElement.scrollHeight + 121);
 
+    this.savedTableData = this.getData();
+
     // This is the settings used to init handsontable the best table editor by far. TY handsontable <3
     this.tableSettings =  {
         autoColumnSize: { syncLimit: 100 }, // first 100 columns will sync resize (browser blocking) - the rest will async resize
         autofill: true, // drag-down, copy-down
         autoRowSize: { syncLimit: 100 },
         autoWrapRow: true, // I dont know, but its useful
-        cell: this.getData()[1], // These are the cell properties for each cell, this includes things like alignment,borders and custom styles
         colHeaders: true, // Allow col headers [a,b,c,d,etc]
         columnSorting: true, // allow column sorting        
-        customBorders: this.getData()[2], // Custom border data for each cell, the way handsontable is setup i have to have separate data for these 
-        data: this.getData()[0], // Get the table data        
+        customBorders: this.savedTableData[2], // Custom border data for each cell, the way handsontable is setup i have to have separate data for these 
+        data: this.savedTableData[0], // Get the table data        
         formulas: true,
         height: 441, // Height of the table editor, this is necessary otherwise the table has problems with rendering        
         manualColumnMove: true, // manual column moving, very nice            
@@ -87,7 +88,8 @@ JTrtEditor.prototype.init = function(){
     this.handsOnTab.updateSettings({
         contextMenu: {
             items: Object.assign({}, defaultItems, newItems)
-        }
+        },
+        cell: this.savedTableData[1]
     });
 
     // rerender the table after init to get rid of sizing issue
@@ -106,7 +108,7 @@ JTrtEditor.prototype.init = function(){
         event.preventDefault();
 		event.stopPropagation();
 
-        var selected = Iam.handsOnTab.getSelected();
+        var selected = Iam.handsOnTab.getSelectedLast();
         if(selected != undefined && selected.length > 0){
 
             if(jQuery(this).attr('id') == "jtinsertlink"){
@@ -313,7 +315,7 @@ JTrtEditor.prototype.init = function(){
         Iam.loader.fadeIn();
 
     window.setTimeout(function(){
-        var selected = Iam.handsOnTab.getSelected();
+        var selected = Iam.handsOnTab.getSelectedLast();
         
         if(selected != undefined && selected.length > 0){
             
@@ -355,7 +357,7 @@ JTrtEditor.prototype.init = function(){
         Iam.loader.fadeIn();
 
         window.setTimeout(function(){
-            var selected = Iam.handsOnTab.getSelected();
+            var selected = Iam.handsOnTab.getSelectedLast();
             
             if(selected != undefined && selected.length > 0){
                 
@@ -432,7 +434,7 @@ JTrtEditor.prototype.strip_tags = function(input, allowed){
 JTrtEditor.prototype.safeHtmlRenderer = function(instance, td, row, col, prop, value, cellProperties){
   
 
-    Handsontable.TextCell.renderer.apply(this, arguments);
+    Handsontable.renderers.TextRenderer.apply(this, arguments);
     var escaped = Handsontable.helper.stringify(value);
     escaped = Iam.strip_tags(escaped, '<em><b><strong><a><u><big><img><i><br><caption><figure><span><hr><ul><li><dl><dd><dt><form><input><div><select><option>'); //be sure you only allow certain HTML tags to avoid XSS threats (you should also remove unwanted HTML attributes)
     if(value){
@@ -582,8 +584,8 @@ JTrtEditor.prototype.editCellText = function(opt,vals,borderc){
    
     this.loader.fadeIn();
 
-    window.setTimeout(function(){
-        var selected = Iam.handsOnTab.getSelected();
+    window.setTimeout(function() {
+        var selected = Iam.handsOnTab.getSelectedLast();
         
         if(selected != undefined && selected.length > 0){
             
@@ -800,7 +802,7 @@ JTrtEditor.prototype.deleteStuff = function(type,elem){
     this.loader.fadeIn();
 
     window.setTimeout(function(){
-        var selected = Iam.handsOnTab.getSelected();
+        var selected = Iam.handsOnTab.getSelectedLast();
         
         if(selected != undefined && selected.length > 0){
             if(type == "value"){
@@ -822,7 +824,7 @@ JTrtEditor.prototype.insertStuff = function(type,elem){
     var typeStuff = type.split(",");
 
     window.setTimeout(function(){
-        var selected = Iam.handsOnTab.getSelected();
+        var selected = Iam.handsOnTab.getSelectedLast();
         
         if(selected != undefined && selected.length > 0){
             if(typeStuff[0] == "row"){
@@ -842,7 +844,7 @@ JTrtEditor.prototype.renderMediaUploader = function() {
     this.loader.fadeIn();
     
     window.setTimeout(function(){
-        var selected = Iam.handsOnTab.getSelected();
+        var selected = Iam.handsOnTab.getSelectedLast();
         
         if(selected != undefined && selected.length > 0){
 
@@ -935,7 +937,7 @@ JTrtEditor.prototype.sortData = function(type,elem){
     this.loader.fadeIn();
     
     window.setTimeout(function(){
-        var selected = Iam.handsOnTab.getSelected();
+        var selected = Iam.handsOnTab.getSelectedLast();
         
         if(selected != undefined && selected.length > 0){
             console.log(type);

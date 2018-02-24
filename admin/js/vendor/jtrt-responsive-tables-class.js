@@ -609,7 +609,7 @@ JTrtEditor.prototype.editCellText = function(opt,vals,borderc){
                     newbrd[keyjt] = vals[keyjt];
                     newupdateborder['customBorders'][0][keyjt] = vals[keyjt];
                 }
-                console.log(selected);
+                
                 Iam.generateSelectionFunc(selected,function(i,t){
 
                     newbrd['row'] = i;

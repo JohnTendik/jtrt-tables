@@ -3,8 +3,8 @@ Contributors: MyThirdEye
 Donate link: //
 Tags: responsive tables, responsive, table, table generator, csv to table, csv, convert csv, responsive table generator, foo tables, responsive table, mobile tables, html table generator, html5 table
 Requires at least: 4.0
-Tested up to: 4.6.1
-Stable tag: 4.0.2.1
+Tested up to: 4.9.4
+Stable tag: 4.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ Easily create beautiful, responsive HTML tables in the backend using the most ad
 
 = JTRT Responsive Tables =
  
-JTRT Responsive Tables is a plugin designed to help average wordrpess users with creating amazing responsive tables for their websites without having to deal with HTML or CSS. It is now easier than ever to create tables!
+JTRT Responsive Tables is the most advanced HTML table editor for WordPress. Create amazing responsive tables without having to deal with HTML or CSS!
 
 = Features =
 
@@ -51,7 +51,10 @@ This plugin will look and feel very familiar to how you normally edit your table
 
 = Credits =
 
+A special thank you to Joerg K. (@yogieanamcara) for helping me improve the plugin and for taking the time to translate this plugin into German!
+
 I'm a 22 year old self-taught student who created to plugin to help users easily create responsive tables on their wordpress website. Originally this was a simple personal project but grew to over 2000+ active installs. I want to thank each and everyone of you who downloaded and used my plugin, it means a lot and I hope it has served you well. Having said this, I didn't create this plugin entirely from scratch. I made use of amazing frameworks and scripts developed by other amazing people who deserve all the credit for their work. This plugin makes use of other plugins which I have not created or contributed to in any way, I do not take credit for these works, the credits belong to their respective authors. These plugins are:
+
 1. [Footable](http://fooplugins.com/plugins/footable-jquery/)
 3. [jQuery](https://jquery.com/)
 4. [PapaParse](http://papaparse.com/)
@@ -101,6 +104,39 @@ If you can see your images/links in the backend but not on the frontend, then th
 6. Front End Sample 2.2
 
 == Changelog ==
+
+= 4.1.4 =
+* Fixed IE, FF export as CSV bug
+* Fixed tables disappearing in the backend bug :)
+* Updated Handsontable & Footables
+* Fixed HTML sorting when column hiding
+* Getting ready for possible CTRL + select updates :)
+
+= 4.1.3 =
+* Changed scroller option scroll bar to show only when needed
+* Fixed hovers on tables, no longer should the original background disappear
+* Fixed hover being done with JS, its now done through CSS as it should be
+* Fixed IE11 save bug
+* Removed preview post link as it was misleading
+
+= 4.1.2 =
+* Fixed sorting for scroller responsive option
+* Fixed draft button not saving data
+* Ability to use shortcodes in tables have been added
+* Tooltips added to table editor
+* Changed scroller option scroll bar to show only when needed
+* Fixed hovers on tables with pagination
+* Credits and thanks to [0x0936](https://github.com/0x0936) and [Jody LeCompte](https://github.com/jodylecompte) for the PR
+
+= 4.1 =
+* Fixed FF issue when saving
+* New color picker for text and backgrounds
+* Fixed hang when applying borders
+* filtering/pagination now works with row stack responsive option (sort does not)
+* alt + enter breaks line in front-end now
+* front-end translations for data-tables have been added.
+* Formula support has been added. There is a caviat however, it works but its not very user friendly. All formulas will need to by typed out by hand (no clicking on cells to get cell value) ie. =A1+B5, you have to type out the cell col/row manually, selecting by clicking does not work and is not supported. Visit this link to see all the available commands:
+[List of usuable formuals](http://handsontable.github.io/ruleJS/)
 
 = 4.0.2 = 
 * Added duplicate function for easy table copying

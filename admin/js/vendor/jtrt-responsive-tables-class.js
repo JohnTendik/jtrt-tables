@@ -386,27 +386,14 @@ JTrtEditor.prototype.getData = function(){
     if(this.dataBox.html() !== ""){
         var jtrt_saved_data = JSON.parse(this.dataBox.html());		
         
-        return [jtrt_saved_data[0],jtrt_saved_data[1] || {},jtrt_saved_data[2] || [{
-        row: 0,
-        col: 0,
-        left: {
-          width: 2,
-          color: 'red'
-        }
-      }]];
+        return [jtrt_saved_data[0],jtrt_saved_data[1] || {},jtrt_saved_data[2] || true];
 
     }else{
         return [[
         ['Header 1', 'Header 2', 'Header 3'],
         ['Cell 1', "Cell 2", "Cell 3"],
         ['Cell 1', "Cell 2", "Cell 3"]
-        ],[],[{
-        row: 0,
-        col: 0,
-        left: {
-          hide:true
-        }
-      }]];
+        ],[],true];
     }
 
 }
@@ -622,10 +609,11 @@ JTrtEditor.prototype.editCellText = function(opt,vals,borderc){
                     newbrd[keyjt] = vals[keyjt];
                     newupdateborder['customBorders'][0][keyjt] = vals[keyjt];
                 }
+                console.log(selected);
                 Iam.generateSelectionFunc(selected,function(i,t){
 
-                    newbrd['row'] = i;
-                    newbrd['col'] = t;
+                    newbrd['row'] = selected[0];
+                    newbrd['col'] = selected[1];
 
                     newupdateborder['customBorders'][0]['range'] = {
                         from: {

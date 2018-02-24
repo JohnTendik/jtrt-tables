@@ -612,8 +612,8 @@ JTrtEditor.prototype.editCellText = function(opt,vals,borderc){
                 console.log(selected);
                 Iam.generateSelectionFunc(selected,function(i,t){
 
-                    newbrd['row'] = selected[i];
-                    newbrd['col'] = selected[t];
+                    newbrd['row'] = i;
+                    newbrd['col'] = t;
 
                     newupdateborder['customBorders'][0]['range'] = {
                         from: {

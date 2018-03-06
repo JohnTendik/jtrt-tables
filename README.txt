@@ -4,11 +4,11 @@ Donate link: //
 Tags: responsive tables, responsive, table, table generator, csv to table, csv, convert csv, responsive table generator, foo tables, responsive table, mobile tables, html table generator, html5 table
 Requires at least: 4.0
 Tested up to: 4.9.4
-Stable tag: 4.1.3
+Stable tag: 4.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Easily create beautiful, responsive HTML tables in the backend using the most advanced table editor for Wordpress.
+Easily create beautiful, responsive HTML tables in the backend using the most advanced table editor for WordPress.
 
 == Description ==
 
@@ -16,9 +16,12 @@ Easily create beautiful, responsive HTML tables in the backend using the most ad
  
 JTRT Responsive Tables is the most advanced HTML table editor for WordPress. Create amazing responsive tables without having to deal with HTML or CSS!
 
+[Demo GIF](https://github.com/JohnTendik/jtrt-tables/blob/master/docs/jtrt.gif?)
+
 = Features =
 
 * Simple WYSIWYG backend table editor
+* Formulas [List of usable formuals](http://handsontable.github.io/ruleJS/)
 * Covert your excel CSV files to responsive html with a few clicks
 * 5 Custom responsive breakpoint sizes (XS SM MD LG XL)
 * Edit table cells within the backend
@@ -105,6 +108,12 @@ If you can see your images/links in the backend but not on the frontend, then th
 
 == Changelog ==
 
+= 4.1.5 =
+* Fixed borders once again
+* Borders now update each cell separately as frequently asked
+* Borders now have color and width options
+* Fixed rather strange bug that would scroll that page down when cell was clicked
+
 = 4.1.4 =
 * Fixed IE, FF export as CSV bug
 * Fixed tables disappearing in the backend bug :)
@@ -142,7 +151,8 @@ If you can see your images/links in the backend but not on the frontend, then th
 * Added duplicate function for easy table copying
 * Added .pot file for my multilangual friends
 * Fixed stacking responsive style
-* Cells now accepts the following tags: <em><b><strong><a><u><big><img><i><br><caption><figure><span><hr><ul><li><dl><dd><dt><form><input><div><select><option>
+* Cells now accepts the following tags: 
+> <em><b><strong><a><u><big><img><i><br><caption><figure><span><hr><ul><li><dl><dd><dt><form><input><div><select><option>
 * Fixed undefined column header for stacked columns
 
 = 4.0.1 =

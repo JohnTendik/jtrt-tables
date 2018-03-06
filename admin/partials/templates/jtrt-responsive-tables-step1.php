@@ -151,22 +151,29 @@
                     <ul>
                         <table>
                             <tr>
-                                <td><img class="jtbordrs" data-border-type='{"top":{"hide":true},"right":{"hide":true},"bottom":{"hide":true},"left":{"hide":true}}' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-none.png" id="jtbrdnone" alt=""></td>
-                                <td><img class="jtbordrs" data-border-type='{"top":{"width":1,"color":"#000"},"right":{"width":1,"color":"#000"},"bottom":{"width":1,"color":"#000"},"left":{"width":1,"color":"#000"}}' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-all.png" id="jtbrdall" alt=""></td>
-                                <td><img class="jtbordrs" data-border-type='{"top":{"hide":true},"right":{"hide":true},"bottom":{"hide":true},"left":{"width":"1","color":"#000"}}' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-left.png" id="jtbrdleft" alt=""></td>
-                                <td><img class="jtbordrs" data-border-type='{"top":{"width":"1","color":"#000"},"right":{"hide":true},"bottom":{"hide":true},"left":{"hide":true}}' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-left.png" id="jtbrdtop" alt=""></td>
-                                <td><img class="jtbordrs" data-border-type='{"top":{"hide":true},"right":{"width":"1","color":"#000"},"bottom":{"hide":true},"left":{"hide":true}}' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-left.png" id="jtbrdright" alt=""></td>
-                                <td><img class="jtbordrs" data-border-type='{"top":{"hide":true},"right":{"hide":true},"bottom":{"width":"1","color":"#000"},"left":{"hide":true}}' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-left.png" id="jtbrdbottom" alt=""></td>
+                                <td><img class="jtbordrs" data-border-type='[]' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-none.png" id="jtbrdnone" alt=""></td>
+                                <td><img class="jtbordrs" data-border-type='["top","left","right","bottom"]' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-all.png" id="jtbrdall" alt=""></td>
+                                <td><img class="jtbordrs" data-border-type='["left"]' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-left.png" id="jtbrdleft" alt=""></td>
+                                <td><img class="jtbordrs" data-border-type='["top"]' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-left.png" id="jtbrdtop" alt=""></td>
+                                <td><img class="jtbordrs" data-border-type='["right"]' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-left.png" id="jtbrdright" alt=""></td>
+                                <td><img class="jtbordrs" data-border-type='["bottom"]' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-left.png" id="jtbrdbottom" alt=""></td>
                             </tr>
                             <tr>
-                                <td><img class="jtbordrs" data-border-type='{"top":{"hide":true},"right":{"width":"1","color":"#000"},"bottom":{"hide":true},"left":{"width":"1","color":"#000"}}' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-rightleft.png" alt=""></td>
-                                <td><img class="jtbordrs" data-border-type='{"top":{"width":"1","color":"#000"},"right":{"hide":true},"bottom":{"width":"1","color":"#000"},"left":{"hide":true}}' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-rightleft.png" id="jtbrdtopbot" alt=""></td>
-                                <td><img class="jtbordrs" data-border-type='{"top":{"width":"1","color":"#000"},"right":{"hide":true},"bottom":{"hide":true},"left":{"width":"1","color":"#000"}}' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-lefttop.png" id="jtbrdlefttop" alt=""></td>
-                                <td><img class="jtbordrs" data-border-type='{"top":{"width":"1","color":"#000"},"right":{"width":"1","color":"#000"},"bottom":{"hide":true},"left":{"hide":true}}' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-lefttop.png" id="jtbrdtopright" alt=""></td>
-                                <td><img class="jtbordrs" data-border-type='{"top":{"hide":true},"right":{"width":"1","color":"#000"},"bottom":{"width":"1","color":"#000"},"left":{"hide":true}}' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-lefttop.png" id="jtbrdrightbot" alt=""></td>
-                                <td><img class="jtbordrs" data-border-type='{"top":{"hide":true},"right":{"hide":true},"bottom":{"width":"1","color":"#000"},"left":{"width":"1","color":"#000"}}' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-lefttop.png" id="jtbrdbotleft" alt=""></td>
+                                <td><img class="jtbordrs" data-border-type='["right","left"]' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-rightleft.png" alt=""></td>
+                                <td><img class="jtbordrs" data-border-type='["top","bottom"]' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-rightleft.png" id="jtbrdtopbot" alt=""></td>
+                                <td><img class="jtbordrs" data-border-type='["top","left"]' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-lefttop.png" id="jtbrdlefttop" alt=""></td>
+                                <td><img class="jtbordrs" data-border-type='["right","top"]' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-lefttop.png" id="jtbrdtopright" alt=""></td>
+                                <td><img class="jtbordrs" data-border-type='["bottom","left"]' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-lefttop.png" id="jtbrdrightbot" alt=""></td>
+                                <td><img class="jtbordrs" data-border-type='["right","top"]' src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders-border-lefttop.png" id="jtbrdbotleft" alt=""></td>
                             </tr>
                         </table>      
+                        <div for="" class="jtrtEditorBtnGrp">
+                            <div>
+                                <label><?php _e('Color',$text_domain); ?>: </label>
+                                <input type="text" class="jtcoloreditpicker" value="#000" novalidate id="jtbordrsCol" />
+                            </div>
+                            <label for=""><?php _e('Size',$text_domain); ?>: <input type="number" novalidate value="1" min="1" max="10" id="jtbordrsWidth" /></label>
+                        </div>
                     </ul>
                 </li>
                 <li id="jthidecolsbtn" class="jtrt-toolbar-more" title="Hide Columns"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/cols.png" alt="">

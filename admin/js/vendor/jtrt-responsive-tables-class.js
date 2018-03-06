@@ -386,7 +386,7 @@ JTrtEditor.prototype.getData = function(){
     if(this.dataBox.html() !== ""){
         var jtrt_saved_data = JSON.parse(this.dataBox.html());		
         
-        return [jtrt_saved_data[0],jtrt_saved_data[1] || {},jtrt_saved_data[2] || true];
+        return [jtrt_saved_data[0],jtrt_saved_data[1] || {},(jtrt_saved_data[2].length ? jtrt_saved_data[2] : true)];
 
     }else{
         return [[
@@ -594,37 +594,39 @@ JTrtEditor.prototype.editCellText = function(opt,vals,borderc){
                 });
                 
             }else if(opt == "customBorders"){
+
+                var borderWidth = jQuery("#jtbordrsWidth").val(),
+                    borderColour = jQuery("#jtbordrsCol").val();
+
                 var newbrd = {"border": {
-                    "width": 1,
-                    "color": "#000",
+                    "width": borderWidth,
+                    "color": borderColour,
                     "cornerVisible": false
                 }};
 
-                var newupdateborder = {
-                    customBorders: [{}]
-                }
+                var tempbrd = {"width":borderWidth,"color":borderColour};
 
-                
-                for(var keyjt in vals){
-                    newbrd[keyjt] = vals[keyjt];
-                    newupdateborder['customBorders'][0][keyjt] = vals[keyjt];
+                var newupdateborder = {
+                    customBorders: []
                 }
-                
+            
+
                 Iam.generateSelectionFunc(selected,function(i,t){
 
                     newbrd['row'] = i;
                     newbrd['col'] = t;
 
-                    newupdateborder['customBorders'][0]['range'] = {
-                        from: {
-                            row: selected[0],
-                            col: selected[1]
-                        },
-                        to: {
-                            row: selected[2],
-                            col: selected[3]
-                        }
+                    var tempBorder = {};
+
+                    for(var keyjt = 0; keyjt < vals.length; keyjt++){
+                        newbrd[vals[keyjt]] = tempbrd;
+                        tempBorder[vals[keyjt]] = tempbrd;
                     }
+
+                    tempBorder['row'] = i;
+                    tempBorder['col'] = t;
+
+
                     if(borderc == "jtbrdnone"){
                         var borders = document.querySelectorAll('.border_row'+i+'col'+t);
                         
@@ -640,12 +642,12 @@ JTrtEditor.prototype.editCellText = function(opt,vals,borderc){
                         }}
                         
                     }
-                    Iam.handsOnTab.updateSettings(newupdateborder);
-                    Iam.handsOnTab.setCellMeta(i,t,'borders',newbrd);
-                  
-                                    
+
+                    newupdateborder['customBorders'].push(tempBorder);
+                    Iam.handsOnTab.setCellMeta(i,t,'borders',newbrd);                    
                     
                 });
+                 Iam.handsOnTab.updateSettings(newupdateborder);
                  Iam.handsOnTab.runHooks('afterInit');
             }else{
                 Iam.generateSelectionFunc(selected,function(i,t){
@@ -928,7 +930,6 @@ JTrtEditor.prototype.sortData = function(type,elem){
         var selected = Iam.handsOnTab.getSelectedLast();
         
         if(selected != undefined && selected.length > 0){
-            console.log(type);
             if(type == "true"){
                 Iam.handsOnTab.sort(selected[1],true);
                 Iam.reRenderTable();

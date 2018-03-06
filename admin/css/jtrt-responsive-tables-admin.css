@@ -629,3 +629,18 @@ td.formula{
     margin: 0;
     white-space: nowrap;
 }
+
+body.post-type-jtrt_tables_post #HandsontableCopyPaste {
+    position: absolute;
+    top: 0;
+    left: -9999px;
+}
+
+body.post-type-jtrt_tables_post .wp-picker-container .wp-color-result.button {
+    height: auto;
+}
+
+body.post-type-jtrt_tables_post .wp-picker-container .wp-color-result.button span {
+    margin: 0 !important; 
+    /* for Jody xD */
+}

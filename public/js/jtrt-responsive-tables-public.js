@@ -68,6 +68,8 @@
 							if(key == "left" || key == "right" || key == "top" || key == "bottom"){
 								if(obj['hide'] != true){
 									tCell.addClass('border-'+key);
+									tCell.css('borderWidth', borderInfor[key].width)
+									tCell.css('borderColor', borderInfor[key].color)
 								}
 							}
 						}

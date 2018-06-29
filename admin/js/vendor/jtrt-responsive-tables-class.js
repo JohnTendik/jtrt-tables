@@ -24,7 +24,8 @@ var JTrtEditor = function (tableContainer) {
         autoWrapRow: true, // I dont know, but its useful
         colHeaders: true, // Allow col headers [a,b,c,d,etc]
         columnSorting: true, // allow column sorting        
-        customBorders: this.savedTableData[2], // Custom border data for each cell, the way handsontable is setup i have to have separate data for these 
+				customBorders: this.savedTableData[2], // Custom border data for each cell, the way handsontable is setup i have to have separate data for these 
+				dataSaved: false, // quick check for saving the data
         data: this.savedTableData[0], // Get the table data        
         formulas: true,
         height: 441, // Height of the table editor, this is necessary otherwise the table has problems with rendering        
@@ -37,7 +38,7 @@ var JTrtEditor = function (tableContainer) {
         rowHeaders: true, // Allow row headers [1,2,3,4,etc]        
         sortIndicator: true, // the little arrow that shows up if you sort your table by clicking on the headers
         stretchH: 'all', // Stretch the columns to fit max size
-
+			
         afterOnCellMouseDown: function(event,location,smth){
             // This is the call back I used to change the 'value' input box 
             var jtrt_toolbar_value_input = jQuery('#jtinputvalbox');
@@ -465,93 +466,98 @@ JTrtEditor.prototype.reRenderTable = function(){
     this.handsOnTab.validateCells();
 }
 
-JTrtEditor.prototype.handleOnSave = function(event){
+JTrtEditor.prototype.handleOnSave = function(event) {
 
-    event.preventDefault();
+		if (!Iam.dataSaved) {
+			event.preventDefault();
 
-    var tableDataJT = JSON.stringify(Iam.handsOnTab.getData()),
-				tableCellDataJT = Iam.handsOnTab.getCellsMeta(),
-				tableCellDataNew = [],
-				tableCellBorderData = [],
-                tableFuncResData = [];
+			var tableDataJT = JSON.stringify(Iam.handsOnTab.getData()),
+					tableCellDataJT = Iam.handsOnTab.getCellsMeta(),
+					tableCellDataNew = [],
+					tableCellBorderData = [],
+									tableFuncResData = [];
+
+			
+			
+			JSON.parse(tableDataJT).forEach(function(emel,dataRowIndex){
+					
+
+					emel.forEach(function(colEmel,dataColIndex){
+							if (colEmel != null && colEmel[0] === "=") {	
+									var calculatedCell = jQuery(Iam.handsOnTab.getCell(dataRowIndex,dataColIndex)).html();
+									var funcCellData = {
+											"row": dataRowIndex,
+											"col": dataColIndex,
+											"val": calculatedCell
+									};
+									tableFuncResData.push(funcCellData);
+							}
+					});
+					
+			});
+
+			tableCellDataJT.forEach(function(element) {
+					var tableCellData = {};
+
+					for (var key in element) {
+							// skip loop if the property is from prototype
+							if (!element.hasOwnProperty(key)) continue;
+							switch(key){
+									case "borders":
+											tableCellData[key] = element[key];
+											var tmpBorderObj = {
+													"row": element[key]["row"],
+													"col": element[key]["col"],
+													"top": element[key]["top"],
+													"right": element[key]["right"],
+													"bottom": element[key]["bottom"],
+													"left": element[key]["left"],
+													"border": element[key]["border"],
+											}
+											tableCellBorderData.push(tmpBorderObj);
+											break;
+									case "className":
+											tableCellData[key] = element[key].trim();
+											break;
+									case "col":
+											tableCellData[key] = element[key];
+											break;
+									case "row":
+											tableCellData[key] = element[key];
+											break;
+									case "visualCol":
+											tableCellData[key] = element[key];
+											break;
+									case "visualRow":
+											tableCellData[key] = element[key];
+											break;
+									case "readOnly":
+											tableCellData[key] = element[key];
+											break;
+									case "prop":
+											tableCellData[key] = element[key];
+											break;
+									case "jtcellstyle":
+											tableCellData[key] = element[key];
+											break;
+									case "jtfootablebps":
+											tableCellData[key] = element[key];
+											break;
+									case "jtfootabcoltype":
+											tableCellData[key] = element[key];
+											break;
+							}				
+					}
+					tableCellDataNew.push(tableCellData);
+			}, this);
+
+			Iam.dataBox.html("["+tableDataJT+","+JSON.stringify(tableCellDataNew)+"," +JSON.stringify(tableCellBorderData)+","+JSON.stringify(tableFuncResData)+"]");
+			
+			Iam.dataSaved = true;
+			jQuery(this).trigger('click');
+		}
 
     
-    
-    JSON.parse(tableDataJT).forEach(function(emel,dataRowIndex){
-        
-
-        emel.forEach(function(colEmel,dataColIndex){
-            if (colEmel != null && colEmel[0] === "=") {	
-                var calculatedCell = jQuery(Iam.handsOnTab.getCell(dataRowIndex,dataColIndex)).html();
-                var funcCellData = {
-                    "row": dataRowIndex,
-                    "col": dataColIndex,
-                    "val": calculatedCell
-                };
-                tableFuncResData.push(funcCellData);
-            }
-        });
-        
-    });
-
-    tableCellDataJT.forEach(function(element) {
-        var tableCellData = {};
-
-        for (var key in element) {
-            // skip loop if the property is from prototype
-            if (!element.hasOwnProperty(key)) continue;
-            switch(key){
-                case "borders":
-                    tableCellData[key] = element[key];
-                    var tmpBorderObj = {
-                        "row": element[key]["row"],
-                        "col": element[key]["col"],
-                        "top": element[key]["top"],
-                        "right": element[key]["right"],
-                        "bottom": element[key]["bottom"],
-                        "left": element[key]["left"],
-                        "border": element[key]["border"],
-                    }
-                    tableCellBorderData.push(tmpBorderObj);
-                    break;
-                case "className":
-                    tableCellData[key] = element[key].trim();
-                    break;
-                case "col":
-                    tableCellData[key] = element[key];
-                    break;
-                case "row":
-                    tableCellData[key] = element[key];
-                    break;
-                case "visualCol":
-                    tableCellData[key] = element[key];
-                    break;
-                case "visualRow":
-                    tableCellData[key] = element[key];
-                    break;
-                case "readOnly":
-                    tableCellData[key] = element[key];
-                    break;
-                case "prop":
-                    tableCellData[key] = element[key];
-                    break;
-                case "jtcellstyle":
-                    tableCellData[key] = element[key];
-                    break;
-                case "jtfootablebps":
-                    tableCellData[key] = element[key];
-                    break;
-                case "jtfootabcoltype":
-                    tableCellData[key] = element[key];
-                    break;
-            }				
-        }
-        tableCellDataNew.push(tableCellData);
-    }, this);
-
-    Iam.dataBox.html("["+tableDataJT+","+JSON.stringify(tableCellDataNew)+"," +JSON.stringify(tableCellBorderData)+","+JSON.stringify(tableFuncResData)+"]");
-    
-    $(this).parents('form#post').submit();
 } // End of handleOnSave
 	
 

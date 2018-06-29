@@ -632,7 +632,8 @@ td.formula{
 
 body.post-type-jtrt_tables_post #HandsontableCopyPaste {
     position: absolute;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     left: -9999px;
 }
 

@@ -102,16 +102,18 @@ class Jtrt_Responsive_Tables_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+		if (did_action('wp_enqueue_media') == false) {
+            wp_enqueue_media();
+        }
 		if(CheckIfJTRTExists()){
-			wp_enqueue_script( $this->plugin_name . "-handsontable", plugin_dir_url( __FILE__ ) . 'js/vendor/handsontable.full.min.js',array(), $this->version);
-			wp_enqueue_script( $this->plugin_name . "-handsontable1", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/ruleJS.lib.full.js',array('jquery'), $this->version);
-			wp_enqueue_script( $this->plugin_name . "-handsontable2", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/ruleJS.parser.full.js',array('jquery'), $this->version);
-			wp_enqueue_script( $this->plugin_name . "-handsontable3", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/ruleJS.all.full.min.js',array('jquery'), $this->version);
-			wp_enqueue_script( $this->plugin_name . "-handsontable4", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/handsontable.formula.js',array('jquery'), $this->version);
-			wp_enqueue_media();
-			wp_enqueue_script( $this->plugin_name . "-papa", plugin_dir_url( __FILE__ ) . 'js/vendor/papaparse.min.js', array( 'jquery' ), $this->version, true );
-			wp_enqueue_script( $this->plugin_name . "-class", plugin_dir_url( __FILE__ ) . 'js/vendor/jtrt-responsive-tables-class.js',array(), $this->version, true );
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/jtrt-responsive-tables-admin.js', array( 'jquery', 'wp-color-picker'), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . "-handsontable", plugin_dir_url( __FILE__ ) . 'js/vendor/handsontable.full.min.js',array(), $this->version, true);
+			wp_enqueue_script( $this->plugin_name . "-handsontable1", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/ruleJS.lib.full.min.js',array('jquery', $this->plugin_name . "-handsontable"), $this->version, true);
+			wp_enqueue_script( $this->plugin_name . "-handsontable2", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/ruleJS.parser.full.min.js',array('jquery', $this->plugin_name . "-handsontable1"), $this->version, false);
+			wp_enqueue_script( $this->plugin_name . "-handsontable3", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/ruleJS.all.full.min.js',array('jquery', $this->plugin_name . "-handsontable2"), $this->version, false);
+			wp_enqueue_script( $this->plugin_name . "-handsontable4", plugin_dir_url( __FILE__ ) . 'js/vendor/ruleJs/handsontable.formula.js',array('jquery', $this->plugin_name . "-handsontable3"), $this->version, true);
+			wp_enqueue_script( $this->plugin_name . "-papa", plugin_dir_url( __FILE__ ) . 'js/vendor/papaparse.min.js', array( 'jquery', $this->plugin_name . "-handsontable4" ), $this->version, true );
+			wp_enqueue_script( $this->plugin_name . "-class", plugin_dir_url( __FILE__ ) . 'js/vendor/jtrt-responsive-tables-class.js', array('jquery'), $this->version, true );
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/jtrt-responsive-tables-admin.js', array( 'jquery', 'wp-color-picker', $this->plugin_name . "-class"), $this->version, true );
 		}
 	}
 

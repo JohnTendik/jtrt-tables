@@ -14171,7 +14171,7 @@ jStat.extend(jStat.fn, {
   var numeral = root.numeral;
   var jStat = root.jStat;
   var moment = root.moment;
-  var lodash = _;
+  var lodash = _.noConflict();
   var md5 = root.md5;
   var _s = _.str;
 

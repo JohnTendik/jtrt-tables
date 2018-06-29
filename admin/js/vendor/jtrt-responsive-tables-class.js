@@ -836,43 +836,54 @@ JTrtEditor.prototype.renderMediaUploader = function() {
     window.setTimeout(function(){
         var selected = Iam.handsOnTab.getSelectedLast();
         
-        if(selected != undefined && selected.length > 0){
+        if(selected != undefined && selected.length > 0) {
 
-            var file_frame, image_data;
+            var customLoader, image_data;
         
-            if ( undefined !== file_frame ) {
-                file_frame.open();
+            if ( undefined !== customLoader ) {
+                customLoader.open();
                 return;  
             }
 
-            file_frame = wp.media({
-                frame:    'post',
-                state:    'insert',
-                multiple: false
+            customLoader =  wp.media.frames.customLoader = wp.media({
+							title: 'Choose Image',
+							button: {
+									text: 'Choose Image'
+							},
+							multiple: false
+						});
+
+            customLoader.on( 'insert', function() {
+							console.log('test');
+							var attachment = customLoader.state().get('selection').first().toJSON();
+							Iam.generateSelectionFunc(selected,function(i,t){         
+									Iam.handsOnTab.setDataAtCell(i,t,'<img src="'+attachment.url+'">');
+							});
+						});
+						
+						customLoader.on( 'select', function() {
+							console.log('test');
+							var attachment = customLoader.state().get('selection').first().toJSON();
+							Iam.generateSelectionFunc(selected,function(i,t){         
+									Iam.handsOnTab.setDataAtCell(i,t,'<img src="'+attachment.url+'">');
+							});
             });
 
-            file_frame.on( 'insert', function() {
-                var attachment = file_frame.state().get('selection').first().toJSON();
-                Iam.generateSelectionFunc(selected,function(i,t){         
-                    Iam.handsOnTab.setDataAtCell(i,t,'<img src="'+attachment.url+'">');
-                });
-            });
-
-            file_frame.state('embed').on( 'select', function() {
-                var state = file_frame.state(),
+            customLoader.state('embed').on( 'select', function() {
+                var state = customLoader.state(),
                     embed = state.props.toJSON();
                 Iam.generateSelectionFunc(selected,function(i,t){         
                     Iam.handsOnTab.setDataAtCell(i,t,'<img src="'+embed.url+'">');
                 });   
             });
         
-            file_frame.open();
+            customLoader.open();
         }else{
             alert('You have to first select cells that you want to edit');
         }
 
     Iam.loader.fadeOut();
-    },300);   
+    },1300);   
 }
 
 JTrtEditor.prototype.hideGuideLines = function(type,elem){

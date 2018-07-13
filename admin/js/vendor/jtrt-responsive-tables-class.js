@@ -227,18 +227,23 @@ JTrtEditor.prototype.init = function(){
     });
 
     jQuery('#jtinsertlink ul button').on('click',function(elem){
-			
+	
 		var vall = jQuery("#jtinsertlink ul input[type='text']").val();
         Iam.editCellText("insertlink", vall);
 
     });
 
-    jQuery('.jtbordrs').on('click',function(){
+    jQuery('#jtbordersbtn .borderSelector div').on('click',function(){
 
-			var selectedBorder = JSON.parse(jQuery(this).attr('data-border-type'));
-            var selectedBorderOpt = jQuery(this).attr('id');
-			Iam.editCellText("customBorders",selectedBorder,selectedBorderOpt);
+        $(this).toggleClass('active');
 
+    });
+
+    jQuery('#jtsetcellbordersbtn').on('click', function() {
+        var selectedBorder = jQuery('#jtbordersbtn .borderSelector .active').map(function(indx, elem) {
+            return jQuery(elem).attr('data-border');
+        });
+        Iam.editCellText("customBorders",selectedBorder);
     });
 
     jQuery('#jtprinttab').on('click',Iam.printTable);
@@ -616,7 +621,7 @@ JTrtEditor.prototype.editCellText = function(opt,vals,borderc){
                     customBorders: []
                 }
             
-
+                
                 Iam.generateSelectionFunc(selected,function(i,t){
 
                     newbrd['row'] = i;
@@ -632,22 +637,7 @@ JTrtEditor.prototype.editCellText = function(opt,vals,borderc){
                     tempBorder['row'] = i;
                     tempBorder['col'] = t;
 
-
-                    if(borderc == "jtbrdnone"){
-                        var borders = document.querySelectorAll('.border_row'+i+'col'+t);
-                        
-                        for (var Di = 0; Di < borders.length; Di++) {
-                            if (borders[Di]) {
-                            if (borders[Di].nodeName != 'TD') {
-                                var parent = borders[Di].parentNode;
-
-                                if (parent.parentNode) {
-                                parent.parentNode.removeChild(parent);
-                                }
-                            }
-                        }}
-                        
-                    }
+                    jQuery('div[class^="wtBorder border_row'+i+'col'+t+'"').parent().remove();
 
                     newupdateborder['customBorders'].push(tempBorder);
                     Iam.handsOnTab.setCellMeta(i,t,'borders',newbrd);                    

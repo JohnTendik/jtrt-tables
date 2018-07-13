@@ -214,6 +214,78 @@
     padding-bottom: 0;
 }
 
+#jtsetcellbordersbtn {
+    float: right;
+}
+
+#jtbordersbtn ul div.borderSelectorContainer {
+    height: 100px;
+    width: 100%;
+    padding: 14px;
+    background: #fff;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+#jtbordersbtn ul div.borderSelector {
+    width: 60px;
+    height: 60px;
+    border: dotted 1px #ddd;
+    position: relative;
+}
+
+
+#jtbordersbtn ul div.borderSelectorContainer div[data-border='left'] {
+    position: absolute;
+    left: -5px;
+    top: 1px;
+    bottom: 1px;
+    padding: 4px;
+    background: transparent;
+    width: 1px;
+}
+
+#jtbordersbtn ul div.borderSelectorContainer div[data-border='top'] {
+    position: absolute;
+    left: 1px;
+    top: -5px;
+    right: 1px;
+    padding: 4px;
+    background: transparent;
+    height: 1px
+}
+
+#jtbordersbtn ul div.borderSelectorContainer div[data-border='right'] {
+    position: absolute;
+    bottom: 1px;
+    top: 1px;
+    right: -5px;
+    padding: 4px;
+    background: transparent;
+    width: 1px;
+}
+
+#jtbordersbtn ul div.borderSelectorContainer div[data-border='bottom'] {
+    position: absolute;
+    left: 1px;
+    top: auto;
+    bottom: -5px;
+    right: 1px;
+    padding: 4px;
+    background: transparent;
+    height: 1px;
+}
+
+#jtbordersbtn ul div.borderSelectorContainer div[data-border='left'].active,
+#jtbordersbtn ul div.borderSelectorContainer div[data-border='top'].active,
+#jtbordersbtn ul div.borderSelectorContainer div[data-border='right'].active,
+#jtbordersbtn ul div.borderSelectorContainer div[data-border='bottom'].active {
+    background: #333;
+}
+
+
 
 #jtbordersbtn ul table tr td img{
     padding:8px;

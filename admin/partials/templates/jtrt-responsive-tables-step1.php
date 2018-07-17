@@ -149,6 +149,7 @@
                 <span></span>
                 <li id="jtbordersbtn" class="jtrt-toolbar-more" title="Borders"><img src="<?php echo plugin_dir_url( __FILE__ ) ?>../../css/icons/borders.png" alt="">
                     <ul>
+                        <small><?php _e('Click/select each side of the border you want to apply by clicking the sides of the box below', $text_domain) ?></small>
 						<div class="borderSelectorContainer">
 							<div class="borderSelector">
 								<div data-border="left"></div>

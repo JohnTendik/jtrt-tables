@@ -302,6 +302,14 @@ if(isset($value['jtTableResponsiveStyle']) && $value['jtTableResponsiveStyle'] =
                             <td><input name="jtrt-table-data[jtTableEnableColHighlight]" type="checkbox" <?php echo (isset($value['jtTableEnableColHighlight']) ? "checked" : ""); ?>></td>
                             <td><input class="jtcoloreditpickerOpts" novalidate name="jtrt-table-data[jtTableEnableColHighlightcol]" type="text" value="<?php echo (isset($value['jtTableEnableColHighlightcol']) ? $value['jtTableEnableColHighlightcol'] : "rgb(255,255,255)"); ?>"></td>
                         </tr>
+                        <tr>
+                            <td>
+                                <label for=""><?php _e('Custom Class',$text_domain); ?></label>
+                                <br>
+                                <small><?php _e('Custom class which will be applied to the table',$text_domain); ?></small>
+                            </td>
+                            <td><input placeholder='customClass1 my-custom-class' name="jtrt-table-data[jtTableCustomClass]" type="text" value="<?php echo (isset($value['jtTableCustomClass']) ? esc_textarea($value['jtTableCustomClass']) : ""); ?>"></td>
+                        </tr>
                     </tbody>
 
                 </table>

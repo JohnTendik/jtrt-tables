@@ -173,9 +173,14 @@ class Jtrt_Responsive_Tables_Admin {
 		// Sanitize user input.
 		$my_data = $_POST['jtrt-table-data'];
 
-
+		array_walk($my_data, function($elem, $inx) {
+			if (!$inx === 'tabledata')
+				return sanitize_textarea_field($elem);
+			else
+				return $elem;
+		} );
 		// Update the meta field in the database.
-		update_post_meta( $post_id, 'jtrt_data_settings', array_map(null, $my_data ) );
+		update_post_meta( $post_id, 'jtrt_data_settings', array_map(null, $my_data) );
 
 	}
 

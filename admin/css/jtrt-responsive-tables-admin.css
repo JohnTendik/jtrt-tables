@@ -236,6 +236,9 @@
     position: relative;
 }
 
+#jtbordersbtn ul small {
+    text-align: center;
+}
 
 #jtbordersbtn ul div.borderSelectorContainer div[data-border='left'] {
     position: absolute;
@@ -278,11 +281,19 @@
     height: 1px;
 }
 
-#jtbordersbtn ul div.borderSelectorContainer div[data-border='left'].active,
-#jtbordersbtn ul div.borderSelectorContainer div[data-border='top'].active,
-#jtbordersbtn ul div.borderSelectorContainer div[data-border='right'].active,
-#jtbordersbtn ul div.borderSelectorContainer div[data-border='bottom'].active {
+#jtbordersbtn ul div.borderSelectorContainer div[data-border='left'].active:before,
+#jtbordersbtn ul div.borderSelectorContainer div[data-border='top'].active:before,
+#jtbordersbtn ul div.borderSelectorContainer div[data-border='right'].active:before,
+#jtbordersbtn ul div.borderSelectorContainer div[data-border='bottom'].active:before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
     background: #333;
+    display: block;
 }
 
 
@@ -329,7 +340,9 @@
 }
 
 
-
+#jtbordersbtn ul {
+    text-align: center;
+}
 
 #jtbordersbtn ul table tr td img:hover{
     background:#f3f3f3;

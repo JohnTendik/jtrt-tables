@@ -27,6 +27,8 @@ function jtrt_shortcode_table( $atts ){
     $myTableResponsiveStyle = $table_post_meta[0]['jtTableResponsiveStyle'];
     $myTableStackPrefWidth = $table_post_meta[0]['jtStackPrefWidth'];
 
+    $myTableCustomClass = (isset($table_post_meta[0]['jtTableCustomClass']) ? esc_textarea($table_post_meta[0]['jtTableCustomClass']) : "");
+
     $myTableHoverRows = (isset($table_post_meta[0]['jtTableEnableRowHighlight']) ? "highlightRows" : "");
     $myTableHoverRowsCol = (isset($table_post_meta[0]['jtTableEnableRowHighlight']) ? "data-jtrt-rowhighligh-color='".$table_post_meta[0]['jtTableEnableRowHighlightcol']."'" : "");
     $myTableHoverCols = (isset($table_post_meta[0]['jtTableEnableColHighlight']) ? "highlightCols" : "");
@@ -62,7 +64,7 @@ function jtrt_shortcode_table( $atts ){
 
 
     // We can only return once, so let's build our html!
-    $html .= "<div class='jtsettingcontainer' style='display:none;position:absolute;left:-9999px;'><textarea data-jtrt-table-id='".$jtrt_settings['id']."' id='jtrt_table_settings_".$jtrt_settings['id']."' cols='30' rows='10'>".json_encode($table_data_json)."</textarea><textarea data-jtrt-table-id='".$jtrt_settings['id']."' id='jtrt_table_bps_".$jtrt_settings['id']."' cols='30' rows='10'>".json_encode($myjtbpfootab)."</textarea></div><table id='jtrt_table_".$jtrt_settings['id']."' data-sorting='".$myjttableSorting."' data-paging='".$myjttablePaging."' data-paging-size='".$myjttablePagingCnt."'  data-filtering='".$myjttableFiltering."' data-jtrt-table-id='".$jtrt_settings['id']."' class='jtrt-table' >";
+    $html .= "<div class='jtsettingcontainer' style='display:none;position:absolute;left:-9999px;'><textarea data-jtrt-table-id='".$jtrt_settings['id']."' id='jtrt_table_settings_".$jtrt_settings['id']."' cols='30' rows='10'>".json_encode($table_data_json)."</textarea><textarea data-jtrt-table-id='".$jtrt_settings['id']."' id='jtrt_table_bps_".$jtrt_settings['id']."' cols='30' rows='10'>".json_encode($myjtbpfootab)."</textarea></div><table id='jtrt_table_".$jtrt_settings['id']."' data-sorting='".$myjttableSorting."' data-paging='".$myjttablePaging."' data-paging-size='".$myjttablePagingCnt."'  data-filtering='".$myjttableFiltering."' data-jtrt-table-id='".$jtrt_settings['id']."' class='jtrt-table " . $myTableCustomClass ." ' >";
     
 
     if($jtrt_settings['filterrows'] != ""){

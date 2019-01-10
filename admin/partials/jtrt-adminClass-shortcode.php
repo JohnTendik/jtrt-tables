@@ -52,6 +52,7 @@ function jtrt_shortcode_table( $atts ){
     $myjttableSorting = (isset($table_post_meta[0]['jtTableEnableSorting']) ? "true" : "false");
     $myjttablePaging = (isset($table_post_meta[0]['jtTableEnablePaging']) ? "true" : "false");
     $myjttablePagingCnt = (isset($table_post_meta[0]['jtTableEnablePagingCnt']) ? $table_post_meta[0]['jtTableEnablePagingCnt'] : "10");
+    $myjttablePagingMenu = (isset($table_post_meta[0]['jtTablePagingMenu']) && is_array(explode(',', $table_post_meta[0]['jtTablePagingMenu'])) ? $table_post_meta[0]['jtTablePagingMenu'] : '10,25,50,100');
 
     $html = "<div class='jtrt_table_MotherShipContainer'>";
 
@@ -64,7 +65,7 @@ function jtrt_shortcode_table( $atts ){
 
 
     // We can only return once, so let's build our html!
-    $html .= "<div class='jtsettingcontainer' style='display:none;position:absolute;left:-9999px;'><textarea data-jtrt-table-id='".$jtrt_settings['id']."' id='jtrt_table_settings_".$jtrt_settings['id']."' cols='30' rows='10'>".json_encode($table_data_json)."</textarea><textarea data-jtrt-table-id='".$jtrt_settings['id']."' id='jtrt_table_bps_".$jtrt_settings['id']."' cols='30' rows='10'>".json_encode($myjtbpfootab)."</textarea></div><table id='jtrt_table_".$jtrt_settings['id']."' data-sorting='".$myjttableSorting."' data-paging='".$myjttablePaging."' data-paging-size='".$myjttablePagingCnt."'  data-filtering='".$myjttableFiltering."' data-jtrt-table-id='".$jtrt_settings['id']."' class='jtrt-table " . $myTableCustomClass ." ' >";
+    $html .= "<div class='jtsettingcontainer' style='display:none;position:absolute;left:-9999px;'><textarea data-jtrt-table-id='".$jtrt_settings['id']."' id='jtrt_table_settings_".$jtrt_settings['id']."' cols='30' rows='10'>".json_encode($table_data_json)."</textarea><textarea data-jtrt-table-id='".$jtrt_settings['id']."' id='jtrt_table_bps_".$jtrt_settings['id']."' cols='30' rows='10'>".json_encode($myjtbpfootab)."</textarea></div><table id='jtrt_table_".$jtrt_settings['id']."' data-sorting='".$myjttableSorting."' data-paging='".$myjttablePaging."' data-paging-size='".$myjttablePagingCnt."' data-paging-menu='".$myjttablePagingMenu."' data-filtering='".$myjttableFiltering."' data-jtrt-table-id='".$jtrt_settings['id']."' class='jtrt-table " . $myTableCustomClass ." ' >";
     
 
     if($jtrt_settings['filterrows'] != ""){

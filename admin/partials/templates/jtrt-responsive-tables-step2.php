@@ -103,9 +103,9 @@ if(isset($value['jtTableResponsiveStyle']) && $value['jtTableResponsiveStyle'] =
                                 <select id="jtresponsiveoptionscontainerselect" name="jtrt-table-data[jtTableResponsiveStyle]">
                                     <?php 
                                         $jtTableResponsivestyle = array("scroll"=>__("Classic Scroller"), "footable"=>__("Column Hiding"), "stack"=>__("Column Stacking")); 
-                                        $currentSelected = (isset($value['jtTableResponsiveStyle']) ? $value['jtTableResponsiveStyle'] : "scroll");
+                                        $currentSelectedResponsiveOption = (isset($value['jtTableResponsiveStyle']) ? $value['jtTableResponsiveStyle'] : "scroll");
                                         foreach ($jtTableResponsivestyle as $key2 => $value3) {
-                                            if($key2 == $currentSelected){
+                                            if($key2 == $currentSelectedResponsiveOption){
                                                 echo "<option value='$key2' selected>$value3</option>";
                                             }else{
                                                 echo "<option value='$key2'>$value3</option>";
@@ -282,8 +282,22 @@ if(isset($value['jtTableResponsiveStyle']) && $value['jtTableResponsiveStyle'] =
                                 <small><?php _e('This option will split your table into multiple pages. Recommended if your table has a lot of rows.',$text_domain); ?></small>
                             </td>
                             <td><input name="jtrt-table-data[jtTableEnablePaging]" type="checkbox" <?php echo (isset($value['jtTableEnablePaging']) ? "checked" : ""); ?>></td>
-                            <td><input name="jtrt-table-data[jtTableEnablePagingCnt]" type="number" value="<?php echo (isset($value['jtTableEnablePagingCnt']) ? $value['jtTableEnablePagingCnt'] : "10"); ?>"></td>
+                            <td>
+                                <input name="jtrt-table-data[jtTableEnablePagingCnt]" type="number" value="<?php echo (isset($value['jtTableEnablePagingCnt']) ? $value['jtTableEnablePagingCnt'] : "10"); ?>">
+                            </td>
                         </tr>
+                        <?php if ($currentSelectedResponsiveOption !== 'footable') : ?>
+                            <tr>
+                                <td>
+                                    <label for=""><?php _e('Pagination Menu',$text_domain); ?></label>
+                                    <br>
+                                    <small><?php _e('This option will set the allowed pagination lengths. Separate each value with commas',$text_domain); ?></small>
+                                </td>
+                                <td>
+                                    <input name="jtrt-table-data[jtTablePagingMenu]" type="text" value="<?php echo (isset($value['jtTablePagingMenu']) ? $value['jtTablePagingMenu'] : "10,20,50,100"); ?>">
+                                </td>
+                            </tr>
+                        <?php endif; ?>
                         <tr>
                             <td>
                                 <label for=""><?php _e('Row Highlighting',$text_domain); ?></label>

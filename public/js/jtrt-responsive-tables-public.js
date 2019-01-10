@@ -116,11 +116,14 @@
 				isfiltered = mytablr.attr('data-filtering'),
 				isSorted = mytablr.attr('data-sorting'),
 				isPaged = mytablr.attr('data-paging'),
-				isPagedCtn = mytablr.attr('data-paging-size');
+				isPagedCtn = mytablr.attr('data-paging-size'),
+				paginationMenu = mytablr.attr('data-paging-menu');
 
 			if(isfiltered == "true" || isSorted == "true" || isPaged == "true"){
 				var jtrtDTcopy = mytablr.DataTable({
 					"paging":isPaged,
+					"pageLength": isPagedCtn,
+					"lengthMenu": paginationMenu.split(','),
 					"ordering":isSorted,
 					"order": [],
 					"searching":isfiltered,

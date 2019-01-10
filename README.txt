@@ -3,8 +3,8 @@ Contributors: MyThirdEye
 Donate link: //
 Tags: responsive tables, responsive, table, table generator, csv to table, csv, convert csv, responsive table generator, foo tables, responsive table, mobile tables, html table generator, html5 table
 Requires at least: 4.0
-Tested up to: 4.9.6
-Stable tag: 4.1.7
+Tested up to: 5.0.3
+Stable tag: 4.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,6 +107,11 @@ If you can see your images/links in the backend but not on the frontend, then th
 6. Front End Sample 2.2
 
 == Changelog ==
+
+= 4.1.8 =
+* Fixed default pagination size for scrolling and stacking responsive types
+* Added pagination menu option for scrolling and stacking responsive types
+* Updating WordPress tested version
 
 = 4.1.7 =
 * Updated border options, you can now select custom borders

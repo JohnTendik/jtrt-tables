@@ -537,6 +537,10 @@
     width: 100%;
 }
 
+#jtoptionsContainer .rightSidejt table tbody tr td:first-child{
+    margin-right: auto;
+}
+
 #jtoptionsContainer .rightSidejt table tbody tr td:last-child{
     float:right;
     text-align: right;

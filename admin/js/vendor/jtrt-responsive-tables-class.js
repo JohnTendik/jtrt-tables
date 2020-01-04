@@ -235,7 +235,7 @@ JTrtEditor.prototype.init = function(){
 
     jQuery('#jtbordersbtn .borderSelector div').on('click',function(){
 
-        $(this).toggleClass('active');
+      jQuery(this).toggleClass('active');
 
     });
 
